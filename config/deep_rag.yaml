@@ -1,0 +1,25 @@
+llm:
+  provider: ollama # ollama | openai_compatible
+  ollama:
+    base_url: http://127.0.0.1:11434
+    chat_model: qwen2.5:7b-instruct
+    embed_model: bge-m3
+  openai_compatible:
+    base_url: ""
+    api_key: ""
+    chat_model: gpt-4o
+    embed_model: text-embedding-3-small
+    verify_ssl: true
+    ca_bundle: ""
+
+paths:
+  kb_dir: knowledge_base
+  index_dir: index_store
+  log_file: logs/query_logs.jsonl
+
+mcp:
+  transport: local # local | stdio
+
+retrieval:
+  max_supplements: 2
+  max_total_tokens: 50000

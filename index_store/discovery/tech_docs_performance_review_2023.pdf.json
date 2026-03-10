@@ -1,0 +1,31 @@
+{
+  "file_name": "performance_review_2023.pdf",
+  "file_path": "tech_docs/performance_review_2023.pdf",
+  "file_format": "pdf",
+  "description": "2023年Q3系统性能评审报告\n评审概要\n评审日期：2023年10月15日\n测试环境：预发布环境（4台应用服务器，2台数据库服务器）\n测试工具：JMeter、Locust、自研监控平台\n测试时长：持续压测2小时\n一、API性能测试结果\n1.1 核心API响应时间\n在200并发用户条件下，各核心API的测试结果如下：\n接口\nP50(ms)\nP90(ms)\nP95(ms)\nP99(ms)\n目标\nP99\n状态\n商品列\n表\n45\n120\n180",
+  "time_range": "2023-2024",
+  "sections": [
+    {
+      "section_id": "p001",
+      "heading": "Page 1",
+      "pages": "1",
+      "preview": "2023年Q3系统性能评审报告\n评审概要\n评审日期：2023年10月15日\n测试环境：预发布环境（4台应用服务器，2台数据库服务器）\n测试工具：JMeter、Locust、自研监控平台\n测试时长：持续压测2小时\n一、API性能测试结果\n1.1 核心API响应时间\n在200并发用户条件下，各核心API的测试结果如下：\n接口\nP50(ms)\nP90(ms)\nP95(ms)\nP99(ms)\n目标\nP99\n状态\n商品列\n表\n45\n120\n180\n350\n500\n通过\n商品搜\n索\n280\n650\n1200\n2300\n500\n不通\n过\n创建订\n单\n150\n350\n480\n650\n500\n不通\n过\n库存扣\n",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {
+        "page": 1
+      }
+    },
+    {
+      "section_id": "p002",
+      "heading": "Page 2",
+      "pages": "2",
+      "preview": "并发用户数\n吞吐量(req/s)\n平均响应(ms)\n错误率\nCPU\n内存\n50\n480\n85\n0.02%\n35%\n52%\n100\n720\n120\n0.08%\n55%\n58%\n200\n980\n210\n0.38%\n72%\n65%\n500\n1100\n450\n1.50%\n88%\n75%\n1000\n950\n850\n5.00%\n95%\n82%\n2.2 分析结论\n系统在200并发以内表现良好，错误率<0.5%\n500并发时开始出现性能瓶颈，错误率升至1.5%\n1000并发时吞吐量反而下降，CPU接近满载，出现明显性能衰退\n当前系统容量上限约为500并发用户，与日常峰值（300并发）相比，余量不\n足\n三、性能",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {
+        "page": 2
+      }
+    }
+  ]
+}

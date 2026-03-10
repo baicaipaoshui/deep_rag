@@ -1,0 +1,159 @@
+{
+  "file_name": "2023_sales_meeting_notes.md",
+  "file_path": "sales_reports/2023_sales_meeting_notes.md",
+  "file_format": "markdown",
+  "description": "# 2023年度销售总结会议纪要 ## 会议信息 - 时间：2024年1月15日",
+  "time_range": "2022-2024",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "2023年度销售总结会议纪要",
+      "line_start": 1,
+      "line_end": 2,
+      "preview": "# 2023年度销售总结会议纪要",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "会议信息",
+      "line_start": 3,
+      "line_end": 9,
+      "preview": "## 会议信息\n\n- 时间：2024年1月15日\n- 地点：总部3楼大会议室\n- 参会人：销售VP张明、各区域负责人、财务总监李红\n- 记录人：王小芳",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_003",
+      "heading": "一、年度销售回顾",
+      "line_start": 10,
+      "line_end": 11,
+      "preview": "## 一、年度销售回顾",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_004",
+      "heading": "1.1 整体业绩",
+      "line_start": 12,
+      "line_end": 20,
+      "preview": "### 1.1 整体业绩\n\n2023年度公司实现销售总额5,280万元，较2022年的4,680万元增长12.8%。这是连续第三年保持两位数增长，但增速较2022年的17.0%有所放缓。\n\n张明总结了三个关键驱动因素：\n1. 华东区域的持续强劲增长，贡献了总销售额的38%\n2. 新产品线\"智能家居\"系列的成功上市，全年贡献620万元\n3. 大客户合同续约率提升至92%，较去年的85%显著改善",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_005",
+      "heading": "1.2 区域分析",
+      "line_start": 21,
+      "line_end": 29,
+      "preview": "### 1.2 区域分析\n\n各区域表现分化明显：\n\n- **华东区域**：2,006万元，同比增长18%，远超公司平均水平。主要受益于长三角地区制造业升级需求。区域负责人赵磊认为2024年仍能保持15%以上增速。\n- **华南区域**：1,478万元，同比增长8%，增速低于预期。深圳市场竞争加剧，部分中小客户流失。区域负责人刘芳建议加强客户维系投入。\n- **华北区域**：1,267万元，同比增长10%，基本符合预期。北京和天津市场稳定，但河北市场开拓进展缓慢。\n- **西南区域**：529万元，同比增长22%，增速最快但基数较小。成都和重庆市场潜力巨大，建议加大投入。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_006",
+      "heading": "1.3 产品线分析",
+      "line_start": 30,
+      "line_end": 35,
+      "preview": "### 1.3 产品线分析\n\n- 传统产品线：4,660万元，增长7%，增速趋于平稳\n- 智能家居系列（新品）：620万元，超出预期目标500万元的24%\n- 张明特别指出，智能家居系列的毛利率达到45%，远高于传统产品线的28%",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_007",
+      "heading": "二、2024年销售目标",
+      "line_start": 36,
+      "line_end": 37,
+      "preview": "## 二、2024年销售目标",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_008",
+      "heading": "2.1 整体目标",
+      "line_start": 38,
+      "line_end": 41,
+      "preview": "### 2.1 整体目标\n\n2024年销售目标定为6,100万元，同比增长15.5%。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_009",
+      "heading": "2.2 增长策略",
+      "line_start": 42,
+      "line_end": 48,
+      "preview": "### 2.2 增长策略\n\n1. **深耕华东**：目标2,400万元，重点拓展苏州、无锡工业客户\n2. **突破华南**：目标1,700万元，调整深圳团队，强化广州市场\n3. **稳固华北**：目标1,400万元，加速河北市场开拓\n4. **加速西南**：目标600万元，在成都设立区域办公室",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_010",
+      "heading": "2.3 新产品计划",
+      "line_start": 49,
+      "line_end": 53,
+      "preview": "### 2.3 新产品计划\n\n- 智能家居系列2.0版本将于Q2上市，预计贡献900万元\n- 正在评估进入智慧城市解决方案领域的可行性",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_011",
+      "heading": "三、风险与挑战",
+      "line_start": 54,
+      "line_end": 55,
+      "preview": "## 三、风险与挑战",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_012",
+      "heading": "3.1 外部风险",
+      "line_start": 56,
+      "line_end": 61,
+      "preview": "### 3.1 外部风险\n\n- 宏观经济不确定性增加，部分行业客户预算收紧\n- 竞争对手近期获得大额融资，可能发起价格战\n- 原材料成本上涨压力",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_013",
+      "heading": "3.2 内部挑战",
+      "line_start": 62,
+      "line_end": 67,
+      "preview": "### 3.2 内部挑战\n\n- 销售团队流动率偏高（15%），需要改善薪酬激励机制\n- CRM系统数据质量不够好，影响销售预测准确性\n- 跨区域协作效率有待提升",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_014",
+      "heading": "四、行动项",
+      "line_start": 68,
+      "line_end": 77,
+      "preview": "## 四、行动项\n\n| 序号 | 行动项 | 负责人 | 截止日期 |\n|------|--------|--------|----------|\n| 1 | 制定华南区域客户维系方案 | 刘芳 | 2024-02-28 |\n| 2 | 成都办公室选址与团队组建 | 张明 | 2024-03-31 |\n| 3 | CRM数据清洗与流程优化 | IT部门 | 2024-03-15 |\n| 4 | 销售团队薪酬激励方案修订 | HR部门 | 2024-02-15 |\n| 5 | 智慧城市方案可行性报告 | 产品部 | 2024-04-30 |",
+      "has_tables": true,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_015",
+      "heading": "五、会议决议",
+      "line_start": 78,
+      "line_end": 83,
+      "preview": "## 五、会议决议\n\n1. 批准2024年销售目标6,100万元\n2. 批准成都区域办公室设立预算\n3. 要求HR部门在春节前完成薪酬方案修订\n4. 下次季度销售回顾会议定于2024年4月初",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

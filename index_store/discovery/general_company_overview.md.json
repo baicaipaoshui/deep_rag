@@ -1,0 +1,99 @@
+{
+  "file_name": "company_overview.md",
+  "file_path": "general/company_overview.md",
+  "file_format": "markdown",
+  "description": "# 公司概况 ## 基本信息 星辰科技有限公司成立于2015年，总部位于上海张江高科技园区。公司专注于智能硬件和物联网解决方案，服务于制造业、零售业和智慧城市领域。",
+  "time_range": "2015-2023",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "公司概况",
+      "line_start": 1,
+      "line_end": 2,
+      "preview": "# 公司概况",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "基本信息",
+      "line_start": 3,
+      "line_end": 6,
+      "preview": "## 基本信息\n\n星辰科技有限公司成立于2015年，总部位于上海张江高科技园区。公司专注于智能硬件和物联网解决方案，服务于制造业、零售业和智慧城市领域。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_003",
+      "heading": "发展历程",
+      "line_start": 7,
+      "line_end": 15,
+      "preview": "## 发展历程\n\n- 2015年：公司成立，推出首款工业传感器产品\n- 2017年：完成A轮融资2000万元，团队扩展至50人\n- 2019年：年营收突破2000万元，进入华南市场\n- 2021年：完成B轮融资8000万元，启动智能家居产品线研发\n- 2022年：智能家居系列产品上市，年营收突破4000万元\n- 2023年：年营收达到5280万元，团队规模180人",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_004",
+      "heading": "组织架构",
+      "line_start": 16,
+      "line_end": 25,
+      "preview": "## 组织架构\n\n公司下设六大部门：\n- 销售部：负责全国四个区域的销售业务\n- 产品部：负责产品规划和需求管理\n- 研发部：负责硬件和软件研发，共85人\n- 运营部：负责供应链和客户服务\n- 财务部：负责财务管理和预算控制\n- 人力资源部：负责招聘、培训和组织发展",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_005",
+      "heading": "核心产品",
+      "line_start": 26,
+      "line_end": 27,
+      "preview": "## 核心产品",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_006",
+      "heading": "传统产品线",
+      "line_start": 28,
+      "line_end": 32,
+      "preview": "### 传统产品线\n- 工业传感器系列：温度、湿度、压力传感器\n- 数据采集网关：支持多协议接入\n- 工业监控平台：Web端+移动端",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_007",
+      "heading": "智能家居系列（2022年上市）",
+      "line_start": 33,
+      "line_end": 38,
+      "preview": "### 智能家居系列（2022年上市）\n- 智能温控器\n- 环境监测套装\n- 智能安防系统\n- 家庭能源管理方案",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_008",
+      "heading": "市场地位",
+      "line_start": 39,
+      "line_end": 42,
+      "preview": "## 市场地位\n\n公司在国内工业传感器市场排名第8位，市场份额约2.5%。在智能家居领域作为新进入者，目前市场份额不足1%，但增长迅速。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_009",
+      "heading": "核心价值观",
+      "line_start": 43,
+      "line_end": 47,
+      "preview": "## 核心价值观\n\n- 技术驱动：持续投入研发，研发费用占营收的15%\n- 客户至上：NPS（净推荐值）达到45分\n- 开放协作：与30+合作伙伴建立生态关系",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+根据问题和候选文件，选择最相关文件。
+
+问题：{{ question }}
+关键词：{{ keywords | join(", ") }}
+
+候选：
+{% for file in candidates %}
+- {{ file.file_name }} ({{ file.file_format }}): {{ file.description }}
+{% endfor %}
+
+输出JSON数组，每项：
+{"file_name":"...","score":0.0-1.0,"reason":"..."}

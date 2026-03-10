@@ -1,0 +1,51 @@
+从内容中提取与问题相关证据，输出JSON数组。
+
+用户问题：{{ question }}
+问题类型：{{ query_type }}
+时间范围：{{ time_range or "未指定" }}
+来源文件：{{ file_name }}
+来源位置：{{ location }}
+来源格式：{{ format }}
+
+内容：
+{{ content }}
+
+{% if tables %}
+表格：
+{% for table in tables %}
+表名：{{ table.title }}
+表头：{{ table.headers | join(" | ") }}
+{% for row in table.rows %}
+{{ row | join(" | ") }}
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+抽取规则（必须遵守）：
+1. 只提取能被原文直接支持的证据，不要臆测。
+2. 同一事实只保留一条，不要重复改写后再次输出。
+3. 对 `trend_analysis`：
+- 优先提取按年份的关键数值（如 2021/2022/2023 年销售额、同比）。
+- 若出现季度信息（Q1/Q2/Q3/Q4 或 第一季度等），单独提取季度证据。
+- `time_period` 必须尽量填具体时间（如 `2023`、`2023-Q4`、`2021-2023`）。
+- 若内容是“目标/计划/展望”的未来值，除非问题明确询问目标，否则不要当作主趋势证据。
+4. 对数值证据：
+- `evidence_type` 用 `number` 或 `table`。
+- `numeric_value` 填纯数字（不要单位）。
+- `unit` 填单位（如 万元、%、人）。
+5. `dedup_key` 必填，建议使用 `来源文件+时间+指标`，用于去重。
+
+输出每条证据字段：
+{
+  "evidence_id":"ev_001",
+  "source_format":"markdown|pdf|excel",
+  "evidence_type":"text|table|number|conclusion",
+  "evidence_strength":"direct|derived|opinion",
+  "content":"...",
+  "time_period":null,
+  "numeric_value":null,
+  "unit":null,
+  "topic_category":null,
+  "dedup_key":"sales_data_2023_total",
+  "extraction_quality":"good"
+}

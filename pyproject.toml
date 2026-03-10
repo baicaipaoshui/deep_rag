@@ -1,0 +1,24 @@
+[project]
+name = "deep-rag"
+version = "0.1.0"
+description = "Deep RAG enterprise knowledge retrieval system"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "mcp>=1.0.0",
+  "pydantic>=2.7.0",
+  "jinja2>=3.1.4",
+  "jieba>=0.42.1",
+  "whoosh>=2.7.4",
+  "chromadb>=0.5.5",
+  "pymupdf>=1.24.9",
+  "pdfplumber>=0.11.3",
+  "openpyxl>=3.1.5",
+  "pandas>=2.2.2",
+  "streamlit>=1.38.0",
+  "pytest>=8.3.2",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

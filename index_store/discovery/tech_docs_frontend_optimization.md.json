@@ -1,0 +1,169 @@
+{
+  "file_name": "frontend_optimization.md",
+  "file_path": "tech_docs/frontend_optimization.md",
+  "file_format": "markdown",
+  "description": "# 前端性能优化指南 ## 一、加载性能优化 ### 1.1 代码分割与懒加载",
+  "time_range": null,
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "前端性能优化指南",
+      "line_start": 1,
+      "line_end": 2,
+      "preview": "# 前端性能优化指南",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "一、加载性能优化",
+      "line_start": 3,
+      "line_end": 4,
+      "preview": "## 一、加载性能优化",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_003",
+      "heading": "1.1 代码分割与懒加载",
+      "line_start": 5,
+      "line_end": 14,
+      "preview": "### 1.1 代码分割与懒加载\n\n当前项目的主包体积已经达到2.8MB（gzip后680KB），严重影响首屏加载速度。建议采取以下措施：\n\n- 使用React.lazy和Suspense对路由级组件进行懒加载，预计可将首屏包体积减少60%\n- 对大型第三方库（如echarts、moment.js）使用动态import按需加载\n- 将不常用的管理后台模块独立成单独的chunk\n\n实测数据：在测试环境中，代码分割后首屏加载时间从4.2秒降至1.8秒。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_004",
+      "heading": "1.2 资源压缩与优化",
+      "line_start": 15,
+      "line_end": 20,
+      "preview": "### 1.2 资源压缩与优化\n\n- 启用Brotli压缩替代gzip，压缩率可提升15-20%\n- 图片资源使用WebP格式，平均体积可减少30%\n- 使用CSS Modules替代全局CSS，减少未使用样式的打包",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_005",
+      "heading": "1.3 CDN与缓存策略",
+      "line_start": 21,
+      "line_end": 26,
+      "preview": "### 1.3 CDN与缓存策略\n\n- 静态资源部署到CDN，配合内容哈希实现长期缓存\n- 设置合理的Cache-Control：HTML文件设为no-cache，JS/CSS文件设为max-age=31536000\n- 使用Service Worker实现离线缓存，提升二次访问速度",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_006",
+      "heading": "二、渲染性能优化",
+      "line_start": 27,
+      "line_end": 28,
+      "preview": "## 二、渲染性能优化",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_007",
+      "heading": "2.1 减少不必要的重渲染",
+      "line_start": 29,
+      "line_end": 37,
+      "preview": "### 2.1 减少不必要的重渲染\n\n当前存在的问题：商品列表页在滚动时会触发整个页面的重渲染，帧率降至20fps以下。\n\n建议措施：\n- 使用React.memo包裹列表项组件，避免父组件state变更导致所有子组件重渲染\n- 将频繁变化的状态（如滚动位置、鼠标坐标）使用useRef替代useState\n- 对复杂计算使用useMemo缓存结果",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_008",
+      "heading": "2.2 长列表虚拟化",
+      "line_start": 38,
+      "line_end": 43,
+      "preview": "### 2.2 长列表虚拟化\n\n商品列表页目前一次性渲染全部500+条数据，DOM节点数量过多导致卡顿。\n\n建议使用react-window或react-virtualized实现虚拟列表，只渲染可视区域内的元素。实测在500条数据的场景下，DOM节点从500+降至15-20个，滚动帧率从18fps提升至58fps。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_009",
+      "heading": "2.3 动画性能",
+      "line_start": 44,
+      "line_end": 49,
+      "preview": "### 2.3 动画性能\n\n- 避免使用触发布局的CSS属性（如width、height、top、left）做动画\n- 优先使用transform和opacity，它们可以在GPU上加速\n- 使用requestAnimationFrame替代setTimeout实现JavaScript动画",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_010",
+      "heading": "三、网络请求优化",
+      "line_start": 50,
+      "line_end": 51,
+      "preview": "## 三、网络请求优化",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_011",
+      "heading": "3.1 请求合并与预加载",
+      "line_start": 52,
+      "line_end": 60,
+      "preview": "### 3.1 请求合并与预加载\n\n当前商品详情页需要发送6个API请求才能完成渲染，总耗时约3秒。\n\n建议：\n- 将商品基本信息、价格、库存三个接口合并为一个BFF接口，减少请求数\n- 使用预加载（link rel=\"preload\"）提前加载关键API响应\n- 在列表页hover时预请求详情数据",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_012",
+      "heading": "3.2 数据缓存",
+      "line_start": 61,
+      "line_end": 66,
+      "preview": "### 3.2 数据缓存\n\n- 使用SWR或React Query实现请求级缓存，避免重复请求\n- 设置合理的staleTime，对于不频繁变化的数据（如商品分类）设为5分钟\n- 对分页数据实现前后页预加载",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_013",
+      "heading": "3.3 接口响应优化",
+      "line_start": 67,
+      "line_end": 72,
+      "preview": "### 3.3 接口响应优化\n\n- 使用GraphQL或字段选择机制，避免返回前端不需要的字段\n- 对大型响应（如商品列表）实现分页加载，每页20条\n- 关键接口启用HTTP/2 Server Push",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_014",
+      "heading": "四、监控与度量",
+      "line_start": 73,
+      "line_end": 74,
+      "preview": "## 四、监控与度量",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_015",
+      "heading": "4.1 性能指标",
+      "line_start": 75,
+      "line_end": 81,
+      "preview": "### 4.1 性能指标\n\n建议关注以下核心Web Vitals指标：\n- LCP（最大内容绘制）：目标 < 2.5秒\n- FID（首次输入延迟）：目标 < 100ms\n- CLS（累计布局偏移）：目标 < 0.1",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_016",
+      "heading": "4.2 性能监控方案",
+      "line_start": 82,
+      "line_end": 86,
+      "preview": "### 4.2 性能监控方案\n\n- 使用Performance Observer API采集实际用户性能数据\n- 每周生成性能报告，跟踪趋势变化\n- 设置性能预算：主包体积不超过500KB（gzip后），首屏LCP不超过3秒",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

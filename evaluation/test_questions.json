@@ -1,0 +1,22 @@
+[
+  {"id": 1, "question": "公司成立于哪一年？", "query_type": "fact_lookup", "expected_keywords": ["2015", "成立"]},
+  {"id": 2, "question": "最近三年的销售趋势如何？", "query_type": "trend_analysis", "expected_keywords": ["2021", "2022", "2023"]},
+  {"id": 3, "question": "2023年销售总额是多少？", "query_type": "numeric_query", "expected_keywords": ["5280", "万元"]},
+  {"id": 4, "question": "华东区域2023年表现如何？", "query_type": "numeric_query", "expected_keywords": ["华东", "2006"]},
+  {"id": 5, "question": "智能家居系列在2023年的贡献是多少？", "query_type": "numeric_query", "expected_keywords": ["620", "智能家居"]},
+  {"id": 6, "question": "2024年的销售目标是多少？", "query_type": "fact_lookup", "expected_keywords": ["6100", "2024"]},
+  {"id": 7, "question": "销售部门当前面临哪些挑战？", "query_type": "cross_doc_summary", "expected_keywords": ["流动率", "CRM", "竞争"]},
+  {"id": 8, "question": "公司的核心产品有哪些？", "query_type": "cross_doc_summary", "expected_keywords": ["工业传感器", "智能家居"]},
+  {"id": 9, "question": "研发费用占营收比例是多少？", "query_type": "numeric_query", "expected_keywords": ["15%", "研发"]},
+  {"id": 10, "question": "公司目前团队规模是多少？", "query_type": "fact_lookup", "expected_keywords": ["180", "人"]},
+  {"id": 11, "question": "前端性能优化建议有哪些重点？", "query_type": "definition_process", "expected_keywords": ["代码分割", "懒加载", "LCP"]},
+  {"id": 12, "question": "后端优化文档提到了哪些方向？", "query_type": "cross_doc_summary", "expected_keywords": ["缓存", "数据库", "接口"]},
+  {"id": 13, "question": "数据库调优指南的核心建议是什么？", "query_type": "definition_process", "expected_keywords": ["索引", "慢查询", "执行计划"]},
+  {"id": 14, "question": "2023年各区域销售同比表现怎样？", "query_type": "trend_analysis", "expected_keywords": ["华东", "华南", "华北", "西南"]},
+  {"id": 15, "question": "公司在工业传感器市场份额是多少？", "query_type": "numeric_query", "expected_keywords": ["2.5%", "市场份额"]},
+  {"id": 16, "question": "2023年度会议确定了哪些行动项？", "query_type": "cross_doc_summary", "expected_keywords": ["行动项", "负责人", "截止日期"]},
+  {"id": 17, "question": "新员工入职流程是什么？", "query_type": "definition_process", "expected_keywords": ["入职", "流程"]},
+  {"id": 18, "question": "技术文档中关于监控指标有哪些建议？", "query_type": "cross_doc_summary", "expected_keywords": ["LCP", "FID", "CLS"]},
+  {"id": 19, "question": "智能家居产品线从哪一年开始上市？", "query_type": "fact_lookup", "expected_keywords": ["2022", "上市"]},
+  {"id": 20, "question": "销售增长放缓的风险有哪些？", "query_type": "cross_doc_summary", "expected_keywords": ["经济", "价格战", "成本"]}
+]

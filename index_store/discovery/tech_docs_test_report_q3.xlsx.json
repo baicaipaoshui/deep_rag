@@ -1,0 +1,77 @@
+{
+  "file_name": "test_report_q3.xlsx",
+  "file_path": "tech_docs/test_report_q3.xlsx",
+  "file_format": "excel",
+  "description": "Workbook test_report_q3.xlsx with 3 sheets",
+  "time_range": null,
+  "sections": [
+    {
+      "section_id": "sh_001",
+      "heading": "API性能测试",
+      "sheet_name": "API性能测试",
+      "columns": [
+        "接口名称",
+        "方法",
+        "P50(ms)",
+        "P90(ms)",
+        "P95(ms)",
+        "P99(ms)",
+        "QPS",
+        "错误率",
+        "状态"
+      ],
+      "preview": "接口名称 | 方法 | P50(ms) | P90(ms) | P95(ms) | P99(ms) | QPS | 错误率 | 状态\n商品列表 | GET | 45 | 120 | 180 | 350 | 500 | 0.1% | 通过\n商品详情 | GET | 30 | 80 | 110 | 200 | 800 | 0.0% | 通过\n商品搜索 | GET | 280 | 650 | 1200 | 2300 | 200 | 0.5% | 不通过\n创建订单 | POST | 150 | 350 | 480 | 650 | 100 | 0.2% | 关注\n订单列表 | GET | 80 | 20",
+      "has_tables": true,
+      "table_titles": [
+        "API性能测试"
+      ],
+      "metadata": {
+        "sheet_index": 1
+      }
+    },
+    {
+      "section_id": "sh_002",
+      "heading": "压力测试",
+      "sheet_name": "压力测试",
+      "columns": [
+        "并发用户数",
+        "总请求数",
+        "成功数",
+        "失败数",
+        "平均响应(ms)",
+        "最大响应(ms)",
+        "吞吐量(req/s)",
+        "CPU使用率",
+        "内存使用率"
+      ],
+      "preview": "并发用户数 | 总请求数 | 成功数 | 失败数 | 平均响应(ms) | 最大响应(ms) | 吞吐量(req/s) | CPU使用率 | 内存使用率\n50 | 10000 | 9998 | 2 | 85 | 450 | 480 | 35% | 52%\n100 | 20000 | 19985 | 15 | 120 | 800 | 720 | 55% | 58%\n200 | 40000 | 39850 | 150 | 210 | 1500 | 980 | 72% | 65%\n500 | 100000 | 98500 | 1500 | 450 | 3200 | 1100 | 88% | 75%\n",
+      "has_tables": true,
+      "table_titles": [
+        "压力测试"
+      ],
+      "metadata": {
+        "sheet_index": 2
+      }
+    },
+    {
+      "section_id": "sh_003",
+      "heading": "数据库性能",
+      "sheet_name": "数据库性能",
+      "columns": [
+        "指标",
+        "当前值",
+        "目标值",
+        "状态",
+        "优化建议"
+      ],
+      "preview": "指标 | 当前值 | 目标值 | 状态 | 优化建议\nQPS | 4800 | <6000 | 通过 | 接近上限，需关注\n慢查询数/天 | 156 | <50 | 不通过 | 需要优化Top 5慢查询\nBuffer Pool命中率 | 98.5% | >99% | 关注 | 建议增加buffer_pool_size\n连接数使用率 | 85% | <70% | 不通过 | 建议增加max_connections\n主从延迟 | 50ms | <100ms | 通过 | 正常范围\n死锁次数/天 | 3 | 0 | 关注 | 需排查库存扣减逻辑\n磁盘使用率 | 72% | <80% | 通过 | 6",
+      "has_tables": true,
+      "table_titles": [
+        "数据库性能"
+      ],
+      "metadata": {
+        "sheet_index": 3
+      }
+    }
+  ]
+}

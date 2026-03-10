@@ -1,0 +1,26 @@
+根据用户问题，从下列文件结构中找出相关章节。只输出JSON数组。
+
+问题：{{ question }}
+问题类型：{{ query_type }}
+时间范围：{{ time_range or "未指定" }}
+关键词：{{ keywords | join(", ") }}
+
+{% for file in files %}
+文件：{{ file.file_name }} ({{ file.file_format }})
+{% for section in file.sections %}
+- section_id={{ section.section_id }} heading={{ section.heading }}
+  {% if section.pages %}pages={{ section.pages }}{% endif %}
+  {% if section.columns %}columns={{ section.columns | join(", ") }}{% endif %}
+{% endfor %}
+{% endfor %}
+
+输出格式：
+[
+  {"file_name":"...","section_id":"...","heading":"...","estimated_relevance":0.85}
+]
+
+要求：
+- 只返回相关度 > 0.3 的条目
+- 按 estimated_relevance 降序
+- 若问题类型为 `trend_analysis`，优先选择包含“年度/年/趋势/同比/Q1-Q4/合计/总额/数据表”的章节或Sheet
+- 若存在多个年份数据，必须优先覆盖跨年章节，而不是只选单个季度章节

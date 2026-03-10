@@ -1,0 +1,26 @@
+分析以下用户问题，输出JSON格式查询计划。
+
+问题类型：
+- fact_lookup: 单一事实查询
+- trend_analysis: 时间趋势分析
+- cross_doc_summary: 跨文档归纳
+- numeric_query: 数值查询/比较
+- definition_process: 定义或流程
+
+规则：
+- trend_analysis: initial_file_count=8
+- cross_doc_summary: initial_file_count=10
+- numeric_query: target_formats 优先 ["excel"]，initial_file_count=5
+- 其他类型: initial_file_count=3
+
+用户问题：{{ question }}
+
+只输出JSON：
+{
+  "query_type": "...",
+  "keywords": ["..."],
+  "time_range": null,
+  "target_formats": [],
+  "expected_dimensions": [],
+  "initial_file_count": 5
+}

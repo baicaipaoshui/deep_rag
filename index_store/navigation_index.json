@@ -1,0 +1,426 @@
+{
+  "generated_at": "2026-03-10T09:22:27.914911+00:00",
+  "total_files": 14,
+  "files": [
+    {
+      "file_name": "company_overview.md",
+      "file_path": "general/company_overview.md",
+      "discovery_file": "general_company_overview.md.json",
+      "file_format": "markdown",
+      "description": "# 公司概况 ## 基本信息 星辰科技有限公司成立于2015年，总部位于上海张江高科技园区。公司专注于智能硬件和物联网解决方案，服务于制造业、零售业和智慧城市领域。",
+      "time_range": "2015-2023",
+      "keywords": [
+        "##",
+        "负责",
+        "万元",
+        "公司",
+        "工业",
+        "传感器",
+        "智能家居",
+        "研发",
+        "智能",
+        "产品",
+        "营收",
+        "市场",
+        "成立",
+        "2015",
+        "硬件",
+        "领域"
+      ],
+      "metadata": {
+        "folder": "general",
+        "size_bytes": 1669
+      }
+    },
+    {
+      "file_name": "onboarding_guide.pdf",
+      "file_path": "general/onboarding_guide.pdf",
+      "discovery_file": "general_onboarding_guide.pdf.json",
+      "file_format": "pdf",
+      "description": "新员工入职指南\n第一天\n上午\n9:00 HR接待，办理入职手续\n9:30 领取工牌、电脑、办公用品\n10:00 IT部门协助配置开发环境\n11:00 部门负责人欢迎会\n下午\n13:30 公司文化与制度培训\n15:00 参观办公区域和实验室\n16:00 与导师见面，了解试用期计划\n第一周必修培训\n1. 信息安全培训（2小时）\n2. 代码规范与开发流程（3小时）\n3. 产品知识入门（2小时）\n试用期考核\n试用期为3个月，考核维度：技术能力4",
+      "time_range": null,
+      "keywords": [
+        "00",
+        "培训",
+        "试用期",
+        "小时",
+        "入职",
+        "30",
+        "部门",
+        "开发",
+        "文化",
+        "15",
+        "考核",
+        "工作",
+        "30%",
+        "员工",
+        "指南",
+        "第一天"
+      ],
+      "metadata": {
+        "folder": "general",
+        "size_bytes": 36128
+      }
+    },
+    {
+      "file_name": "2021_annual_sales.pdf",
+      "file_path": "sales_reports/2021_annual_sales.pdf",
+      "discovery_file": "sales_reports_2021_annual_sales.pdf.json",
+      "file_format": "pdf",
+      "description": "2021年度销售报告\n星辰科技有限公司\n报告期：2021年1月-12月\n第一章 销售概况\n2021年度公司实现销售总额3,800万元，较2020年的3,150万元增长20.6%。这\n是公司首次突破3,500万元的年度销售门槛，标志着公司进入快速增长期。\n全年销售节奏呈逐季上升趋势：Q1为850万元，Q2为920万元，Q3为980万\n元，Q4为1,050万元。Q4的强劲表现主要来自年底大客户集中签约。\n全年完成销售合同287份，平均合同金",
+      "time_range": "2020-2022",
+      "keywords": [
+        "万元",
+        "客户",
+        "区域",
+        "销售",
+        "增长",
+        "2021",
+        "年度",
+        "公司",
+        "主要",
+        "电子",
+        "销售额",
+        "制造业",
+        "800",
+        "2020",
+        "500",
+        "全年"
+      ],
+      "metadata": {
+        "folder": "sales_reports",
+        "size_bytes": 70571
+      }
+    },
+    {
+      "file_name": "2022_annual_sales.pdf",
+      "file_path": "sales_reports/2022_annual_sales.pdf",
+      "discovery_file": "sales_reports_2022_annual_sales.pdf.json",
+      "file_format": "pdf",
+      "description": "2022年度销售报告\n星辰科技有限公司\n报告期：2022年1月-12月\n第一章 销售概况\n2022年度公司实现销售总额4,680万元，较2021年的3,800万元增长23.2%，超\n额完成年初制定的4,500万元销售目标。\n各季度销售情况：Q1为1,020万元，Q2为1,100万元，Q3为1,200万元，Q4为\n1,360万元。Q4创历史单季度新高，主要受益于智能家居系列的首个完整销售季\n度和年底大客户冲量。\n全年完成销售合同356份，",
+      "time_range": "2020-2023",
+      "keywords": [
+        "万元",
+        "客户",
+        "销售",
+        "区域",
+        "增长",
+        "2022",
+        "市场",
+        "智能家居",
+        "系列",
+        "合同",
+        "680",
+        "800",
+        "23.2%",
+        "目标",
+        "销售额",
+        "年度"
+      ],
+      "metadata": {
+        "folder": "sales_reports",
+        "size_bytes": 75435
+      }
+    },
+    {
+      "file_name": "2023_annual_sales.pdf",
+      "file_path": "sales_reports/2023_annual_sales.pdf",
+      "discovery_file": "sales_reports_2023_annual_sales.pdf.json",
+      "file_format": "pdf",
+      "description": "2023年度销售报告\n星辰科技有限公司\n报告期：2023年1月-12月\n第一章 销售概况\n2023年度公司实现销售总额5,280万元，较2022年的4,680万元增长12.8%。虽\n然未达到年初制定的5,500万元目标（完成率96%），但在宏观经济放缓的背景\n下，仍保持了两位数增长。\n各季度销售情况：Q1为1,200万元（同比+17.6%），Q2为1,350万元（同比\n+22.7%），Q3为1,380万元（同比+15.0%），Q4为1,",
+      "time_range": "2021-2025",
+      "keywords": [
+        "万元",
+        "增长",
+        "客户",
+        "区域",
+        "销售",
+        "2023",
+        "市场",
+        "目标",
+        "增速",
+        "智能家居",
+        "放缓",
+        "销售额",
+        "280",
+        "产品",
+        "产品线",
+        "传统"
+      ],
+      "metadata": {
+        "folder": "sales_reports",
+        "size_bytes": 81762
+      }
+    },
+    {
+      "file_name": "2023_sales_meeting_notes.md",
+      "file_path": "sales_reports/2023_sales_meeting_notes.md",
+      "discovery_file": "sales_reports_2023_sales_meeting_notes.md.json",
+      "file_format": "markdown",
+      "description": "# 2023年度销售总结会议纪要 ## 会议信息 - 时间：2024年1月15日",
+      "time_range": "2022-2024",
+      "keywords": [
+        "万元",
+        "区域",
+        "2024",
+        "销售",
+        "增长",
+        "目标",
+        "###",
+        "##",
+        "客户",
+        "增速",
+        "同比",
+        "张明",
+        "负责人",
+        "产品线",
+        "智能家居",
+        "系列"
+      ],
+      "metadata": {
+        "folder": "sales_reports",
+        "size_bytes": 3331
+      }
+    },
+    {
+      "file_name": "quarterly_review_q4_2023.md",
+      "file_path": "sales_reports/quarterly_review_q4_2023.md",
+      "discovery_file": "sales_reports_quarterly_review_q4_2023.md.json",
+      "file_format": "markdown",
+      "description": "# 2023年第四季度经营回顾 ## 销售业绩 第四季度实现销售额1,350万元，同比增长14%，环比第三季度的1,380万元略有下降。Q4通常受到年底客户预算结算和春节前备货周期的影响。",
+      "time_range": "2023",
+      "keywords": [
+        "万元",
+        "Q4",
+        "客户",
+        "区域",
+        "销售额",
+        "完成",
+        "##",
+        "Q3",
+        "增长",
+        "略有",
+        "季度",
+        "智能家居",
+        "第四季度",
+        "销售",
+        "业绩",
+        "同比"
+      ],
+      "metadata": {
+        "folder": "sales_reports",
+        "size_bytes": 1534
+      }
+    },
+    {
+      "file_name": "sales_data_2021_2023.xlsx",
+      "file_path": "sales_reports/sales_data_2021_2023.xlsx",
+      "discovery_file": "sales_reports_sales_data_2021_2023.xlsx.json",
+      "file_format": "excel",
+      "description": "Workbook sales_data_2021_2023.xlsx with 4 sheets",
+      "time_range": "2006-2023",
+      "keywords": [
+        "传统",
+        "产品",
+        "2022",
+        "2021",
+        "智能家居",
+        "华东",
+        "华南",
+        "华北",
+        "西南",
+        "12",
+        "万元",
+        "01",
+        "22",
+        "02",
+        "03",
+        "04"
+      ],
+      "metadata": {
+        "folder": "sales_reports",
+        "size_bytes": 14246
+      }
+    },
+    {
+      "file_name": "architecture_review.md",
+      "file_path": "tech_docs/architecture_review.md",
+      "discovery_file": "tech_docs_architecture_review.md.json",
+      "file_format": "markdown",
+      "description": "# 架构评审记录 ## 评审信息 - 日期：2023年9月20日",
+      "time_range": "2023",
+      "keywords": [
+        "服务",
+        "订单",
+        "数据库",
+        "优化",
+        "建议",
+        "架构",
+        "缓存",
+        "使用",
+        "###",
+        "##",
+        "异步",
+        "事件驱动",
+        "评审",
+        "系统",
+        "当前",
+        "库存"
+      ],
+      "metadata": {
+        "folder": "tech_docs",
+        "size_bytes": 3994
+      }
+    },
+    {
+      "file_name": "backend_optimization.md",
+      "file_path": "tech_docs/backend_optimization.md",
+      "discovery_file": "tech_docs_backend_optimization.md.json",
+      "file_format": "markdown",
+      "description": "# 后端性能优化指南 ## 一、API响应时间优化 ### 1.1 慢查询治理",
+      "time_range": null,
+      "keywords": [
+        "###",
+        "缓存",
+        "时间",
+        "查询",
+        "使用",
+        "建议",
+        "优化",
+        "接口",
+        "数据库",
+        "线程",
+        "响应",
+        "订单",
+        "Redis",
+        "最大",
+        "连接",
+        "##"
+      ],
+      "metadata": {
+        "folder": "tech_docs",
+        "size_bytes": 3846
+      }
+    },
+    {
+      "file_name": "database_tuning_guide.md",
+      "file_path": "tech_docs/database_tuning_guide.md",
+      "discovery_file": "tech_docs_database_tuning_guide.md.json",
+      "file_format": "markdown",
+      "description": "# 数据库性能调优指南 ## 一、索引优化 ### 1.1 缺失索引识别",
+      "time_range": null,
+      "keywords": [
+        "索引",
+        "查询",
+        "建议",
+        "使用",
+        "###",
+        "id",
+        "idx",
+        "优化",
+        "当前",
+        "order",
+        "平均",
+        "status",
+        "分区",
+        "性能",
+        "##",
+        "user"
+      ],
+      "metadata": {
+        "folder": "tech_docs",
+        "size_bytes": 3969
+      }
+    },
+    {
+      "file_name": "frontend_optimization.md",
+      "file_path": "tech_docs/frontend_optimization.md",
+      "discovery_file": "tech_docs_frontend_optimization.md.json",
+      "file_format": "markdown",
+      "description": "# 前端性能优化指南 ## 一、加载性能优化 ### 1.1 代码分割与懒加载",
+      "time_range": null,
+      "keywords": [
+        "使用",
+        "加载",
+        "###",
+        "性能",
+        "数据",
+        "实现",
+        "渲染",
+        "列表",
+        "请求",
+        "优化",
+        "缓存",
+        "商品",
+        "建议",
+        "减少",
+        "##",
+        "体积"
+      ],
+      "metadata": {
+        "folder": "tech_docs",
+        "size_bytes": 3305
+      }
+    },
+    {
+      "file_name": "performance_review_2023.pdf",
+      "file_path": "tech_docs/performance_review_2023.pdf",
+      "discovery_file": "tech_docs_performance_review_2023.pdf.json",
+      "file_format": "pdf",
+      "description": "2023年Q3系统性能评审报告\n评审概要\n评审日期：2023年10月15日\n测试环境：预发布环境（4台应用服务器，2台数据库服务器）\n测试工具：JMeter、Locust、自研监控平台\n测试时长：持续压测2小时\n一、API性能测试结果\n1.1 核心API响应时间\n在200并发用户条件下，各核心API的测试结果如下：\n接口\nP50(ms)\nP90(ms)\nP95(ms)\nP99(ms)\n目标\nP99\n状态\n商品列\n表\n45\n120\n180",
+      "time_range": "2023-2024",
+      "keywords": [
+        "P99",
+        "优化",
+        "并发",
+        "预计",
+        "接口",
+        "500",
+        "性能",
+        "API",
+        "ms",
+        "商品",
+        "系统",
+        "评审",
+        "数据库",
+        "测试",
+        "不通",
+        "库存"
+      ],
+      "metadata": {
+        "folder": "tech_docs",
+        "size_bytes": 74986
+      }
+    },
+    {
+      "file_name": "test_report_q3.xlsx",
+      "file_path": "tech_docs/test_report_q3.xlsx",
+      "discovery_file": "tech_docs_test_report_q3.xlsx.json",
+      "file_format": "excel",
+      "description": "Workbook test_report_q3.xlsx with 3 sheets",
+      "time_range": null,
+      "keywords": [
+        "通过",
+        "GET",
+        "200",
+        "ms",
+        "800",
+        "关注",
+        "0.0%",
+        "POST",
+        "50",
+        "120",
+        "使用率",
+        "商品",
+        "180",
+        "350",
+        "500",
+        "订单"
+      ],
+      "metadata": {
+        "folder": "tech_docs",
+        "size_bytes": 7678
+      }
+    }
+  ]
+}

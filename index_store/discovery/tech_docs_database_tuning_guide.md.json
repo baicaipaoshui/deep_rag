@@ -1,0 +1,169 @@
+{
+  "file_name": "database_tuning_guide.md",
+  "file_path": "tech_docs/database_tuning_guide.md",
+  "file_format": "markdown",
+  "description": "# 数据库性能调优指南 ## 一、索引优化 ### 1.1 缺失索引识别",
+  "time_range": null,
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "数据库性能调优指南",
+      "line_start": 1,
+      "line_end": 2,
+      "preview": "# 数据库性能调优指南",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "一、索引优化",
+      "line_start": 3,
+      "line_end": 4,
+      "preview": "## 一、索引优化",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_003",
+      "heading": "1.1 缺失索引识别",
+      "line_start": 5,
+      "line_end": 21,
+      "preview": "### 1.1 缺失索引识别\n\n通过分析慢查询日志（slow_query_log），发现以下高频查询缺少合适的索引：\n\n- `orders` 表按 `user_id + status + created_at` 组合查询，当前只有 `user_id` 单列索引，需要添加复合索引\n- `products` 表按 `category_id + price` 范围查询用于商品筛选，缺少复合索引\n- `order_items` 表按 `order_id` 关联查询，虽然有外键但未显式建索引\n\n建议添加以下索引：\n```\nALTER TABLE orders ADD INDEX idx_user_sta",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_004",
+      "heading": "1.2 冗余索引清理",
+      "line_start": 22,
+      "line_end": 29,
+      "preview": "### 1.2 冗余索引清理\n\n`users` 表目前有8个索引，其中存在冗余：\n- `idx_email` 和 `idx_email_status` 两个索引，前者被后者覆盖，可删除 `idx_email`\n- `idx_phone` 和 `idx_phone_unique` 功能重复\n\n清理冗余索引可减少写入时的索引维护开销，预计可提升INSERT性能10-15%。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_005",
+      "heading": "1.3 索引使用率监控",
+      "line_start": 30,
+      "line_end": 36,
+      "preview": "### 1.3 索引使用率监控\n\n建议定期检查索引使用情况：\n- 使用 `sys.schema_unused_indexes` 视图识别从未被使用的索引\n- 使用 `EXPLAIN` 验证关键查询是否命中预期索引\n- 对于写多读少的表，控制索引数量在5个以内",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_006",
+      "heading": "二、查询优化",
+      "line_start": 37,
+      "line_end": 38,
+      "preview": "## 二、查询优化",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_007",
+      "heading": "2.1 慢查询治理",
+      "line_start": 39,
+      "line_end": 48,
+      "preview": "### 2.1 慢查询治理\n\n当前慢查询日志中（阈值>500ms），Top 5慢查询：\n\n1. 商品搜索（全文模糊匹配）：平均2.1秒 → 建议迁移到Elasticsearch\n2. 月度销售报表统计：平均1.8秒 → 建议使用预计算+物化视图\n3. 用户订单历史（大翻页）：平均1.2秒 → 建议使用游标分页替代OFFSET\n4. 库存批量更新：平均800ms → 建议使用批量UPDATE替代逐条更新\n5. 多表JOIN报表查询：平均750ms → 建议简化JOIN层级或使用宽表",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_008",
+      "heading": "2.2 大翻页优化",
+      "line_start": 49,
+      "line_end": 57,
+      "preview": "### 2.2 大翻页优化\n\n当前分页查询使用 `LIMIT offset, count` 模式，当offset超过10万时性能急剧下降。\n\n建议改用游标分页：\n- 前端传入上一页最后一条记录的ID\n- 查询条件改为 `WHERE id > last_id LIMIT count`\n- 可将大翻页查询从秒级降至毫秒级",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_009",
+      "heading": "2.3 批量操作优化",
+      "line_start": 58,
+      "line_end": 63,
+      "preview": "### 2.3 批量操作优化\n\n库存扣减场景中，当前逐条UPDATE的方式在100条商品时需要800ms。\n\n建议使用 `INSERT ... ON DUPLICATE KEY UPDATE` 或 `CASE WHEN` 批量更新，将100条记录的更新合并为单次SQL执行，预计可将时间从800ms降至50ms。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_010",
+      "heading": "三、表结构与分区",
+      "line_start": 64,
+      "line_end": 65,
+      "preview": "## 三、表结构与分区",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_011",
+      "heading": "3.1 大表拆分",
+      "line_start": 66,
+      "line_end": 74,
+      "preview": "### 3.1 大表拆分\n\n`order_logs` 表目前有8000万行，查询和维护成本高。\n\n建议按时间分区：\n- 使用RANGE分区，按月分区\n- 保留最近12个月数据在热分区\n- 超过12个月的数据归档到冷存储",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_012",
+      "heading": "3.2 字段类型优化",
+      "line_start": 75,
+      "line_end": 80,
+      "preview": "### 3.2 字段类型优化\n\n- `orders.status` 使用VARCHAR(20)存储，建议改为TINYINT+枚举映射，节省存储空间\n- `products.description` 使用TEXT类型，但95%的记录长度不超过500字符，建议改为VARCHAR(500)\n- 时间戳统一使用DATETIME而非VARCHAR存储，便于范围查询和索引",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_013",
+      "heading": "3.3 读写分离",
+      "line_start": 81,
+      "line_end": 87,
+      "preview": "### 3.3 读写分离\n\n- 主库处理写操作和强一致性读\n- 从库处理报表查询和数据分析\n- 通过中间件（如ShardingSphere）实现自动路由\n- 注意从库延迟通常在100ms以内，对于需要读己之写的场景仍需读主库",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_014",
+      "heading": "四、连接与配置",
+      "line_start": 88,
+      "line_end": 89,
+      "preview": "## 四、连接与配置",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_015",
+      "heading": "4.1 MySQL配置优化",
+      "line_start": 90,
+      "line_end": 98,
+      "preview": "### 4.1 MySQL配置优化\n\n针对当前8核16GB的服务器配置，建议调整以下参数：\n\n- `innodb_buffer_pool_size = 10G`（总内存的60-70%）\n- `innodb_log_file_size = 1G`（减少checkpoint频率）\n- `max_connections = 200`（当前设置为100，高峰期不够用）\n- `innodb_flush_log_at_trx_commit = 2`（牺牲少量持久性换取性能，适合非金融场景）",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_016",
+      "heading": "4.2 监控指标",
+      "line_start": 99,
+      "line_end": 106,
+      "preview": "### 4.2 监控指标\n\n建议关注：\n- QPS和TPS趋势\n- 慢查询数量趋势\n- 锁等待时间和死锁次数\n- Buffer Pool命中率（应>99%）\n- 主从复制延迟",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

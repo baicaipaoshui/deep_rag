@@ -1,0 +1,18 @@
+请基于证据回答问题：{{ question }}
+
+输出要求：
+- 先给结论摘要
+- 再按主题分组展开
+- 每个主题至少引用一个来源
+
+证据：
+{% for ev in evidences %}
+- {{ ev.content }}【{{ ev.source_file }}-{{ ev.source_location }}】
+{% endfor %}
+
+{% if missing_info %}
+信息差距：
+{% for m in missing_info %}
+- {{ m }}
+{% endfor %}
+{% endif %}
