@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-10T11:46:54.036111+00:00",
-  "total_files": 16,
+  "generated_at": "2026-03-10T13:24:28.481170+00:00",
+  "total_files": 21,
   "files": [
     {
       "file_name": "company_overview.md",
@@ -63,33 +63,213 @@
       }
     },
     {
-      "file_name": "李欣淇简历.pdf.pdf",
-      "file_path": "li_xinqi_resume/李欣淇简历.pdf.pdf",
-      "discovery_file": "li_xinqi_resume______.pdf.pdf.json",
-      "file_format": "pdf",
-      "description": "教育经历\n华北科技学院\n2018年09月 - 2022年06月\n地理信息科学 本科\n廊坊\n上海理工大学\n2023年09月\n计算机科学与技术 硕士\n上海\n实习经历\n上海美承信息科技有限公司\n2025年12月 - 2026年03月\nAI应用开发工程师 AI方案部\n上海\n项目背景：为某国际学校搭建多语言智能招生咨询系统，通过 Dify 工作流编排 + RAG 知识库实现自动化问答，支持多语种用户咨询。\n技术栈：Dify Workflow 、 ",
-      "time_range": "2000-2026",
+      "file_name": "architecture_decision_log.md",
+      "file_path": "mock_lab/architecture_decision_log.md",
+      "discovery_file": "mock_lab_architecture_decision_log.md.json",
+      "file_format": "markdown",
+      "description": "# 架构决策日志（ADR） ## ADR-001：检索架构选型（2025-08-12） - 决策：采用关键词检索（Whoosh）+ 向量检索（ChromaDB）混合模式。",
+      "time_range": "2025-2026",
       "keywords": [
-        "智能",
-        "MCP",
-        "RAG",
+        "决策",
+        "ADR",
         "检索",
-        "实现",
-        "通过",
-        "模型",
-        "知识",
-        "AI",
-        "系统",
-        "内容",
-        "图片",
-        "生成",
-        "增强",
-        "09",
-        "2025"
+        "##",
+        "原因",
+        "结果",
+        "工具",
+        "架构",
+        "2025",
+        "关键词",
+        "向量",
+        "单一",
+        "协议",
+        "编排",
+        "降低",
+        "状态机"
       ],
       "metadata": {
-        "folder": "li_xinqi_resume",
-        "size_bytes": 612259
+        "folder": "mock_lab",
+        "size_bytes": 1177
+      }
+    },
+    {
+      "file_name": "customer_success_summary_2025_2026.md",
+      "file_path": "mock_lab/customer_success_summary_2025_2026.md",
+      "discovery_file": "mock_lab_customer_success_summary_2025_2026.md.json",
+      "file_format": "markdown",
+      "description": "# 客户成功季度总结（2025-2026） ## 指标总览 - 客户总数：2025 年 186 家 -> 2026 年 243 家",
+      "time_range": "2025-2026",
+      "keywords": [
+        "2026",
+        "客户",
+        "2025",
+        "##",
+        "提升",
+        "功能",
+        "教育",
+        "关键",
+        "分钟",
+        "成功",
+        "季度",
+        "总结",
+        "指标",
+        "总览",
+        "总数",
+        "186"
+      ],
+      "metadata": {
+        "folder": "mock_lab",
+        "size_bytes": 936
+      }
+    },
+    {
+      "file_name": "incident_postmortem_2026_02_19.md",
+      "file_path": "mock_lab/incident_postmortem_2026_02_19.md",
+      "discovery_file": "mock_lab_incident_postmortem_2026_02_19.md.json",
+      "file_format": "markdown",
+      "description": "# 事故复盘报告：2026-02-19 Aurora 推理超时 ## 摘要 - 事故等级：P1",
+      "time_range": "2026",
+      "keywords": [
+        "##",
+        "2026",
+        "影响",
+        "09",
+        "10",
+        "热点",
+        "key",
+        "事故",
+        "超时",
+        "告警",
+        "策略",
+        "向量",
+        "检索",
+        "连接池",
+        "压测",
+        "复盘"
+      ],
+      "metadata": {
+        "folder": "mock_lab",
+        "size_bytes": 1346
+      }
+    },
+    {
+      "file_name": "kpi_dashboard_2024_2026.xlsx",
+      "file_path": "mock_lab/kpi_dashboard_2024_2026.xlsx",
+      "discovery_file": "mock_lab_kpi_dashboard_2024_2026.xlsx.json",
+      "file_format": "excel",
+      "description": "Workbook kpi_dashboard_2024_2026.xlsx with 3 sheets",
+      "time_range": "2024-2026",
+      "keywords": [
+        "Million",
+        "2026",
+        "12",
+        "Rate",
+        "Year",
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4",
+        "Annual",
+        "YoY",
+        "2024",
+        "9.8",
+        "10.5",
+        "11.2",
+        "43.5"
+      ],
+      "metadata": {
+        "folder": "mock_lab",
+        "size_bytes": 6326
+      }
+    },
+    {
+      "file_name": "project_aurora_meeting_2026q1.md",
+      "file_path": "mock_lab/project_aurora_meeting_2026q1.md",
+      "discovery_file": "mock_lab_project_aurora_meeting_2026q1.md.json",
+      "file_format": "markdown",
+      "description": "# Aurora 项目 2026Q1 例会纪要 ## 会议信息 - 时间：2026-02-08 10:00-11:30",
+      "time_range": "2026",
+      "keywords": [
+        "2026",
+        "##",
+        "02",
+        "完成",
+        "Aurora",
+        "10",
+        "林语",
+        "贺子昂",
+        "赵雨桐",
+        "发布",
+        "03",
+        "冻结",
+        "阶段",
+        "分诊",
+        "服务",
+        "补齐"
+      ],
+      "metadata": {
+        "folder": "mock_lab",
+        "size_bytes": 1067
+      }
+    },
+    {
+      "file_name": "project_aurora_overview.md",
+      "file_path": "mock_lab/project_aurora_overview.md",
+      "discovery_file": "mock_lab_project_aurora_overview.md.json",
+      "file_format": "markdown",
+      "description": "# Project Aurora 项目概览 ## 基本信息 - 项目代号：AUR-7",
+      "time_range": "2025-2026",
+      "keywords": [
+        "##",
+        "告警",
+        "故障",
+        "Aurora",
+        "2025",
+        "2026",
+        "项目",
+        "智能",
+        "分诊",
+        "值班",
+        "复盘",
+        "分钟",
+        "工单",
+        "时间",
+        "07",
+        "负责人"
+      ],
+      "metadata": {
+        "folder": "mock_lab",
+        "size_bytes": 1372
+      }
+    },
+    {
+      "file_name": "release_pipeline_sop.md",
+      "file_path": "mock_lab/release_pipeline_sop.md",
+      "discovery_file": "mock_lab_release_pipeline_sop.md.json",
+      "file_format": "markdown",
+      "description": "# 发布流程 SOP（Aurora 项目） ## 适用范围 适用于 Aurora 服务（API 网关、分诊服务、复盘服务）在生产环境的常规发布与紧急修复发布。",
+      "time_range": null,
+      "keywords": [
+        "发布",
+        "##",
+        "回滚",
+        "流程",
+        "服务",
+        "复盘",
+        "修复",
+        "阶段",
+        "Aurora",
+        "紧急",
+        "确认",
+        "100%",
+        "灰度",
+        "监控",
+        "阈值",
+        "5%"
+      ],
+      "metadata": {
+        "folder": "mock_lab",
+        "size_bytes": 1148
       }
     },
     {
@@ -450,36 +630,6 @@
       "metadata": {
         "folder": "tech_docs",
         "size_bytes": 7678
-      }
-    },
-    {
-      "file_name": "李欣淇简历.pdf (1).pdf",
-      "file_path": "uploads/李欣淇简历.pdf (1).pdf",
-      "discovery_file": "uploads______.pdf__1_.pdf.json",
-      "file_format": "pdf",
-      "description": "教育经历\n华北科技学院\n2018年09月 - 2022年06月\n地理信息科学 本科\n廊坊\n上海理工大学\n2023年09月\n计算机科学与技术 硕士\n上海\n专业技能\n编程语言能力：扎实的 Java/Python 基础，Spring 技术栈与 LangChain/LangGraph 智能体开发均有落地经验。\n数据库：熟悉 MySQL 数据库索引、事务、存储引擎和锁机制，熟悉使用 Redis，熟悉线程模型、持久化等机制，熟悉缓存穿透、击穿和雪崩",
-      "time_range": "2000-2025",
-      "keywords": [
-        "MCP",
-        "智能",
-        "系统",
-        "熟悉",
-        "实现",
-        "Spring",
-        "通过",
-        "了解",
-        "配置",
-        "任务",
-        "模式",
-        "开发",
-        "知识",
-        "2025",
-        "工作",
-        "模块"
-      ],
-      "metadata": {
-        "folder": "uploads",
-        "size_bytes": 644990
       }
     }
   ]

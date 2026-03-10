@@ -1,0 +1,69 @@
+{
+  "file_name": "project_aurora_overview.md",
+  "file_path": "mock_lab/project_aurora_overview.md",
+  "file_format": "markdown",
+  "description": "# Project Aurora 项目概览 ## 基本信息 - 项目代号：AUR-7",
+  "time_range": "2025-2026",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "Project Aurora 项目概览",
+      "line_start": 1,
+      "line_end": 2,
+      "preview": "# Project Aurora 项目概览",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "基本信息",
+      "line_start": 3,
+      "line_end": 10,
+      "preview": "## 基本信息\n- 项目代号：AUR-7\n- 项目名称：Aurora 智能运维助手\n- 立项时间：2025-07-15\n- 业务负责人：周明远\n- 项目经理：陈北辰（2025-07 至 2026-01），林语安（2026-02 起）\n- 技术负责人：贺子昂",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_003",
+      "heading": "目标与范围",
+      "line_start": 11,
+      "line_end": 19,
+      "preview": "## 目标与范围\nAurora 项目用于统一监控告警、故障分诊、值班协作与复盘，目标是将平均故障恢复时长（MTTR）从 42 分钟降低到 18 分钟以内。\n\n本期范围包含：\n1. 告警聚合：合并 Prometheus、ELK、APM 的重复告警。\n2. 智能分诊：基于历史故障与服务拓扑给出优先级建议。\n3. 工单联动：故障自动创建工单并同步到值班群。\n4. 复盘沉淀：自动生成事故时间线与改进项模板。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_004",
+      "heading": "关键里程碑",
+      "line_start": 20,
+      "line_end": 25,
+      "preview": "## 关键里程碑\n- 2025-09：完成告警聚合规则引擎 v1。\n- 2025-11：上线智能分诊 beta。\n- 2026-01：接入核心支付链路，覆盖 32 个关键服务。\n- 2026-03：发布 Aurora v1.0。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_005",
+      "heading": "核心指标（OKR）",
+      "line_start": 26,
+      "line_end": 30,
+      "preview": "## 核心指标（OKR）\n- O1：P1 故障平均恢复时长 <= 18 分钟。\n- O2：误报告警占比从 27% 降到 10% 以下。\n- O3：复盘报告覆盖率从 45% 提升至 90%。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_006",
+      "heading": "风险与约束",
+      "line_start": 31,
+      "line_end": 34,
+      "preview": "## 风险与约束\n- 告警源数据结构不统一，历史字段缺失率高。\n- 夜间值班交接不规范，影响工单闭环质量。\n- 多租户权限模型复杂，跨团队数据隔离要求高。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

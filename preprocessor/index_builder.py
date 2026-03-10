@@ -72,6 +72,9 @@ class IndexBuilder:
         self.openai_embedding_model = cfg.openai_embed_model
         self.openai_ssl_context = build_ssl_context(cfg.openai_verify_ssl, cfg.openai_ca_bundle)
 
+        self.chunk_size: int = cfg.chunk_size
+        self.chunk_overlap: int = cfg.chunk_overlap
+
         self.md_parser = MarkdownParser()
         self.pdf_parser = PDFParser()
         self.excel_parser = ExcelParser()
@@ -148,7 +151,9 @@ class IndexBuilder:
 
             for section in sections:
                 section_content = str(section.get("content", "")).strip()
-                chunks = self._split_section_content(section_content)
+                chunks = self._split_section_content(
+                    section_content, max_chars=self.chunk_size, overlap=self.chunk_overlap
+                )
                 if not chunks:
                     continue
                 for chunk_idx, chunk in enumerate(chunks, start=1):
@@ -222,7 +227,9 @@ class IndexBuilder:
         return re.sub(r"[^a-zA-Z0-9_.-]", "_", relative_path)
 
     @staticmethod
-    def _split_section_content(text: str, max_chars: int = 900) -> list[str]:
+    def _split_section_content(
+        text: str, max_chars: int = 900, overlap: int = 0
+    ) -> list[str]:
         cleaned = text.strip()
         if not cleaned:
             return []
@@ -230,19 +237,28 @@ class IndexBuilder:
             return [cleaned]
 
         chunks: list[str] = []
-        current = []
-        current_len = 0
+        current: list[str] = []
+        current_len: int = 0
+        overlap_suffix: str = ""
+
         for para in cleaned.split("\n"):
             para = para.strip()
             if not para:
                 continue
             if current_len + len(para) + 1 > max_chars and current:
-                chunks.append("\n".join(current))
-                current = [para]
-                current_len = len(para)
+                chunk_text = "\n".join(current)
+                chunks.append(chunk_text)
+                overlap_suffix = chunk_text[-overlap:] if overlap > 0 else ""
+                if overlap_suffix:
+                    current = [overlap_suffix, para]
+                    current_len = len(overlap_suffix) + len(para) + 1
+                else:
+                    current = [para]
+                    current_len = len(para)
             else:
                 current.append(para)
                 current_len += len(para) + 1
+
         if current:
             chunks.append("\n".join(current))
         return chunks

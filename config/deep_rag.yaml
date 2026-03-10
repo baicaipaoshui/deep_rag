@@ -23,3 +23,5 @@ mcp:
 retrieval:
   max_supplements: 2
   max_total_tokens: 50000
+  chunk_size: 1200
+  chunk_overlap: 150

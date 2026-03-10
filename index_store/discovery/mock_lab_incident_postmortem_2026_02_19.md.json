@@ -1,0 +1,69 @@
+{
+  "file_name": "incident_postmortem_2026_02_19.md",
+  "file_path": "mock_lab/incident_postmortem_2026_02_19.md",
+  "file_format": "markdown",
+  "description": "# 事故复盘报告：2026-02-19 Aurora 推理超时 ## 摘要 - 事故等级：P1",
+  "time_range": "2026",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "事故复盘报告：2026-02-19 Aurora 推理超时",
+      "line_start": 1,
+      "line_end": 2,
+      "preview": "# 事故复盘报告：2026-02-19 Aurora 推理超时",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "摘要",
+      "line_start": 3,
+      "line_end": 8,
+      "preview": "## 摘要\n- 事故等级：P1\n- 影响时间：2026-02-19 09:42 至 10:27\n- 影响范围：告警分诊 API（`/triage/v1/evaluate`）\n- 影响结果：超时率峰值 38%，累计影响请求约 12,400 次",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_003",
+      "heading": "时间线",
+      "line_start": 9,
+      "line_end": 16,
+      "preview": "## 时间线\n- 09:42：监控触发 p95 延迟告警（从 380ms 升至 2.4s）。\n- 09:47：值班同学确认 Redis 热点 key 抖动。\n- 09:53：回滚特征缓存预加载策略。\n- 10:08：延迟下降至 900ms，但仍高于基线。\n- 10:15：切换向量检索副本并提升连接池上限。\n- 10:27：服务恢复，p95 稳定在 420ms。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_004",
+      "heading": "根因分析",
+      "line_start": 17,
+      "line_end": 21,
+      "preview": "## 根因分析\n1. 新版特征缓存在高并发下造成热点 key 竞争。\n2. 向量检索节点连接池配置偏小，触发排队放大效应。\n3. 夜间压测样本覆盖不足，未暴露高基数标签场景。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_005",
+      "heading": "修复措施",
+      "line_start": 22,
+      "line_end": 30,
+      "preview": "## 修复措施\n- 已完成：\n  - 限流阈值从 2,000 RPS 调整为 1,500 RPS（自适应弹性）。\n  - 向量检索连接池从 64 提升到 128。\n  - 新增热点 key 打散策略，按租户与服务维度拆分。\n- 待完成：\n  - 2026-03-05 前补齐高基数压测模板。\n  - 2026-03-08 前上线超时分层告警策略。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_006",
+      "heading": "复盘结论",
+      "line_start": 31,
+      "line_end": 32,
+      "preview": "## 复盘结论\n本次事故暴露出发布前容量评估与压测覆盖不足。后续将把“高峰负载回放 + 热点 key 注入”纳入强制发布门禁。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

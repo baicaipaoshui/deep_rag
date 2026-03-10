@@ -136,20 +136,34 @@ class SearchEngine:
         self, query: str, file_scope: list[str] | None = None, max_results: int = 5
     ) -> list[dict[str, Any]]:
         keyword_rows = self.keyword_search(query, file_scope=file_scope, max_results=max_results * 2)
-        vector_rows = self.vector_search(query, file_scope=file_scope, max_results=max_results * 2)
-        merged: dict[str, dict[str, Any]] = {}
+        vector_rows  = self.vector_search(query,  file_scope=file_scope, max_results=max_results * 2)
 
-        for row in keyword_rows:
-            merged[row["chunk_id"]] = {**row, "relevance_score": 0.4 * float(row["relevance_score"])}
-        for row in vector_rows:
-            if row["chunk_id"] in merged:
-                merged[row["chunk_id"]]["relevance_score"] += 0.6 * float(row["relevance_score"])
-                merged[row["chunk_id"]]["match_type"] = "hybrid"
-            else:
-                merged[row["chunk_id"]] = {**row, "relevance_score": 0.6 * float(row["relevance_score"]), "match_type": "hybrid"}
+        _RRF_K = 60
+        rrf_scores: dict[str, float] = {}
+        doc_data: dict[str, dict] = {}
 
-        ranked = sorted(merged.values(), key=lambda x: x["relevance_score"], reverse=True)[:max_results]
-        return self._normalize_scores(ranked)
+        for rank, row in enumerate(keyword_rows, start=1):
+            cid = row["chunk_id"]
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (_RRF_K + rank)
+            if cid not in doc_data:
+                doc_data[cid] = {**row, "match_type": "keyword"}
+
+        for rank, row in enumerate(vector_rows, start=1):
+            cid = row["chunk_id"]
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (_RRF_K + rank)
+            if cid not in doc_data:
+                doc_data[cid] = {**row, "match_type": "vector"}
+            elif doc_data[cid]["match_type"] == "keyword":
+                doc_data[cid]["match_type"] = "hybrid"
+
+        ranked = []
+        for cid, score in rrf_scores.items():
+            entry = dict(doc_data[cid])
+            entry["relevance_score"] = score
+            ranked.append(entry)
+
+        ranked.sort(key=lambda x: x["relevance_score"], reverse=True)
+        return self._normalize_scores(ranked[:max_results])
 
     def _lexical_fallback(
         self,

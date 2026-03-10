@@ -1,0 +1,59 @@
+{
+  "file_name": "architecture_decision_log.md",
+  "file_path": "mock_lab/architecture_decision_log.md",
+  "file_format": "markdown",
+  "description": "# 架构决策日志（ADR） ## ADR-001：检索架构选型（2025-08-12） - 决策：采用关键词检索（Whoosh）+ 向量检索（ChromaDB）混合模式。",
+  "time_range": "2025-2026",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "架构决策日志（ADR）",
+      "line_start": 1,
+      "line_end": 2,
+      "preview": "# 架构决策日志（ADR）",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "ADR-001：检索架构选型（2025-08-12）",
+      "line_start": 3,
+      "line_end": 7,
+      "preview": "## ADR-001：检索架构选型（2025-08-12）\n- 决策：采用关键词检索（Whoosh）+ 向量检索（ChromaDB）混合模式。\n- 原因：单一关键词召回不足，单一向量检索在精确字段过滤上成本较高。\n- 结果：在内部回放集上，Top3 命中率从 0.62 提升到 0.79。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_003",
+      "heading": "ADR-002：工具调用协议（2025-10-03）",
+      "line_start": 8,
+      "line_end": 12,
+      "preview": "## ADR-002：工具调用协议（2025-10-03）\n- 决策：编排层与检索层通过 MCP 工具协议解耦。\n- 原因：降低状态机对底层实现耦合，便于替换搜索引擎与索引方案。\n- 结果：工具层新增能力时无需修改上层编排逻辑。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_004",
+      "heading": "ADR-003：证据充分性校验（2026-01-18）",
+      "line_start": 13,
+      "line_end": 17,
+      "preview": "## ADR-003：证据充分性校验（2026-01-18）\n- 决策：对事实、趋势、数值、跨文档总结、定义流程五类问题使用差异化校验规则。\n- 原因：不同问题类型对证据覆盖范围要求不同。\n- 结果：减少“看起来合理但证据不足”的答案输出。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_005",
+      "heading": "ADR-004：预算守护（2026-02-06）",
+      "line_start": 18,
+      "line_end": 21,
+      "preview": "## ADR-004：预算守护（2026-02-06）\n- 决策：在状态机中加入 token 全局预算，超预算强制进入生成阶段。\n- 原因：避免长链路补检导致响应时间失控。\n- 结果：高复杂查询尾延迟（P99）降低约 23%。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

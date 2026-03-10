@@ -1,0 +1,59 @@
+{
+  "file_name": "customer_success_summary_2025_2026.md",
+  "file_path": "mock_lab/customer_success_summary_2025_2026.md",
+  "file_format": "markdown",
+  "description": "# 客户成功季度总结（2025-2026） ## 指标总览 - 客户总数：2025 年 186 家 -> 2026 年 243 家",
+  "time_range": "2025-2026",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "客户成功季度总结（2025-2026）",
+      "line_start": 1,
+      "line_end": 2,
+      "preview": "# 客户成功季度总结（2025-2026）",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "指标总览",
+      "line_start": 3,
+      "line_end": 8,
+      "preview": "## 指标总览\n- 客户总数：2025 年 186 家 -> 2026 年 243 家\n- 年度续约率：2025 年 84.2% -> 2026 年 91.4%\n- NPS：2025 年 41 -> 2026 年 57\n- 月均工单量：2025 年 1,280 单 -> 2026 年 1,540 单",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_003",
+      "heading": "行业结构变化",
+      "line_start": 9,
+      "line_end": 14,
+      "preview": "## 行业结构变化\n- 制造业：占比从 38% 降至 34%\n- 金融业：占比从 22% 提升至 27%\n- 医疗与教育：占比从 16% 提升至 21%\n- 其他：占比保持在 18%-19%",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_004",
+      "heading": "关键洞察",
+      "line_start": 15,
+      "line_end": 19,
+      "preview": "## 关键洞察\n1. 2026 年 Q2 起，金融客户对合规审计功能需求显著提升。\n2. Aurora 自动复盘功能上线后，关键客户投诉率下降 31%。\n3. 高价值客户更关注 SLA 稳定性而非功能数量。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_005",
+      "heading": "重点案例",
+      "line_start": 20,
+      "line_end": 23,
+      "preview": "## 重点案例\n- 星桥银行：通过告警聚合将夜间误报从 147 次/月降至 39 次/月。\n- 海岳制造：故障定位时长从 52 分钟降至 19 分钟。\n- 智联教育：多租户权限配置自动化后，工单处理效率提升 44%。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

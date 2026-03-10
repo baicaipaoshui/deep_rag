@@ -1,0 +1,15 @@
+{"id": "q01", "question": "AUR-7 项目代号对应的项目名称是什么？", "expected_file": "project_aurora_overview.md"}
+{"id": "q02", "question": "Aurora 项目在 2026-02 之后由谁担任项目经理？", "expected_file": "project_aurora_overview.md"}
+{"id": "q03", "question": "2026Q1 例会里 Aurora v1.0 的发布窗口定在哪天？", "expected_file": "project_aurora_meeting_2026q1.md"}
+{"id": "q04", "question": "Aurora 项目 OKR 中 O2 的目标是什么？", "expected_file": "project_aurora_overview.md"}
+{"id": "q05", "question": "2026-02-19 这次事故的超时率峰值是多少？", "expected_file": "incident_postmortem_2026_02_19.md"}
+{"id": "q06", "question": "2026-02-19 事故在几点恢复稳定？", "expected_file": "incident_postmortem_2026_02_19.md"}
+{"id": "q07", "question": "发布流程 SOP 里的灰度放量阶段比例是什么？", "expected_file": "release_pipeline_sop.md"}
+{"id": "q08", "question": "发布 SOP 里异常回滚的 p95 延迟阈值是多少？", "expected_file": "release_pipeline_sop.md"}
+{"id": "q09", "question": "客户成功总结里 2026 年客户总数是多少？", "expected_file": "customer_success_summary_2025_2026.md"}
+{"id": "q10", "question": "自动复盘功能上线后关键客户投诉率下降了多少？", "expected_file": "customer_success_summary_2025_2026.md"}
+{"id": "q11", "question": "ADR-001 的检索架构选型结论是什么？", "expected_file": "architecture_decision_log.md"}
+{"id": "q12", "question": "ADR-004 加入预算守护后 P99 尾延迟变化如何？", "expected_file": "architecture_decision_log.md"}
+{"id": "q13", "question": "kpi_dashboard 里 2026 年 Annual_Million 是多少？", "expected_file": "kpi_dashboard_2024_2026.xlsx"}
+{"id": "q14", "question": "SLAAndLatency 表中 2026-02 的 P95_Latency_ms 数值是多少？", "expected_file": "kpi_dashboard_2024_2026.xlsx"}
+{"id": "q15", "question": "SupportOps 表里 2026Q2 的 Auto_Close_Rate 是多少？", "expected_file": "kpi_dashboard_2024_2026.xlsx"}

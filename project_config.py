@@ -38,6 +38,8 @@ class ProjectConfig:
     mcp_transport: str
     max_supplements: int
     max_total_tokens: int
+    chunk_size: int
+    chunk_overlap: int
 
 
 def _deep_get(data: dict[str, Any], keys: list[str], default: Any) -> Any:
@@ -213,6 +215,12 @@ def load_project_config() -> ProjectConfig:
         ),
         50000,
     )
+    chunk_size = _as_int(
+        os.getenv("CHUNK_SIZE", _deep_get(yaml_cfg, ["retrieval", "chunk_size"], 900)), 900
+    )
+    chunk_overlap = _as_int(
+        os.getenv("CHUNK_OVERLAP", _deep_get(yaml_cfg, ["retrieval", "chunk_overlap"], 0)), 0
+    )
 
     return ProjectConfig(
         project_root=project_root,
@@ -233,4 +241,6 @@ def load_project_config() -> ProjectConfig:
         mcp_transport=mcp_transport,
         max_supplements=max_supplements,
         max_total_tokens=max_total_tokens,
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
     )
