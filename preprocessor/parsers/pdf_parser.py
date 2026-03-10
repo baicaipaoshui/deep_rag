@@ -18,6 +18,12 @@ _YEAR_PATTERN = re.compile(r"(20\d{2})(?!\d|万)")
 _TOKEN_PATTERN = re.compile(r"[A-Za-z]{2,}|[\u4e00-\u9fff]{2,}")
 
 
+def _has_table_like(text: str) -> bool:
+    lines = text.splitlines()
+    table_lines = sum(1 for l in lines if l.count("|") >= 2 or l.count("\t") >= 2)
+    return table_lines >= 2
+
+
 def _extract_keywords(text: str, limit: int = 16) -> list[str]:
     if not text:
         return []
@@ -71,7 +77,7 @@ class PDFParser:
                         "pages": str(i),
                         "preview": cleaned[:300],
                         "content": cleaned,
-                        "has_tables": False,
+                        "has_tables": _has_table_like(cleaned),
                         "table_titles": [],
                         "metadata": {"page": i},
                     }

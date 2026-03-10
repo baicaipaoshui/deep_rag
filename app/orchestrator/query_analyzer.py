@@ -54,10 +54,12 @@ class QueryAnalyzer:
         if raw_type not in {e.value for e in QueryType}:
             raw_type = "fact_lookup"
         normalized_keywords = self._normalize_keywords(payload.get("keywords", []), question)
+        question_keywords = self._extract_keywords(question)
+        merged_keywords = self._merge_keywords(normalized_keywords, question_keywords)
         return QueryPlan(
             original_question=question,
             query_type=QueryType(raw_type),
-            keywords=normalized_keywords or self._extract_keywords(question),
+            keywords=merged_keywords or question_keywords,
             time_range=payload.get("time_range"),
             target_formats=[str(x) for x in payload.get("target_formats", []) if str(x).strip()],
             expected_dimensions=[str(x) for x in payload.get("expected_dimensions", []) if str(x).strip()],
@@ -113,6 +115,19 @@ class QueryAnalyzer:
             if question_tokens:
                 return question_tokens
         return tokens
+
+    @staticmethod
+    def _merge_keywords(primary: list[str], secondary: list[str], max_count: int = 8) -> list[str]:
+        merged: list[str] = []
+        for group in (primary, secondary):
+            for token in group:
+                t = str(token).strip()
+                if len(t) < 2 or t in merged:
+                    continue
+                merged.append(t)
+                if len(merged) >= max_count:
+                    return merged
+        return merged
 
     @staticmethod
     def _default_file_count(query_type: QueryType) -> int:

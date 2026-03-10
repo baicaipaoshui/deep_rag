@@ -22,11 +22,20 @@ try:
 except Exception:  # pragma: no cover - optional dependency
     chromadb = None
 
+try:
+    import jieba
+except Exception:  # pragma: no cover - optional dependency
+    jieba = None
+
 TOKEN_PATTERN = re.compile(r"[A-Za-z]{2,}|[\u4e00-\u9fff]{1,}")
 
 
 def _tokenize(text: str) -> set[str]:
-    return {tok.lower() for tok in TOKEN_PATTERN.findall(text or "") if tok.strip()}
+    if jieba is not None:
+        tokens = [tok.strip() for tok in jieba.cut(text or "", cut_all=False) if tok and tok.strip()]
+    else:
+        tokens = TOKEN_PATTERN.findall(text or "")
+    return {tok.lower() for tok in tokens if tok and len(tok) >= 2}
 
 
 class SearchEngine:

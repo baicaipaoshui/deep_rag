@@ -126,6 +126,20 @@ class StateMachine:
             candidates = result.get("candidates", [])
 
         if not candidates:
+            fallback_candidates = await self._fallback_candidates_from_evidence(
+                question=ctx.query_plan.original_question,
+                max_files=ctx.query_plan.initial_file_count,
+            )
+            if fallback_candidates:
+                ctx.candidate_files = fallback_candidates
+                ctx.excluded_files = []
+                ctx.log_decision(
+                    "filtering",
+                    "fallback_candidates",
+                    f"{len(ctx.candidate_files)} from evidence search",
+                )
+                ctx.state = State.LOCATING
+                return
             ctx.log_decision("filtering", "no_candidates", "no files matched")
             ctx.state = State.FAILED
             return
@@ -136,6 +150,49 @@ class StateMachine:
         ctx.excluded_files = [f for f in all_file_names if f not in matched]
         ctx.log_decision("filtering", "candidates_found", f"{len(ctx.candidate_files)} candidates")
         ctx.state = State.LOCATING
+
+    async def _fallback_candidates_from_evidence(self, question: str, max_files: int) -> list[CandidateFile]:
+        result = await self.mcp.call_tool(
+            "search_evidence",
+            {"query": question, "max_results": max(10, max_files * 4), "search_type": "hybrid"},
+        )
+        if result.get("error"):
+            return []
+
+        by_file: dict[str, dict[str, float | int]] = {}
+        for row in result.get("results", []):
+            file_name = str(row.get("file_name", "")).strip()
+            if not file_name:
+                continue
+            try:
+                score = float(row.get("relevance_score", 0.0))
+            except (TypeError, ValueError):
+                score = 0.0
+            file_stat = by_file.setdefault(file_name, {"score_sum": 0.0, "hits": 0})
+            file_stat["score_sum"] = float(file_stat["score_sum"]) + score
+            file_stat["hits"] = int(file_stat["hits"]) + 1
+
+        ranked = sorted(
+            by_file.items(),
+            key=lambda item: (float(item[1]["score_sum"]), int(item[1]["hits"])),
+            reverse=True,
+        )[:max_files]
+
+        candidates: list[CandidateFile] = []
+        for file_name, stat in ranked:
+            hits = max(1, int(stat["hits"]))
+            avg_score = float(stat["score_sum"]) / hits
+            candidates.append(
+                CandidateFile(
+                    file_name=file_name,
+                    file_path="",
+                    file_format="unknown",
+                    description="",
+                    match_score=round(avg_score, 4),
+                    match_reason=f"evidence fallback hits={hits}",
+                )
+            )
+        return candidates
 
     async def _do_locating(self, ctx: RetrievalContext) -> None:
         file_names = [f.file_name for f in ctx.candidate_files]

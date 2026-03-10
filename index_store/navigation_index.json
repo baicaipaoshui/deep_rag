@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-10T09:22:27.914911+00:00",
-  "total_files": 14,
+  "generated_at": "2026-03-10T11:46:54.036111+00:00",
+  "total_files": 16,
   "files": [
     {
       "file_name": "company_overview.md",
@@ -60,6 +60,36 @@
       "metadata": {
         "folder": "general",
         "size_bytes": 36128
+      }
+    },
+    {
+      "file_name": "李欣淇简历.pdf.pdf",
+      "file_path": "li_xinqi_resume/李欣淇简历.pdf.pdf",
+      "discovery_file": "li_xinqi_resume______.pdf.pdf.json",
+      "file_format": "pdf",
+      "description": "教育经历\n华北科技学院\n2018年09月 - 2022年06月\n地理信息科学 本科\n廊坊\n上海理工大学\n2023年09月\n计算机科学与技术 硕士\n上海\n实习经历\n上海美承信息科技有限公司\n2025年12月 - 2026年03月\nAI应用开发工程师 AI方案部\n上海\n项目背景：为某国际学校搭建多语言智能招生咨询系统，通过 Dify 工作流编排 + RAG 知识库实现自动化问答，支持多语种用户咨询。\n技术栈：Dify Workflow 、 ",
+      "time_range": "2000-2026",
+      "keywords": [
+        "智能",
+        "MCP",
+        "RAG",
+        "检索",
+        "实现",
+        "通过",
+        "模型",
+        "知识",
+        "AI",
+        "系统",
+        "内容",
+        "图片",
+        "生成",
+        "增强",
+        "09",
+        "2025"
+      ],
+      "metadata": {
+        "folder": "li_xinqi_resume",
+        "size_bytes": 612259
       }
     },
     {
@@ -420,6 +450,36 @@
       "metadata": {
         "folder": "tech_docs",
         "size_bytes": 7678
+      }
+    },
+    {
+      "file_name": "李欣淇简历.pdf (1).pdf",
+      "file_path": "uploads/李欣淇简历.pdf (1).pdf",
+      "discovery_file": "uploads______.pdf__1_.pdf.json",
+      "file_format": "pdf",
+      "description": "教育经历\n华北科技学院\n2018年09月 - 2022年06月\n地理信息科学 本科\n廊坊\n上海理工大学\n2023年09月\n计算机科学与技术 硕士\n上海\n专业技能\n编程语言能力：扎实的 Java/Python 基础，Spring 技术栈与 LangChain/LangGraph 智能体开发均有落地经验。\n数据库：熟悉 MySQL 数据库索引、事务、存储引擎和锁机制，熟悉使用 Redis，熟悉线程模型、持久化等机制，熟悉缓存穿透、击穿和雪崩",
+      "time_range": "2000-2025",
+      "keywords": [
+        "MCP",
+        "智能",
+        "系统",
+        "熟悉",
+        "实现",
+        "Spring",
+        "通过",
+        "了解",
+        "配置",
+        "任务",
+        "模式",
+        "开发",
+        "知识",
+        "2025",
+        "工作",
+        "模块"
+      ],
+      "metadata": {
+        "folder": "uploads",
+        "size_bytes": 644990
       }
     }
   ]

@@ -17,6 +17,9 @@ except Exception:  # pragma: no cover - optional dependency
 _YEAR_PATTERN = re.compile(r"(20\d{2})(?!\d|万)")
 _TOKEN_PATTERN = re.compile(r"[A-Za-z]{2,}|[\u4e00-\u9fff]{2,}")
 
+_MAX_ROW_TEXT = 120    # 用于文本索引（chunk 内容）
+_MAX_ROW_SAMPLE = 50   # 用于发现索引（结构预览）
+
 
 def _extract_keywords(text: str, limit: int = 16) -> list[str]:
     if not text:
@@ -78,7 +81,7 @@ class ExcelParser:
                     continue
                 row_samples.append(cells)
                 row_texts.append(" | ".join(cells))
-                if len(row_texts) >= 120:
+                if len(row_texts) >= _MAX_ROW_TEXT:
                     break
 
             content = "\n".join(row_texts).strip() or f"[Empty sheet] {ws.title}"
@@ -91,7 +94,7 @@ class ExcelParser:
                     "columns": [c for c in header_cells if c],
                     "preview": content[:300],
                     "content": content,
-                    "rows": row_samples[:50],
+                    "rows": row_samples[:_MAX_ROW_SAMPLE],
                     "has_tables": True,
                     "table_titles": [ws.title],
                     "metadata": {"sheet_index": i},

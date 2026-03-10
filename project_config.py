@@ -61,6 +61,17 @@ def _load_yaml(path: Path) -> dict[str, Any]:
     return {}
 
 
+def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
+    """Recursively merge override into base, returning a new dict."""
+    result = dict(base)
+    for key, val in override.items():
+        if key in result and isinstance(result[key], dict) and isinstance(val, dict):
+            result[key] = _deep_merge(result[key], val)
+        else:
+            result[key] = val
+    return result
+
+
 def _as_int(value: Any, default: int) -> int:
     try:
         return int(value)
@@ -99,6 +110,11 @@ def load_project_config() -> ProjectConfig:
     cfg_path_env = os.getenv("DEEP_RAG_CONFIG")
     cfg_path = Path(cfg_path_env).expanduser() if cfg_path_env else default_cfg_file
     yaml_cfg = _load_yaml(cfg_path) if cfg_path.exists() else {}
+
+    # Auto-load and deep-merge *.local.yaml (gitignored, contains secrets/overrides)
+    local_cfg_path = cfg_path.with_name(cfg_path.stem + ".local" + cfg_path.suffix)
+    if local_cfg_path.exists():
+        yaml_cfg = _deep_merge(yaml_cfg, _load_yaml(local_cfg_path))
 
     llm_provider = str(
         os.getenv(

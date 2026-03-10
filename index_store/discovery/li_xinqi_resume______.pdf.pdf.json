@@ -1,0 +1,20 @@
+{
+  "file_name": "李欣淇简历.pdf.pdf",
+  "file_path": "li_xinqi_resume/李欣淇简历.pdf.pdf",
+  "file_format": "pdf",
+  "description": "教育经历\n华北科技学院\n2018年09月 - 2022年06月\n地理信息科学 本科\n廊坊\n上海理工大学\n2023年09月\n计算机科学与技术 硕士\n上海\n实习经历\n上海美承信息科技有限公司\n2025年12月 - 2026年03月\nAI应用开发工程师 AI方案部\n上海\n项目背景：为某国际学校搭建多语言智能招生咨询系统，通过 Dify 工作流编排 + RAG 知识库实现自动化问答，支持多语种用户咨询。\n技术栈：Dify Workflow 、 ",
+  "time_range": "2000-2026",
+  "sections": [
+    {
+      "section_id": "p001",
+      "heading": "Page 1",
+      "pages": "1",
+      "preview": "教育经历\n华北科技学院\n2018年09月 - 2022年06月\n地理信息科学 本科\n廊坊\n上海理工大学\n2023年09月\n计算机科学与技术 硕士\n上海\n实习经历\n上海美承信息科技有限公司\n2025年12月 - 2026年03月\nAI应用开发工程师 AI方案部\n上海\n项目背景：为某国际学校搭建多语言智能招生咨询系统，通过 Dify 工作流编排 + RAG 知识库实现自动化问答，支持多语种用户咨询。\n技术栈：Dify Workflow 、 RAG 、GPT-4.1-mini / GPT-5.2、Nginx、 Python\n核心职责：\nRAG知识库建设与检索优化：通过爬虫抓取学校官网与政策页面内容并",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {
+        "page": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "file_name": "李欣淇简历.pdf (1).pdf",
+  "file_path": "uploads/李欣淇简历.pdf (1).pdf",
+  "file_format": "pdf",
+  "description": "教育经历\n华北科技学院\n2018年09月 - 2022年06月\n地理信息科学 本科\n廊坊\n上海理工大学\n2023年09月\n计算机科学与技术 硕士\n上海\n专业技能\n编程语言能力：扎实的 Java/Python 基础，Spring 技术栈与 LangChain/LangGraph 智能体开发均有落地经验。\n数据库：熟悉 MySQL 数据库索引、事务、存储引擎和锁机制，熟悉使用 Redis，熟悉线程模型、持久化等机制，熟悉缓存穿透、击穿和雪崩",
+  "time_range": "2000-2025",
+  "sections": [
+    {
+      "section_id": "p001",
+      "heading": "Page 1",
+      "pages": "1",
+      "preview": "教育经历\n华北科技学院\n2018年09月 - 2022年06月\n地理信息科学 本科\n廊坊\n上海理工大学\n2023年09月\n计算机科学与技术 硕士\n上海\n专业技能\n编程语言能力：扎实的 Java/Python 基础，Spring 技术栈与 LangChain/LangGraph 智能体开发均有落地经验。\n数据库：熟悉 MySQL 数据库索引、事务、存储引擎和锁机制，熟悉使用 Redis，熟悉线程模型、持久化等机制，熟悉缓存穿透、击穿和雪崩等解决方案。 \n计算机基础：熟悉基本的数据结构、算法、计算机网络编程基础，熟悉 TCP/UDP, HTTP 等计算机网络知识。 \n开发框架：了解 Spring、",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {
+        "page": 1
+      }
+    }
+  ]
+}

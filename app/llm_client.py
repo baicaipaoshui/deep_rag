@@ -45,12 +45,11 @@ class LLMClient:
             raise RuntimeError(f"{self.provider} server is unavailable")
         actual_model = self._resolve_model_name(model)
         merged_messages = list(messages)
-        if system:
-            merged_messages = [{"role": "system", "content": system}] + merged_messages
-        if response_format == "json":
-            merged_messages = merged_messages + [
-                {"role": "system", "content": "只输出JSON，不要使用markdown code fence。"}
-            ]
+        # Build system content: merge json hint + caller-supplied system prompt
+        json_hint = "只输出JSON，不要使用markdown code fence，不要有其他内容。" if response_format == "json" else ""
+        system_content = "\n".join(filter(None, [json_hint, system])).strip()
+        if system_content:
+            merged_messages = [{"role": "system", "content": system_content}] + merged_messages
 
         if self.provider == "openai_compatible":
             payload = {
@@ -116,7 +115,7 @@ class LLMClient:
             method="POST",
         )
         try:
-            with urllib.request.urlopen(req, timeout=12) as resp:
+            with urllib.request.urlopen(req, timeout=90) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
         except urllib.error.URLError as exc:
             raise RuntimeError(f"Ollama call failed: {exc}") from exc
@@ -141,7 +140,7 @@ class LLMClient:
             method="POST",
         )
         try:
-            with urllib.request.urlopen(req, timeout=20, context=self.openai_ssl_context) as resp:
+            with urllib.request.urlopen(req, timeout=90, context=self.openai_ssl_context) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
         except urllib.error.URLError as exc:
             raise RuntimeError(f"OpenAI-compatible call failed: {exc}") from exc
