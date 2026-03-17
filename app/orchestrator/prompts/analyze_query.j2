@@ -8,10 +8,10 @@
 - definition_process: 定义或流程
 
 规则：
-- trend_analysis: initial_file_count=8
-- cross_doc_summary: initial_file_count=10
-- numeric_query: target_formats 优先 ["excel"]，initial_file_count=5
-- 其他类型: initial_file_count=3
+- complexity 只能是 simple / medium / complex
+- estimated_evidence_pieces 填整数
+- time_sensitive 填 true 或 false
+- 必填字段必须全部返回，无法判断时填默认值
 
 用户问题：{{ question }}
 
@@ -19,6 +19,11 @@
 {
   "query_type": "...",
   "keywords": ["..."],
+  "complexity": "medium",
+  "sub_intents": [],
+  "estimated_evidence_pieces": 3,
+  "time_sensitive": false,
+  "domain_hints": [],
   "time_range": null,
   "target_formats": [],
   "expected_dimensions": [],

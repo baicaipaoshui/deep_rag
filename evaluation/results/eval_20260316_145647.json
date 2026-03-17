@@ -1,0 +1,1296 @@
+{
+  "generated_at": "2026-03-16T06:56:47.248939+00:00",
+  "question_count": 20,
+  "summary": {
+    "baseline": {
+      "legacy": {
+        "coverage": 0.575,
+        "completeness": 0.55,
+        "citation_accuracy": 1.0,
+        "status": "non_blocking_degraded"
+      },
+      "ragas": {
+        "context_precision": null,
+        "context_recall": null,
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "status": "blocking_gate"
+      },
+      "gate": {
+        "is_blocking_gate": true,
+        "metric": "context_precision",
+        "threshold": 0.6,
+        "passed": false,
+        "passed_cases": 0,
+        "total_cases": 20,
+        "status": "blocking_gate"
+      }
+    },
+    "deep_rag": {
+      "legacy": {
+        "coverage": 0.6083,
+        "completeness": 0.5,
+        "citation_accuracy": 0.0,
+        "status": "non_blocking_degraded"
+      },
+      "ragas": {
+        "context_precision": null,
+        "context_recall": null,
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "status": "blocking_gate"
+      },
+      "gate": {
+        "is_blocking_gate": true,
+        "metric": "context_precision",
+        "threshold": 0.6,
+        "passed": false,
+        "passed_cases": 0,
+        "total_cases": 20,
+        "status": "blocking_gate"
+      }
+    }
+  },
+  "details": [
+    {
+      "id": 1,
+      "question": "公司成立于哪一年？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ## 基本信息\n\n星辰科技有限公司成立于2015年，总部位于上海张江高科技园区。公司专注于智能硬件和物联网解决方案，服务于制造业、零售业和智慧城市领域。【来源：company_overview.md-md_002】\n- ## 发展历程\n\n- 2015年：公司成立，推出首款工业传感器产品\n- 2017年：完成A轮融资2000万元，团队扩展至50人\n- 2019年：年营收突破2000万元，进入华南市场\n- 2021年：完成B轮融资8000万元，启动智能家居产品线研发\n- 2022年：智能家居系列产品上市，年营收突破4000万元\n- 2023年：年营收达到5280万元，团队规模180人【来源：company_overview.md-md_003】\n- ## 市场地位\n\n公司在国内工业传感器市场排名第8位，市场份额约2.5%。在智能家居领域作为新进入者，目前市场份额不足1%，但增长迅速。【来源：company_overview.md-md_008】\n- ## 组织架构\n\n公司下设六大部门：\n- 销售部：负责全国四个区域的销售业务\n- 产品部：负责产品规划和需求管理\n- 研发部：负责硬件和软件研发，共85人\n- 运营部：负责供应链和客户服务\n- 财务部：负责财务管理和预算控制\n- 人力资源部：负责招聘、培训和组织发展【来源：company_overview.md-md_004】\n- 华南区域：增速放缓至7.9%，低于公司平均水平。深圳市场受竞争冲击，全年流\n失了6个中小客户。但广州市场逆势增长22%，部分弥补了深圳的缺口。区域团队\n建议加大广州投入，适度收缩深圳低端客户。\n华北区域：增长10.2%，基本符合预期。北京市场贡献580万元，天津市场贡献\n380万元。河北市场仍然是薄弱环节，全年仅贡献307万元，与目标差距较大。\n西南区域：增长15%，成都办公室尚未正式成立但已有2名驻场人员。重庆市场的\n3个百万级项目已【来源：2023_annual_sales.pdf-p002】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "证据不足，未提供具体成立年份。请检查相关文档以获取公司成立的具体年份。",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.5,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "question": "最近三年的销售趋势如何？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ## 一、年度销售回顾【来源：2023_sales_meeting_notes.md-md_003】\n- ## 二、2024年销售目标【来源：2023_sales_meeting_notes.md-md_007】\n- # 2023年度销售总结会议纪要【来源：2023_sales_meeting_notes.md-md_001】\n- 2024年销售目标6,100万元，增长15.5%。详见销售总结会议纪要。【来源：2023_annual_sales.pdf-p003】\n- ### 2.1 整体目标\n\n2024年销售目标定为6,100万元，同比增长15.5%。【来源：2023_sales_meeting_notes.md-md_008】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.3333333333333333,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "一、年度趋势\n- 2021：全年合计销售额为3800万元【ev_002】\n- 2022：全年合计销售额为4680万元，同比增长23.2%【ev_003】\n- 2023：全年合计销售额为5280万元，同比增长12.8%【ev_003】\n\n二、变化解读\n- 2021年到2022年，销售额增长显著，同比增长23.2%，这可能得益于市场环境改善或公司策略调整【ev_003】。\n- 2022年到2023年，销售额增长放缓，同比增长率从23.2%下降到12.8%，这可能反映了市场环境变化或公司策略调整的影响【ev_003】。\n\n三、结论\n- 2021年至2023年，公司销售额呈现增长趋势，但增长速度有所放缓【ev_003】。\n\n信息差距：\n- 2021年具体销售额数据\n- 2022年具体销售额数据\n- 2023年具体销售额数据",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "question": "2023年销售总额是多少？",
+      "baseline": {
+        "answer": "基于检索内容：\n- # 2023年第四季度经营回顾【来源：quarterly_review_q4_2023.md-md_001】\n- # 2023年度销售总结会议纪要【来源：2023_sales_meeting_notes.md-md_001】\n- ### 1.1 整体业绩\n\n2023年度公司实现销售总额5,280万元，较2022年的4,680万元增长12.8%。这是连续第三年保持两位数增长，但增速较2022年的17.0%有所放缓。\n\n张明总结了三个关键驱动因素：\n1. 华东区域的持续强劲增长，贡献了总销售额的38%\n2. 新产品线\"智能家居\"系列的成功上市，全年贡献620万元\n3. 大客户合同续约率提升至92%，较去年的85%显著改善【来源：2023_sales_meeting_notes.md-md_004】\n- ## 评审信息\n\n- 日期：2023年9月20日\n- 评审人：技术VP陈刚、架构师李伟、运维负责人王磊\n- 评审对象：电商平台核心系统架构【来源：architecture_review.md-md_002】\n- 产品线 | 2021(万元) | 2022(万元) | 2023(万元) | 2023毛利率 | 2023增长率\n传统产品 | 3800 | 4350 | 4660 | 28% | 7.1%\n智能家居 | 0 | 330 | 620 | 45% | 87.9%\n合计 | 3800 | 4680 | 5280 | 31% | 12.8%【来源：sales_data_2021_2023.xlsx-sh_004】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "根据提供的证据，2023年的销售总额是5280。证据来源为文件【sales_data_2021_2023.xlsx-sh_001】。",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.5,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "question": "华东区域2023年表现如何？",
+      "baseline": {
+        "answer": "基于检索内容：\n- # 2023年第四季度经营回顾【来源：quarterly_review_q4_2023.md-md_001】\n- ### 各区域Q4表现\n\n华东区域Q4完成520万元，保持领先地位。12月份苏州工业园区的一笔大单（80万元）对季度业绩贡献显著。华南区域Q4完成375万元，较Q3的410万元有所下滑，主要原因是两个深圳客户的合同续约推迟到了Q1。华北区域Q4完成320万元，表现稳定。西南区域Q4完成135万元，较Q3的125万元略有增长。【来源：quarterly_review_q4_2023.md-md_003】\n- 区域 | 2021(万元) | 2022(万元) | 2023(万元) | 三年合计(万元) | 2023占比 | 2023同比增长\n华东 | 1330 | 1700 | 2006 | 5036 | 38.0% | 18.0%\n华南 | 1140 | 1370 | 1478 | 3988 | 28.0% | 7.9%\n华北 | 950 | 1150 | 1267 | 3367 | 24.0% | 10.2%\n西南 | 380 | 460【来源：sales_data_2021_2023.xlsx-sh_002】\n- # 2023年度销售总结会议纪要【来源：2023_sales_meeting_notes.md-md_001】\n- ### 1.1 整体业绩\n\n2023年度公司实现销售总额5,280万元，较2022年的4,680万元增长12.8%。这是连续第三年保持两位数增长，但增速较2022年的17.0%有所放缓。\n\n张明总结了三个关键驱动因素：\n1. 华东区域的持续强劲增长，贡献了总销售额的38%\n2. 新产品线\"智能家居\"系列的成功上市，全年贡献620万元\n3. 大客户合同续约率提升至92%，较去年的85%显著改善【来源：2023_sales_meeting_notes.md-md_004】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "一、年度趋势\n- 2021：1,330万元【ev_002, ev_003, ev_004】\n- 2022：1,700万元【ev_001, ev_002, ev_003, ev_004】\n- 2023：2,006万元【ev_001, ev_003, ev_004, ev_005】\n\n二、变化解读\n- 2021年到2022年，华东区域销售额增长了370万元，同比增长27.3%【ev_002, ev_003, ev_004】。\n- 2022年到2023年，华东区域销售额增长了306万元，同比增长18.0%【ev_001, ev_003, ev_004】。\n\n三、结论\n- 2023年，华东区域的销售额继续保持增长趋势，同比增长18.0%，显示出良好的市场表现【ev_001, ev_003, ev_004】。",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.5,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "question": "智能家居系列在2023年的贡献是多少？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ### 2.3 新产品计划\n\n- 智能家居系列2.0版本将于Q2上市，预计贡献900万元\n- 正在评估进入智慧城市解决方案领域的可行性【来源：2023_sales_meeting_notes.md-md_010】\n- ### 1.1 整体业绩\n\n2023年度公司实现销售总额5,280万元，较2022年的4,680万元增长12.8%。这是连续第三年保持两位数增长，但增速较2022年的17.0%有所放缓。\n\n张明总结了三个关键驱动因素：\n1. 华东区域的持续强劲增长，贡献了总销售额的38%\n2. 新产品线\"智能家居\"系列的成功上市，全年贡献620万元\n3. 大客户合同续约率提升至92%，较去年的85%显著改善【来源：2023_sales_meeting_notes.md-md_004】\n- ### 智能家居系列（2022年上市）\n- 智能温控器\n- 环境监测套装\n- 智能安防系统\n- 家庭能源管理方案【来源：company_overview.md-md_007】\n- # 2023年第四季度经营回顾【来源：quarterly_review_q4_2023.md-md_001】\n- # 2023年度销售总结会议纪要【来源：2023_sales_meeting_notes.md-md_001】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "根据提供的证据，智能家居系列在2023年的贡献为5280万元。\n\n证据来源：【sales_data_2021_2023.xlsx-sh_001】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.5,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "question": "2024年的销售目标是多少？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ## 二、2024年销售目标【来源：2023_sales_meeting_notes.md-md_007】\n- 2024年销售目标6,100万元，增长15.5%。详见销售总结会议纪要。【来源：2023_annual_sales.pdf-p003】\n- ### 2.1 整体目标\n\n2024年销售目标定为6,100万元，同比增长15.5%。【来源：2023_sales_meeting_notes.md-md_008】\n- ## 五、会议决议\n\n1. 批准2024年销售目标6,100万元\n2. 批准成都区域办公室设立预算\n3. 要求HR部门在春节前完成薪酬方案修订\n4. 下次季度销售回顾会议定于2024年4月初【来源：2023_sales_meeting_notes.md-md_015】\n- ## 一、年度销售回顾【来源：2023_sales_meeting_notes.md-md_003】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.5,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "根据提供的证据【2023_sales_meeting_notes.md-md_007】，2024年的销售目标的具体数值未明确提及。需要进一步查阅相关文件以获取具体数值。",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.5,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "question": "销售部门当前面临哪些挑战？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ## 三、风险与挑战【来源：2023_sales_meeting_notes.md-md_011】\n- ## 一、年度销售回顾【来源：2023_sales_meeting_notes.md-md_003】\n- ## 二、2024年销售目标【来源：2023_sales_meeting_notes.md-md_007】\n- # 2023年度销售总结会议纪要【来源：2023_sales_meeting_notes.md-md_001】\n- ### 3.2 内部挑战\n\n- 销售团队流动率偏高（15%），需要改善薪酬激励机制\n- CRM系统数据质量不够好，影响销售预测准确性\n- 跨区域协作效率有待提升【来源：2023_sales_meeting_notes.md-md_013】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.6666666666666666,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "销售部门当前面临以下挑战：\n\n1. 销售团队流动率偏高（15%），需要改善薪酬激励机制。\n2. CRM系统数据质量不够好，影响销售预测准确性。\n3. 跨区域协作效率有待提升。\n4. 面临宏观经济不确定性，部分行业客户预算收紧。\n5. 竞争对手获得大额融资，可能发起价格战。\n6. 原材料成本上涨压力。\n\n证据来源：\n- 2023_sales_meeting_notes.md-md_013\n- 2023_sales_meeting_notes.md-md_012",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "question": "公司的核心产品有哪些？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ## 核心产品【来源：company_overview.md-md_005】\n- ## 组织架构\n\n公司下设六大部门：\n- 销售部：负责全国四个区域的销售业务\n- 产品部：负责产品规划和需求管理\n- 研发部：负责硬件和软件研发，共85人\n- 运营部：负责供应链和客户服务\n- 财务部：负责财务管理和预算控制\n- 人力资源部：负责招聘、培训和组织发展【来源：company_overview.md-md_004】\n- ## 发展历程\n\n- 2015年：公司成立，推出首款工业传感器产品\n- 2017年：完成A轮融资2000万元，团队扩展至50人\n- 2019年：年营收突破2000万元，进入华南市场\n- 2021年：完成B轮融资8000万元，启动智能家居产品线研发\n- 2022年：智能家居系列产品上市，年营收突破4000万元\n- 2023年：年营收达到5280万元，团队规模180人【来源：company_overview.md-md_003】\n- ## 核心指标阈值\n- 成功率 >= 99.5%\n- p95 延迟 <= 800ms\n- 工单自动闭环率 >= 90%【来源：release_pipeline_sop.md-md_005】\n- 2023年度销售报告\n星辰科技有限公司\n报告期：2023年1月-12月\n第一章 销售概况\n2023年度公司实现销售总额5,280万元，较2022年的4,680万元增长12.8%。虽\n然未达到年初制定的5,500万元目标（完成率96%），但在宏观经济放缓的背景\n下，仍保持了两位数增长。\n各季度销售情况：Q1为1,200万元（同比+17.6%），Q2为1,350万元（同比\n+22.7%），Q3为1,380万元（同比+15.0%），Q4为1,【来源：2023_annual_sales.pdf-p001】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "根据提供的证据，公司核心产品信息缺失具体名称。需要进一步的信息来确定公司的核心产品是什么。\n\n证据来源：## 核心产品【company_overview.md-md_005】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "question": "研发费用占营收比例是多少？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ## 核心价值观\n\n- 技术驱动：持续投入研发，研发费用占营收的15%\n- 客户至上：NPS（净推荐值）达到45分\n- 开放协作：与30+合作伙伴建立生态关系【来源：company_overview.md-md_009】\n- ## 角色职责\n- 发布经理：统筹排期、主持发布、决策回滚。\n- 值班 SRE：实时监控核心指标，执行回滚操作。\n- 研发负责人：问题定位、修复确认、补丁交付。【来源：release_pipeline_sop.md-md_004】\n- ### 4.2 优化建议\n\n- 将堆内存从4GB调整为8GB，新生代与老年代比例设为1:2\n- 从CMS切换到G1垃圾回收器，设置最大暂停时间目标为200ms\n- 定期分析heap dump，排查内存泄漏嫌疑对象【来源：backend_optimization.md-md_016】\n- ## 组织架构\n\n公司下设六大部门：\n- 销售部：负责全国四个区域的销售业务\n- 产品部：负责产品规划和需求管理\n- 研发部：负责硬件和软件研发，共85人\n- 运营部：负责供应链和客户服务\n- 财务部：负责财务管理和预算控制\n- 人力资源部：负责招聘、培训和组织发展【来源：company_overview.md-md_004】\n- 2021年度销售报告\n星辰科技有限公司\n报告期：2021年1月-12月\n第一章 销售概况\n2021年度公司实现销售总额3,800万元，较2020年的3,150万元增长20.6%。这\n是公司首次突破3,500万元的年度销售门槛，标志着公司进入快速增长期。\n全年销售节奏呈逐季上升趋势：Q1为850万元，Q2为920万元，Q3为980万\n元，Q4为1,050万元。Q4的强劲表现主要来自年底大客户集中签约。\n全年完成销售合同287份，平均合同金【来源：2021_annual_sales.pdf-p001】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "研发费用占营收比例是15%。\n\n证据来源：【2021_annual_sales.pdf-p001】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "question": "公司目前团队规模是多少？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ## 发展历程\n\n- 2015年：公司成立，推出首款工业传感器产品\n- 2017年：完成A轮融资2000万元，团队扩展至50人\n- 2019年：年营收突破2000万元，进入华南市场\n- 2021年：完成B轮融资8000万元，启动智能家居产品线研发\n- 2022年：智能家居系列产品上市，年营收突破4000万元\n- 2023年：年营收达到5280万元，团队规模180人【来源：company_overview.md-md_003】\n- ## 市场地位\n\n公司在国内工业传感器市场排名第8位，市场份额约2.5%。在智能家居领域作为新进入者，目前市场份额不足1%，但增长迅速。【来源：company_overview.md-md_008】\n- 1\n上海振华重工\n180\n制造业\n2\n苏州工业园区管委会\n150\n政府\n3\n深圳创维集团\n120\n电子\n4\n北京京东方\n95\n电子\n5\n成都长虹电子\n80\n电子\nTop 5客户合计贡献625万元，占总销售额的16.4%。\n第五章 年度总结与展望\n2021年是公司高速增长的一年，销售团队从35人扩展至52人，覆盖区域从3个扩\n展至4个。主要成就包括：\n1. 销售额首次突破3,500万元\n2. 成功进入西南市场\n3. 大客户数量从12家增长【来源：2021_annual_sales.pdf-p002】\n- ### 3.1 大表拆分\n\n`order_logs` 表目前有8000万行，查询和维护成本高。\n\n建议按时间分区：\n- 使用RANGE分区，按月分区\n- 保留最近12个月数据在热分区\n- 超过12个月的数据归档到冷存储【来源：database_tuning_guide.md-md_011】\n- ## 风险与约束\n- 告警源数据结构不统一，历史字段缺失率高。\n- 夜间值班交接不规范，影响工单闭环质量。\n- 多租户权限模型复杂，跨团队数据隔离要求高。【来源：project_aurora_overview.md-md_006】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "根据提供的证据，无法直接得出公司目前团队规模的具体数值。证据中仅提及“公司目前团队规模是多少”，但未提供具体数字。若需要确定团队规模，建议查看最新的公司概述文档或其他相关资料以获取准确信息。【company_overview.md-md_001】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "question": "前端性能优化建议有哪些重点？",
+      "baseline": {
+        "answer": "基于检索内容：\n- # 前端性能优化指南【来源：frontend_optimization.md-md_001】\n- # 后端性能优化指南【来源：backend_optimization.md-md_001】\n- ## 三、架构优化建议【来源：architecture_review.md-md_008】\n- ## 一、加载性能优化【来源：frontend_optimization.md-md_002】\n- ## 二、渲染性能优化【来源：frontend_optimization.md-md_006】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "前端性能优化建议的重点包括：\n- 减少HTTP请求\n- 压缩代码\n- 使用CDN\n- 优化图片\n\n证据来源：frontend_optimization.md-md_001",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 12,
+      "question": "后端优化文档提到了哪些方向？",
+      "baseline": {
+        "answer": "基于检索内容：\n- # 后端性能优化指南【来源：backend_optimization.md-md_001】\n- ## 一、索引优化【来源：database_tuning_guide.md-md_002】\n- ## 二、查询优化【来源：database_tuning_guide.md-md_006】\n- ## 三、架构优化建议【来源：architecture_review.md-md_008】\n- ## 四、JVM与GC优化【来源：backend_optimization.md-md_014】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "结论摘要：\n后端优化文档提到了多个方向，包括数据库优化、缓存策略、异步处理、代码优化和资源管理等方面。\n\n按主题分组展开：\n\n1. 数据库优化\n   - 优化查询语句，减少不必要的数据查询。\n   - 使用索引提高查询效率。\n   - 优化数据库表结构，如规范化和反规范化。\n   - 参考来源：backend_optimization.md-md_001\n\n2. 缓存策略\n   - 使用缓存减少数据库访问次数。\n   - 选择合适的缓存技术，如Redis、Memcached等。\n   - 设计合理的缓存过期策略。\n   - 参考来源：backend_optimization.md-md_001\n\n3. 异步处理\n   - 使用消息队列处理异步任务。\n   - 异步处理高负载请求，减轻服务器压力。\n   - 参考来源：backend_optimization.md-md_001\n\n4. 代码优化\n   - 优化代码逻辑，减少不必要的计算。\n   - 使用高效的算法和数据结构。\n   - 代码层面的性能瓶颈分析和优化。\n   - 参考来源：backend_optimization.md-md_001\n\n5. 资源管理\n   - 优化资源使用，如内存、CPU等。\n   - 资源监控和告警机制。\n   - 代码层面的资源管理优化。\n   - 参考来源：backend_optimization.md-md_001",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.6666666666666666,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 13,
+      "question": "数据库调优指南的核心建议是什么？",
+      "baseline": {
+        "answer": "基于检索内容：\n- # 数据库性能调优指南【来源：database_tuning_guide.md-md_001】\n- ## 核心产品【来源：company_overview.md-md_005】\n- # 后端性能优化指南【来源：backend_optimization.md-md_001】\n- ## 三、架构优化建议【来源：architecture_review.md-md_008】\n- # 前端性能优化指南【来源：frontend_optimization.md-md_001】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "根据提供的证据，数据库调优指南的核心建议未在文档中直接给出。因此，无法直接引用具体的建议内容。需要进一步查看文档或资料以获取核心建议的具体内容。",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "question": "2023年各区域销售同比表现怎样？",
+      "baseline": {
+        "answer": "基于检索内容：\n- # 2023年度销售总结会议纪要【来源：2023_sales_meeting_notes.md-md_001】\n- ### 2.1 整体目标\n\n2024年销售目标定为6,100万元，同比增长15.5%。【来源：2023_sales_meeting_notes.md-md_008】\n- ## 一、年度销售回顾【来源：2023_sales_meeting_notes.md-md_003】\n- ## 二、2024年销售目标【来源：2023_sales_meeting_notes.md-md_007】\n- # 2023年第四季度经营回顾【来源：quarterly_review_q4_2023.md-md_001】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "一、年度趋势\n- 2021：各区域销售额分别为华东1330万元、华南1140万元、华北950万元、西南380万元，合计3800万元。\n- 2022：各区域销售额分别为华东1700万元、华南1370万元、华北1150万元、西南460万元，合计4680万元。\n- 2023：各区域销售额分别为华东2006万元、华南1478万元、华北1267万元、西南529万元，合计5280万元。\n\n二、变化解读\n- 华东区域2023年销售额同比增长18.0%，从2022年的1700万元增长到2023年的2006万元。\n- 华南区域2023年销售额同比增长7.9%，从2022年的1370万元增长到2023年的1478万元。\n- 华北区域2023年销售额同比增长10.2%，从2022年的1150万元增长到2023年的1267万元。\n- 西南区域2023年销售额同比增长15.0%，从2022年的460万元增长到2023年的529万元。\n\n三、结论\n- 2023年各区域销售额均有所增长，其中华东区域增长最为显著，同比增长18.0%；西南区域次之，同比增长15.0%；华北区域同比增长10.2%；华南区域同比增长7.9%。",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "question": "公司在工业传感器市场份额是多少？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ## 市场地位\n\n公司在国内工业传感器市场排名第8位，市场份额约2.5%。在智能家居领域作为新进入者，目前市场份额不足1%，但增长迅速。【来源：company_overview.md-md_008】\n- ## 发展历程\n\n- 2015年：公司成立，推出首款工业传感器产品\n- 2017年：完成A轮融资2000万元，团队扩展至50人\n- 2019年：年营收突破2000万元，进入华南市场\n- 2021年：完成B轮融资8000万元，启动智能家居产品线研发\n- 2022年：智能家居系列产品上市，年营收突破4000万元\n- 2023年：年营收达到5280万元，团队规模180人【来源：company_overview.md-md_003】\n- ### 传统产品线\n- 工业传感器系列：温度、湿度、压力传感器\n- 数据采集网关：支持多协议接入\n- 工业监控平台：Web端+移动端【来源：company_overview.md-md_006】\n- 2021年度销售报告\n星辰科技有限公司\n报告期：2021年1月-12月\n第一章 销售概况\n2021年度公司实现销售总额3,800万元，较2020年的3,150万元增长20.6%。这\n是公司首次突破3,500万元的年度销售门槛，标志着公司进入快速增长期。\n全年销售节奏呈逐季上升趋势：Q1为850万元，Q2为920万元，Q3为980万\n元，Q4为1,050万元。Q4的强劲表现主要来自年底大客户集中签约。\n全年完成销售合同287份，平均合同金【来源：2021_annual_sales.pdf-p001】\n- ## 基本信息\n\n星辰科技有限公司成立于2015年，总部位于上海张江高科技园区。公司专注于智能硬件和物联网解决方案，服务于制造业、零售业和智慧城市领域。【来源：company_overview.md-md_002】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "根据证据，公司在工业传感器市场份额约为2.5%。【company_overview.md-md_008】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 16,
+      "question": "2023年度会议确定了哪些行动项？",
+      "baseline": {
+        "answer": "基于检索内容：\n- # 2023年度销售总结会议纪要【来源：2023_sales_meeting_notes.md-md_001】\n- ## 一、年度销售回顾【来源：2023_sales_meeting_notes.md-md_003】\n- # 2023年第四季度经营回顾【来源：quarterly_review_q4_2023.md-md_001】\n- 年份 | Q1(万元) | Q2(万元) | Q3(万元) | Q4(万元) | 全年合计(万元) | 同比增长\n2021 | 850 | 920 | 980 | 1050 | 3800 | \n2022 | 1020 | 1100 | 1200 | 1360 | 4680 | 23.2%\n2023 | 1200 | 1350 | 1380 | 1350 | 5280 | 12.8%【来源：sales_data_2021_2023.xlsx-sh_001】\n- ### 1.1 整体业绩\n\n2023年度公司实现销售总额5,280万元，较2022年的4,680万元增长12.8%。这是连续第三年保持两位数增长，但增速较2022年的17.0%有所放缓。\n\n张明总结了三个关键驱动因素：\n1. 华东区域的持续强劲增长，贡献了总销售额的38%\n2. 新产品线\"智能家居\"系列的成功上市，全年贡献620万元\n3. 大客户合同续约率提升至92%，较去年的85%显著改善【来源：2023_sales_meeting_notes.md-md_004】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "2023年度会议确定的行动项包括：\n\n1. 制定华南区域客户维系方案，负责人：刘芳，截止日期：2024-02-28。\n2. 成都办公室选址与团队组建，负责人：张明，截止日期：2024-03-31。\n3. CRM数据清洗与流程优化，负责人：IT部门，截止日期：2024-03-15。\n4. 销售团队薪酬激励方案修订，负责人：HR部门，截止日期：2024-02-15。\n5. 智慧城市方案可行性报告，负责人：产品部，截止日期：2024-04-30。\n\n证据来源：【2023_sales_meeting_notes.md-md_014】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 17,
+      "question": "新员工入职流程是什么？",
+      "baseline": {
+        "answer": "基于检索内容：\n- # 发布流程 SOP（Aurora 项目）【来源：release_pipeline_sop.md-md_001】\n- 新员工入职指南\n第一天\n上午\n9:00 HR接待，办理入职手续\n9:30 领取工牌、电脑、办公用品\n10:00 IT部门协助配置开发环境\n11:00 部门负责人欢迎会\n下午\n13:30 公司文化与制度培训\n15:00 参观办公区域和实验室\n16:00 与导师见面，了解试用期计划\n第一周必修培训\n1. 信息安全培训（2小时）\n2. 代码规范与开发流程（3小时）\n3. 产品知识入门（2小时）\n试用期考核\n试用期为3个月，考核维度：技术能力4【来源：onboarding_guide.pdf-p001】\n- ## 例外流程\n紧急漏洞修复可跳过 30% 灰度阶段，但必须满足：\n1. 双人审批；\n2. 回滚预案已演练；\n3. 风险公告已同步到值班群。【来源：release_pipeline_sop.md-md_006】\n- ## 行动项\n- [林语安] 2026-02-12 前完成发布排期与冻结清单。\n- [贺子昂] 2026-02-15 前补齐分诊样本集到 4,500 条。\n- [赵雨桐] 2026-02-14 前完成值班流程培训与考试。【来源：project_aurora_meeting_2026q1.md-md_006】\n- ## ADR-003：证据充分性校验（2026-01-18）\n- 决策：对事实、趋势、数值、跨文档总结、定义流程五类问题使用差异化校验规则。\n- 原因：不同问题类型对证据覆盖范围要求不同。\n- 结果：减少“看起来合理但证据不足”的答案输出。【来源：architecture_decision_log.md-md_004】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "新员工入职流程如下：\n\n1. 上午9:00，HR接待并办理入职手续。\n2. 上午9:30，领取工牌、电脑、办公用品。\n3. 上午10:00，IT部门协助配置开发环境。\n4. 上午11:00，部门负责人举行欢迎会。\n5. 下午13:30，进行公司文化与制度培训。\n6. 下午15:00，参观办公区域和实验室。\n7. 下午16:00，与导师见面，了解试用期计划。\n8. 第一周进行必修培训，包括信息安全培训（2小时）、代码规范与开发流程（3小时）和产品知识入门（2小时）。\n9. 试用期为3个月，考核维度包括技术能力（40%）、工作态度（30%）和文化融入（30%）。\n10. 享受福利：五险一金、补充医疗、带薪年假5-15天、弹性工作、餐补25元/天、年度体检。\n\n证据来源：onboarding_guide.pdf-p001",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 18,
+      "question": "技术文档中关于监控指标有哪些建议？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ### 4.2 监控指标\n\n建议关注：\n- QPS和TPS趋势\n- 慢查询数量趋势\n- 锁等待时间和死锁次数\n- Buffer Pool命中率（应>99%）\n- 主从复制延迟【来源：database_tuning_guide.md-md_016】\n- ## 四、监控与度量【来源：frontend_optimization.md-md_014】\n- ### 5.1 指标监控\n\n建议完善以下监控指标：\n- API响应时间分位数（P50/P90/P95/P99）\n- 错误率和错误码分布\n- 数据库连接池使用率\n- JVM内存和GC统计\n- Redis命中率和延迟【来源：backend_optimization.md-md_018】\n- ## 三、架构优化建议【来源：architecture_review.md-md_008】\n- ## 角色职责\n- 发布经理：统筹排期、主持发布、决策回滚。\n- 值班 SRE：实时监控核心指标，执行回滚操作。\n- 研发负责人：问题定位、修复确认、补丁交付。【来源：release_pipeline_sop.md-md_004】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "结论摘要：\n技术文档中关于监控指标的建议包括API响应时间、错误率和错误码分布、数据库连接池使用率、JVM内存和GC统计、Redis命中率和延迟等。此外，还建议调整数据库参数以优化性能。\n\n按主题分组展开：\n\n1. **API性能监控**\n   - **API响应时间分位数（P50/P90/P95/P99）**：监控API响应时间的分位数可以帮助识别性能瓶颈和用户体验问题。【backend_optimization.md-md_018】\n\n2. **错误监控**\n   - **错误率和错误码分布**：通过监控错误率和错误码分布，可以及时发现系统中的异常情况，有助于快速定位和解决问题。【backend_optimization.md-md_018】\n\n3. **数据库性能监控**\n   - **数据库连接池使用率**：监控数据库连接池的使用情况，可以确保在高峰期有足够的连接资源，避免因连接不足导致的服务中断。【backend_optimization.md-md_018】\n\n4. **JVM性能监控**\n   - **JVM内存和GC统计**：监控JVM的内存使用情况和垃圾回收（GC）统计，有助于识别内存泄漏和优化垃圾回收策略，提高系统性能。【backend_optimization.md-md_018】\n\n5. **缓存性能监控**\n   - **Redis命中率和延迟**：监控Redis的命中率和延迟，可以评估缓存的有效性和性能，确保缓存能够有效减轻数据库压力。【backend_optimization.md-md_018】\n\n6. **数据库参数调整**\n   - **调整以下参数**：- `innodb_buffer_pool_size = 10G`（总内存的60-70%）- `innodb_log_file_size = 1G`（减少checkpoint频率）- `max_connections = 200`（当前设置为100，高峰期不够用）- `innodb_flush_log_at_trx_commit = 2`（牺牲少量持久性换取性能，适合非金融场景）【database_tuning_guide.md-md_015】\n\n通过上述监控指标和参数调整，可以全面优化系统的性能和稳定性。",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 19,
+      "question": "智能家居产品线从哪一年开始上市？",
+      "baseline": {
+        "answer": "基于检索内容：\n- ### 智能家居系列（2022年上市）\n- 智能温控器\n- 环境监测套装\n- 智能安防系统\n- 家庭能源管理方案【来源：company_overview.md-md_007】\n- ## 发展历程\n\n- 2015年：公司成立，推出首款工业传感器产品\n- 2017年：完成A轮融资2000万元，团队扩展至50人\n- 2019年：年营收突破2000万元，进入华南市场\n- 2021年：完成B轮融资8000万元，启动智能家居产品线研发\n- 2022年：智能家居系列产品上市，年营收突破4000万元\n- 2023年：年营收达到5280万元，团队规模180人【来源：company_overview.md-md_003】\n- ### 产品结构\n\nQ4智能家居系列销售额达到180万元，占比13.3%，较Q3的12.1%进一步提升。传统产品线Q4销售额1,170万元，同比增长9%。【来源：quarterly_review_q4_2023.md-md_004】\n- ### 2.3 新产品计划\n\n- 智能家居系列2.0版本将于Q2上市，预计贡献900万元\n- 正在评估进入智慧城市解决方案领域的可行性【来源：2023_sales_meeting_notes.md-md_010】\n- ### 1.1 整体业绩\n\n2023年度公司实现销售总额5,280万元，较2022年的4,680万元增长12.8%。这是连续第三年保持两位数增长，但增速较2022年的17.0%有所放缓。\n\n张明总结了三个关键驱动因素：\n1. 华东区域的持续强劲增长，贡献了总销售额的38%\n2. 新产品线\"智能家居\"系列的成功上市，全年贡献620万元\n3. 大客户合同续约率提升至92%，较去年的85%显著改善【来源：2023_sales_meeting_notes.md-md_004】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "智能家居产品线从2022年开始上市。\n\n证据来源：【company_overview.md-md_007】",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    },
+    {
+      "id": 20,
+      "question": "销售增长放缓的风险有哪些？",
+      "baseline": {
+        "answer": "基于检索内容：\n- 2024年销售目标6,100万元，增长15.5%。详见销售总结会议纪要。【来源：2023_annual_sales.pdf-p003】\n- ### 2.1 整体目标\n\n2024年销售目标定为6,100万元，同比增长15.5%。【来源：2023_sales_meeting_notes.md-md_008】\n- ## 三、风险与挑战【来源：2023_sales_meeting_notes.md-md_011】\n- ## 一、年度销售回顾【来源：2023_sales_meeting_notes.md-md_003】\n- ## 二、2024年销售目标【来源：2023_sales_meeting_notes.md-md_007】",
+        "metrics": {
+          "legacy": {
+            "coverage": 0.0,
+            "completeness": 0.0,
+            "citation_accuracy": 1.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      },
+      "deep_rag": {
+        "answer": "销售增长放缓的风险包括市场需求变化、竞争加剧、供应链问题、宏观经济不确定性增加、部分行业客户预算收紧、竞争对手获得大额融资可能发起价格战、原材料成本上涨、销售团队流动率偏高、CRM系统数据质量不够好影响销售预测准确性以及跨区域协作效率有待提升。证据来源：2023_sales_meeting_notes.md-md_011, 2023_sales_meeting_notes.md-md_012, 2023_sales_meeting_notes.md-md_012, 2023_sales_meeting_notes.md-md_012, 2023_sales_meeting_notes.md-md_013, 2023_sales_meeting_notes.md-md_013, 2023_sales_meeting_notes.md-md_013。",
+        "metrics": {
+          "legacy": {
+            "coverage": 1.0,
+            "completeness": 1.0,
+            "citation_accuracy": 0.0,
+            "status": "non_blocking_degraded"
+          },
+          "ragas": {
+            "context_precision": null,
+            "context_recall": null,
+            "faithfulness": null,
+            "answer_relevancy": null,
+            "available": false,
+            "status": "non_blocking_degraded",
+            "error": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)"
+          }
+        },
+        "gate": {
+          "is_blocking_gate": true,
+          "passed": false,
+          "metric": "context_precision",
+          "threshold": 0.6,
+          "actual": null,
+          "reason": "1 validation error for ChatOpenAI\n__root__\n  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)",
+          "status": "blocking_gate"
+        }
+      }
+    }
+  ]
+}

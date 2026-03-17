@@ -138,19 +138,19 @@ class SearchEngine:
         keyword_rows = self.keyword_search(query, file_scope=file_scope, max_results=max_results * 2)
         vector_rows  = self.vector_search(query,  file_scope=file_scope, max_results=max_results * 2)
 
-        _RRF_K = 60
+        rrf_k = max(1, int(getattr(self.config, "rrf_k", 60)))
         rrf_scores: dict[str, float] = {}
         doc_data: dict[str, dict] = {}
 
         for rank, row in enumerate(keyword_rows, start=1):
             cid = row["chunk_id"]
-            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (_RRF_K + rank)
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (rrf_k + rank)
             if cid not in doc_data:
                 doc_data[cid] = {**row, "match_type": "keyword"}
 
         for rank, row in enumerate(vector_rows, start=1):
             cid = row["chunk_id"]
-            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (_RRF_K + rank)
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (rrf_k + rank)
             if cid not in doc_data:
                 doc_data[cid] = {**row, "match_type": "vector"}
             elif doc_data[cid]["match_type"] == "keyword":

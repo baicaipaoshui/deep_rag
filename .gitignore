@@ -40,3 +40,4 @@ Deep_RAG_最终落地方案_Skill_MCP_Python.md
 
 .env
 config/deep_rag.local.yaml
+.claude

@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-03-17T02:59:22.639309+00:00",
+  "total_files": 3,
+  "files": [
+    {
+      "file_name": "documents_1_Aurora_发布计划.md",
+      "file_path": "db_import/documents_1_Aurora_发布计划.md",
+      "discovery_file": "db_import_documents_1_Aurora_____.md.json",
+      "file_format": "markdown",
+      "description": "# Aurora 发布计划 - source_table: documents - source_id: 1",
+      "time_range": "2026",
+      "keywords": [
+        "Aurora",
+        "发布",
+        "source",
+        "2026",
+        "03",
+        "计划",
+        "table",
+        "documents",
+        "id",
+        "updated",
+        "at",
+        "17T09",
+        "00",
+        "00Z",
+        "##",
+        "Content"
+      ],
+      "metadata": {
+        "folder": "db_import",
+        "size_bytes": 205
+      }
+    },
+    {
+      "file_name": "documents_2_销售同比分析.md",
+      "file_path": "db_import/documents_2_销售同比分析.md",
+      "discovery_file": "db_import_documents_2_______.md.json",
+      "file_format": "markdown",
+      "description": "# 销售同比分析 - source_table: documents - source_id: 2",
+      "time_range": "2025-2026",
+      "keywords": [
+        "source",
+        "销售",
+        "同比",
+        "分析",
+        "table",
+        "documents",
+        "id",
+        "updated",
+        "at",
+        "2026",
+        "03",
+        "17T09",
+        "10",
+        "00Z",
+        "##",
+        "Content"
+      ],
+      "metadata": {
+        "folder": "db_import",
+        "size_bytes": 197
+      }
+    },
+    {
+      "file_name": "documents_3_数据库巡检规范.md",
+      "file_path": "db_import/documents_3_数据库巡检规范.md",
+      "discovery_file": "db_import_documents_3________.md.json",
+      "file_format": "markdown",
+      "description": "# 数据库巡检规范 - source_table: documents - source_id: 3",
+      "time_range": "2026",
+      "keywords": [
+        "source",
+        "数据库",
+        "巡检",
+        "规范",
+        "table",
+        "documents",
+        "id",
+        "updated",
+        "at",
+        "2026",
+        "03",
+        "17T09",
+        "20",
+        "00Z",
+        "##",
+        "Content"
+      ],
+      "metadata": {
+        "folder": "db_import",
+        "size_bytes": 192
+      }
+    }
+  ]
+}

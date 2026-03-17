@@ -2,12 +2,97 @@
   "file_name": "test_report_q3.xlsx",
   "file_path": "tech_docs/test_report_q3.xlsx",
   "file_format": "excel",
-  "description": "Workbook test_report_q3.xlsx with 3 sheets",
+  "description": "Workbook test_report_q3.xlsx with 11 sheets",
   "time_range": null,
   "sections": [
     {
-      "section_id": "sh_001",
-      "heading": "API性能测试",
+      "section_id": "sh_001_summary",
+      "heading": "API性能测试 摘要",
+      "sheet_name": "API性能测试",
+      "columns": [
+        "接口名称",
+        "方法",
+        "P50(ms)",
+        "P90(ms)",
+        "P95(ms)",
+        "P99(ms)",
+        "QPS",
+        "错误率",
+        "状态"
+      ],
+      "preview": "工作表：API性能测试\n总列数：9\n总行数：12\n列名：接口名称 | 方法 | P50(ms) | P90(ms) | P95(ms) | P99(ms) | QPS | 错误率 | 状态\n样本行：\n商品列表 | GET | 45 | 120 | 180 | 350 | 500 | 0.1% | 通过\n商品详情 | GET | 30 | 80 | 110 | 200 | 800 | 0.0% | 通过\n商品搜索 | GET | 280 | 650 | 1200 | 2300 | 200 | 0.5% | 不通过\n创建订单 | POST | 150 | 350 | 480 | 650 | 100",
+      "has_tables": true,
+      "table_titles": [
+        "API性能测试"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "summary",
+        "total_rows": 12,
+        "total_columns": 9
+      }
+    },
+    {
+      "section_id": "sh_001_col_001",
+      "heading": "API性能测试 列分块 1",
+      "sheet_name": "API性能测试",
+      "columns": [
+        "接口名称",
+        "方法",
+        "P50(ms)",
+        "P90(ms)",
+        "P95(ms)",
+        "P99(ms)"
+      ],
+      "preview": "接口名称 | 方法 | P50(ms) | P90(ms) | P95(ms) | P99(ms)\n商品列表 | GET | 45 | 120 | 180 | 350\n商品详情 | GET | 30 | 80 | 110 | 200\n商品搜索 | GET | 280 | 650 | 1200 | 2300\n创建订单 | POST | 150 | 350 | 480 | 650\n订单列表 | GET | 80 | 200 | 350 | 800\n订单详情 | GET | 60 | 130 | 200 | 450\n用户登录 | POST | 40 | 90 | 120 | 180\n库存查询 | G",
+      "has_tables": true,
+      "table_titles": [
+        "API性能测试"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 6,
+        "column_names": [
+          "接口名称",
+          "方法",
+          "P50(ms)",
+          "P90(ms)",
+          "P95(ms)",
+          "P99(ms)"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_001_col_002",
+      "heading": "API性能测试 列分块 2",
+      "sheet_name": "API性能测试",
+      "columns": [
+        "QPS",
+        "错误率",
+        "状态"
+      ],
+      "preview": "QPS | 错误率 | 状态\n500 | 0.1% | 通过\n800 | 0.0% | 通过\n200 | 0.5% | 不通过\n100 | 0.2% | 关注\n300 | 0.1% | 关注\n400 | 0.0% | 通过\n200 | 0.0% | 通过\n1000 | 0.0% | 通过\n50 | 0.3% | 不通过\n10 | 1.0% | 不通过\n300 | 0.0% | 通过\n50 | 0.8% | 关注",
+      "has_tables": true,
+      "table_titles": [
+        "API性能测试"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "column_chunk",
+        "column_start": 7,
+        "column_end": 9,
+        "column_names": [
+          "QPS",
+          "错误率",
+          "状态"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_001_rw_001",
+      "heading": "API性能测试 行窗口 1",
       "sheet_name": "API性能测试",
       "columns": [
         "接口名称",
@@ -26,12 +111,102 @@
         "API性能测试"
       ],
       "metadata": {
-        "sheet_index": 1
+        "sheet_index": 1,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 13,
+        "window_size": 100,
+        "step": 80
       }
     },
     {
-      "section_id": "sh_002",
-      "heading": "压力测试",
+      "section_id": "sh_002_summary",
+      "heading": "压力测试 摘要",
+      "sheet_name": "压力测试",
+      "columns": [
+        "并发用户数",
+        "总请求数",
+        "成功数",
+        "失败数",
+        "平均响应(ms)",
+        "最大响应(ms)",
+        "吞吐量(req/s)",
+        "CPU使用率",
+        "内存使用率"
+      ],
+      "preview": "工作表：压力测试\n总列数：9\n总行数：5\n列名：并发用户数 | 总请求数 | 成功数 | 失败数 | 平均响应(ms) | 最大响应(ms) | 吞吐量(req/s) | CPU使用率 | 内存使用率\n样本行：\n50 | 10000 | 9998 | 2 | 85 | 450 | 480 | 35% | 52%\n100 | 20000 | 19985 | 15 | 120 | 800 | 720 | 55% | 58%\n200 | 40000 | 39850 | 150 | 210 | 1500 | 980 | 72% | 65%\n500 | 100000 | 98500 | 1500 | 4",
+      "has_tables": true,
+      "table_titles": [
+        "压力测试"
+      ],
+      "metadata": {
+        "sheet_index": 2,
+        "section_type": "summary",
+        "total_rows": 5,
+        "total_columns": 9
+      }
+    },
+    {
+      "section_id": "sh_002_col_001",
+      "heading": "压力测试 列分块 1",
+      "sheet_name": "压力测试",
+      "columns": [
+        "并发用户数",
+        "总请求数",
+        "成功数",
+        "失败数",
+        "平均响应(ms)",
+        "最大响应(ms)"
+      ],
+      "preview": "并发用户数 | 总请求数 | 成功数 | 失败数 | 平均响应(ms) | 最大响应(ms)\n50 | 10000 | 9998 | 2 | 85 | 450\n100 | 20000 | 19985 | 15 | 120 | 800\n200 | 40000 | 39850 | 150 | 210 | 1500\n500 | 100000 | 98500 | 1500 | 450 | 3200\n1000 | 200000 | 190000 | 10000 | 850 | 5800",
+      "has_tables": true,
+      "table_titles": [
+        "压力测试"
+      ],
+      "metadata": {
+        "sheet_index": 2,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 6,
+        "column_names": [
+          "并发用户数",
+          "总请求数",
+          "成功数",
+          "失败数",
+          "平均响应(ms)",
+          "最大响应(ms)"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_002_col_002",
+      "heading": "压力测试 列分块 2",
+      "sheet_name": "压力测试",
+      "columns": [
+        "吞吐量(req/s)",
+        "CPU使用率",
+        "内存使用率"
+      ],
+      "preview": "吞吐量(req/s) | CPU使用率 | 内存使用率\n480 | 35% | 52%\n720 | 55% | 58%\n980 | 72% | 65%\n1100 | 88% | 75%\n950 | 95% | 82%",
+      "has_tables": true,
+      "table_titles": [
+        "压力测试"
+      ],
+      "metadata": {
+        "sheet_index": 2,
+        "section_type": "column_chunk",
+        "column_start": 7,
+        "column_end": 9,
+        "column_names": [
+          "吞吐量(req/s)",
+          "CPU使用率",
+          "内存使用率"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_002_rw_001",
+      "heading": "压力测试 行窗口 1",
       "sheet_name": "压力测试",
       "columns": [
         "并发用户数",
@@ -50,12 +225,40 @@
         "压力测试"
       ],
       "metadata": {
-        "sheet_index": 2
+        "sheet_index": 2,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 6,
+        "window_size": 100,
+        "step": 80
       }
     },
     {
-      "section_id": "sh_003",
-      "heading": "数据库性能",
+      "section_id": "sh_003_summary",
+      "heading": "数据库性能 摘要",
+      "sheet_name": "数据库性能",
+      "columns": [
+        "指标",
+        "当前值",
+        "目标值",
+        "状态",
+        "优化建议"
+      ],
+      "preview": "工作表：数据库性能\n总列数：5\n总行数：7\n列名：指标 | 当前值 | 目标值 | 状态 | 优化建议\n样本行：\nQPS | 4800 | <6000 | 通过 | 接近上限，需关注\n慢查询数/天 | 156 | <50 | 不通过 | 需要优化Top 5慢查询\nBuffer Pool命中率 | 98.5% | >99% | 关注 | 建议增加buffer_pool_size\n连接数使用率 | 85% | <70% | 不通过 | 建议增加max_connections\n主从延迟 | 50ms | <100ms | 通过 | 正常范围\n死锁次数/天 | 3 | 0 | 关注 | 需排查库存扣减",
+      "has_tables": true,
+      "table_titles": [
+        "数据库性能"
+      ],
+      "metadata": {
+        "sheet_index": 3,
+        "section_type": "summary",
+        "total_rows": 7,
+        "total_columns": 5
+      }
+    },
+    {
+      "section_id": "sh_003_col_001",
+      "heading": "数据库性能 列分块 1",
       "sheet_name": "数据库性能",
       "columns": [
         "指标",
@@ -70,7 +273,42 @@
         "数据库性能"
       ],
       "metadata": {
-        "sheet_index": 3
+        "sheet_index": 3,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 5,
+        "column_names": [
+          "指标",
+          "当前值",
+          "目标值",
+          "状态",
+          "优化建议"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_003_rw_001",
+      "heading": "数据库性能 行窗口 1",
+      "sheet_name": "数据库性能",
+      "columns": [
+        "指标",
+        "当前值",
+        "目标值",
+        "状态",
+        "优化建议"
+      ],
+      "preview": "指标 | 当前值 | 目标值 | 状态 | 优化建议\nQPS | 4800 | <6000 | 通过 | 接近上限，需关注\n慢查询数/天 | 156 | <50 | 不通过 | 需要优化Top 5慢查询\nBuffer Pool命中率 | 98.5% | >99% | 关注 | 建议增加buffer_pool_size\n连接数使用率 | 85% | <70% | 不通过 | 建议增加max_connections\n主从延迟 | 50ms | <100ms | 通过 | 正常范围\n死锁次数/天 | 3 | 0 | 关注 | 需排查库存扣减逻辑\n磁盘使用率 | 72% | <80% | 通过 | 6",
+      "has_tables": true,
+      "table_titles": [
+        "数据库性能"
+      ],
+      "metadata": {
+        "sheet_index": 3,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 8,
+        "window_size": 100,
+        "step": 80
       }
     }
   ]

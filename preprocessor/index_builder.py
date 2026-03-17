@@ -235,33 +235,120 @@ class IndexBuilder:
             return []
         if len(cleaned) <= max_chars:
             return [cleaned]
-
+        threshold = int(max_chars * 1.2)
+        semantic_blocks = IndexBuilder._semantic_blocks(cleaned)
         chunks: list[str] = []
-        current: list[str] = []
-        current_len: int = 0
-        overlap_suffix: str = ""
+        current_parts: list[str] = []
+        current_len = 0
 
-        for para in cleaned.split("\n"):
-            para = para.strip()
-            if not para:
+        for block in semantic_blocks:
+            block = block.strip()
+            if not block:
                 continue
-            if current_len + len(para) + 1 > max_chars and current:
-                chunk_text = "\n".join(current)
-                chunks.append(chunk_text)
-                overlap_suffix = chunk_text[-overlap:] if overlap > 0 else ""
-                if overlap_suffix:
-                    current = [overlap_suffix, para]
-                    current_len = len(overlap_suffix) + len(para) + 1
-                else:
-                    current = [para]
-                    current_len = len(para)
+            block_len = len(block)
+            if block_len > threshold:
+                if current_parts:
+                    chunks.append("\n".join(current_parts).strip())
+                    current_parts = []
+                    current_len = 0
+                chunks.extend(IndexBuilder._sliding_window_chunks(block, max_chars, overlap=0.5))
+                continue
+            if current_len + block_len + 1 > max_chars and current_parts:
+                chunks.append("\n".join(current_parts).strip())
+                current_parts = [block]
+                current_len = block_len
             else:
-                current.append(para)
-                current_len += len(para) + 1
+                current_parts.append(block)
+                current_len += block_len + 1
 
-        if current:
-            chunks.append("\n".join(current))
+        if current_parts:
+            chunks.append("\n".join(current_parts).strip())
+
+        if overlap > 0:
+            return IndexBuilder._apply_overlap_suffix(chunks, overlap)
+        return [chunk for chunk in chunks if chunk]
+
+    @staticmethod
+    def _semantic_blocks(text: str) -> list[str]:
+        lines = [line.rstrip() for line in text.splitlines()]
+        blocks: list[str] = []
+        paragraph: list[str] = []
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
+            if not line:
+                if paragraph:
+                    blocks.extend(IndexBuilder._split_paragraph_to_sentences("\n".join(paragraph)))
+                    paragraph = []
+                i += 1
+                continue
+            if line.startswith("#"):
+                if paragraph:
+                    blocks.extend(IndexBuilder._split_paragraph_to_sentences("\n".join(paragraph)))
+                    paragraph = []
+                blocks.append(line)
+                i += 1
+                continue
+            if "|" in line:
+                if paragraph:
+                    blocks.extend(IndexBuilder._split_paragraph_to_sentences("\n".join(paragraph)))
+                    paragraph = []
+                table_lines = [line]
+                i += 1
+                while i < len(lines):
+                    table_line = lines[i].strip()
+                    if not table_line or "|" not in table_line:
+                        break
+                    table_lines.append(table_line)
+                    i += 1
+                blocks.append("\n".join(table_lines))
+                continue
+            paragraph.append(line)
+            i += 1
+        if paragraph:
+            blocks.extend(IndexBuilder._split_paragraph_to_sentences("\n".join(paragraph)))
+        return blocks
+
+    @staticmethod
+    def _split_paragraph_to_sentences(text: str) -> list[str]:
+        paragraph = text.strip()
+        if not paragraph:
+            return []
+        sentences = [seg.strip() for seg in re.split(r"(?<=[。！？!?；;\.])\s*", paragraph) if seg.strip()]
+        return sentences or [paragraph]
+
+    @staticmethod
+    def _sliding_window_chunks(text: str, window_size: int, overlap: float = 0.5) -> list[str]:
+        if not text:
+            return []
+        if len(text) <= window_size:
+            return [text]
+        step = max(1, int(window_size * (1 - overlap)))
+        chunks: list[str] = []
+        start = 0
+        while start < len(text):
+            chunk = text[start : start + window_size].strip()
+            if chunk:
+                chunks.append(chunk)
+            if start + window_size >= len(text):
+                break
+            start += step
         return chunks
+
+    @staticmethod
+    def _apply_overlap_suffix(chunks: list[str], overlap: int) -> list[str]:
+        if overlap <= 0:
+            return chunks
+        merged: list[str] = []
+        previous = ""
+        for chunk in chunks:
+            if previous:
+                suffix = previous[-overlap:]
+                merged.append(f"{suffix}\n{chunk}".strip())
+            else:
+                merged.append(chunk)
+            previous = chunk
+        return merged
 
     def _build_whoosh_index(self, chunks: list[dict[str, Any]]) -> int:
         if whoosh_index is None or Schema is None:

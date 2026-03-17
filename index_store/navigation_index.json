@@ -1,7 +1,97 @@
 {
-  "generated_at": "2026-03-10T13:24:28.481170+00:00",
-  "total_files": 21,
+  "generated_at": "2026-03-17T02:57:50.813259+00:00",
+  "total_files": 24,
   "files": [
+    {
+      "file_name": "documents_1_Aurora_发布计划.md",
+      "file_path": "db_import/documents_1_Aurora_发布计划.md",
+      "discovery_file": "db_import_documents_1_Aurora_____.md.json",
+      "file_format": "markdown",
+      "description": "# Aurora 发布计划 - source_table: documents - source_id: 1",
+      "time_range": "2026",
+      "keywords": [
+        "Aurora",
+        "发布",
+        "source",
+        "2026",
+        "03",
+        "计划",
+        "table",
+        "documents",
+        "id",
+        "updated",
+        "at",
+        "17T09",
+        "00",
+        "00Z",
+        "##",
+        "Content"
+      ],
+      "metadata": {
+        "folder": "db_import",
+        "size_bytes": 205
+      }
+    },
+    {
+      "file_name": "documents_2_销售同比分析.md",
+      "file_path": "db_import/documents_2_销售同比分析.md",
+      "discovery_file": "db_import_documents_2_______.md.json",
+      "file_format": "markdown",
+      "description": "# 销售同比分析 - source_table: documents - source_id: 2",
+      "time_range": "2025-2026",
+      "keywords": [
+        "source",
+        "销售",
+        "同比",
+        "分析",
+        "table",
+        "documents",
+        "id",
+        "updated",
+        "at",
+        "2026",
+        "03",
+        "17T09",
+        "10",
+        "00Z",
+        "##",
+        "Content"
+      ],
+      "metadata": {
+        "folder": "db_import",
+        "size_bytes": 197
+      }
+    },
+    {
+      "file_name": "documents_3_数据库巡检规范.md",
+      "file_path": "db_import/documents_3_数据库巡检规范.md",
+      "discovery_file": "db_import_documents_3________.md.json",
+      "file_format": "markdown",
+      "description": "# 数据库巡检规范 - source_table: documents - source_id: 3",
+      "time_range": "2026",
+      "keywords": [
+        "source",
+        "数据库",
+        "巡检",
+        "规范",
+        "table",
+        "documents",
+        "id",
+        "updated",
+        "at",
+        "2026",
+        "03",
+        "17T09",
+        "20",
+        "00Z",
+        "##",
+        "Content"
+      ],
+      "metadata": {
+        "folder": "db_import",
+        "size_bytes": 192
+      }
+    },
     {
       "file_name": "company_overview.md",
       "file_path": "general/company_overview.md",
@@ -157,7 +247,7 @@
       "file_path": "mock_lab/kpi_dashboard_2024_2026.xlsx",
       "discovery_file": "mock_lab_kpi_dashboard_2024_2026.xlsx.json",
       "file_format": "excel",
-      "description": "Workbook kpi_dashboard_2024_2026.xlsx with 3 sheets",
+      "description": "Workbook kpi_dashboard_2024_2026.xlsx with 10 sheets",
       "time_range": "2024-2026",
       "keywords": [
         "Million",
@@ -427,25 +517,25 @@
       "file_path": "sales_reports/sales_data_2021_2023.xlsx",
       "discovery_file": "sales_reports_sales_data_2021_2023.xlsx.json",
       "file_format": "excel",
-      "description": "Workbook sales_data_2021_2023.xlsx with 4 sheets",
+      "description": "Workbook sales_data_2021_2023.xlsx with 16 sheets",
       "time_range": "2006-2023",
       "keywords": [
         "传统",
         "产品",
+        "2023",
         "2022",
-        "2021",
         "智能家居",
         "华东",
         "华南",
         "华北",
         "西南",
+        "2021",
         "12",
-        "万元",
-        "01",
+        "10",
+        "11",
         "22",
-        "02",
-        "03",
-        "04"
+        "01",
+        "02"
       ],
       "metadata": {
         "folder": "sales_reports",
@@ -607,7 +697,7 @@
       "file_path": "tech_docs/test_report_q3.xlsx",
       "discovery_file": "tech_docs_test_report_q3.xlsx.json",
       "file_format": "excel",
-      "description": "Workbook test_report_q3.xlsx with 3 sheets",
+      "description": "Workbook test_report_q3.xlsx with 11 sheets",
       "time_range": null,
       "keywords": [
         "通过",

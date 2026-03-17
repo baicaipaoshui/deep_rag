@@ -2,12 +2,91 @@
   "file_name": "kpi_dashboard_2024_2026.xlsx",
   "file_path": "mock_lab/kpi_dashboard_2024_2026.xlsx",
   "file_format": "excel",
-  "description": "Workbook kpi_dashboard_2024_2026.xlsx with 3 sheets",
+  "description": "Workbook kpi_dashboard_2024_2026.xlsx with 10 sheets",
   "time_range": "2024-2026",
   "sections": [
     {
-      "section_id": "sh_001",
-      "heading": "RevenueTrend",
+      "section_id": "sh_001_summary",
+      "heading": "RevenueTrend 摘要",
+      "sheet_name": "RevenueTrend",
+      "columns": [
+        "Year",
+        "Q1_Million",
+        "Q2_Million",
+        "Q3_Million",
+        "Q4_Million",
+        "Annual_Million",
+        "YoY"
+      ],
+      "preview": "工作表：RevenueTrend\n总列数：7\n总行数：3\n列名：Year | Q1_Million | Q2_Million | Q3_Million | Q4_Million | Annual_Million | YoY\n样本行：\n2024 | 9.8 | 10.5 | 11.2 | 12 | 43.5 | N/A\n2025 | 12 | 12.8 | 13.6 | 14.9 | 53.3 | 22.5%\n2026 | 13.8 | 14.6 | 15.5 | 16.8 | 60.7 | 13.9%",
+      "has_tables": true,
+      "table_titles": [
+        "RevenueTrend"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "summary",
+        "total_rows": 3,
+        "total_columns": 7
+      }
+    },
+    {
+      "section_id": "sh_001_col_001",
+      "heading": "RevenueTrend 列分块 1",
+      "sheet_name": "RevenueTrend",
+      "columns": [
+        "Year",
+        "Q1_Million",
+        "Q2_Million",
+        "Q3_Million",
+        "Q4_Million",
+        "Annual_Million"
+      ],
+      "preview": "Year | Q1_Million | Q2_Million | Q3_Million | Q4_Million | Annual_Million\n2024 | 9.8 | 10.5 | 11.2 | 12 | 43.5\n2025 | 12 | 12.8 | 13.6 | 14.9 | 53.3\n2026 | 13.8 | 14.6 | 15.5 | 16.8 | 60.7",
+      "has_tables": true,
+      "table_titles": [
+        "RevenueTrend"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 6,
+        "column_names": [
+          "Year",
+          "Q1_Million",
+          "Q2_Million",
+          "Q3_Million",
+          "Q4_Million",
+          "Annual_Million"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_001_col_002",
+      "heading": "RevenueTrend 列分块 2",
+      "sheet_name": "RevenueTrend",
+      "columns": [
+        "YoY"
+      ],
+      "preview": "YoY\nN/A\n22.5%\n13.9%",
+      "has_tables": true,
+      "table_titles": [
+        "RevenueTrend"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "column_chunk",
+        "column_start": 7,
+        "column_end": 7,
+        "column_names": [
+          "YoY"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_001_rw_001",
+      "heading": "RevenueTrend 行窗口 1",
       "sheet_name": "RevenueTrend",
       "columns": [
         "Year",
@@ -24,12 +103,39 @@
         "RevenueTrend"
       ],
       "metadata": {
-        "sheet_index": 1
+        "sheet_index": 1,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 4,
+        "window_size": 100,
+        "step": 80
       }
     },
     {
-      "section_id": "sh_002",
-      "heading": "SLAAndLatency",
+      "section_id": "sh_002_summary",
+      "heading": "SLAAndLatency 摘要",
+      "sheet_name": "SLAAndLatency",
+      "columns": [
+        "Month",
+        "SLA_Uptime",
+        "P95_Latency_ms",
+        "Timeout_Rate"
+      ],
+      "preview": "工作表：SLAAndLatency\n总列数：4\n总行数：4\n列名：Month | SLA_Uptime | P95_Latency_ms | Timeout_Rate\n样本行：\n2026-01 | 99.93% | 480 | 1.4%\n2026-02 | 99.71% | 910 | 4.8%\n2026-03 | 99.95% | 430 | 1.1%\n2026-04 | 99.96% | 390 | 0.9%",
+      "has_tables": true,
+      "table_titles": [
+        "SLAAndLatency"
+      ],
+      "metadata": {
+        "sheet_index": 2,
+        "section_type": "summary",
+        "total_rows": 4,
+        "total_columns": 4
+      }
+    },
+    {
+      "section_id": "sh_002_col_001",
+      "heading": "SLAAndLatency 列分块 1",
       "sheet_name": "SLAAndLatency",
       "columns": [
         "Month",
@@ -43,12 +149,67 @@
         "SLAAndLatency"
       ],
       "metadata": {
-        "sheet_index": 2
+        "sheet_index": 2,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 4,
+        "column_names": [
+          "Month",
+          "SLA_Uptime",
+          "P95_Latency_ms",
+          "Timeout_Rate"
+        ]
       }
     },
     {
-      "section_id": "sh_003",
-      "heading": "SupportOps",
+      "section_id": "sh_002_rw_001",
+      "heading": "SLAAndLatency 行窗口 1",
+      "sheet_name": "SLAAndLatency",
+      "columns": [
+        "Month",
+        "SLA_Uptime",
+        "P95_Latency_ms",
+        "Timeout_Rate"
+      ],
+      "preview": "Month | SLA_Uptime | P95_Latency_ms | Timeout_Rate\n2026-01 | 99.93% | 480 | 1.4%\n2026-02 | 99.71% | 910 | 4.8%\n2026-03 | 99.95% | 430 | 1.1%\n2026-04 | 99.96% | 390 | 0.9%",
+      "has_tables": true,
+      "table_titles": [
+        "SLAAndLatency"
+      ],
+      "metadata": {
+        "sheet_index": 2,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 5,
+        "window_size": 100,
+        "step": 80
+      }
+    },
+    {
+      "section_id": "sh_003_summary",
+      "heading": "SupportOps 摘要",
+      "sheet_name": "SupportOps",
+      "columns": [
+        "Quarter",
+        "Ticket_Count",
+        "Auto_Close_Rate",
+        "Avg_Resolve_Min"
+      ],
+      "preview": "工作表：SupportOps\n总列数：4\n总行数：3\n列名：Quarter | Ticket_Count | Auto_Close_Rate | Avg_Resolve_Min\n样本行：\n2025Q4 | 1150 | 74% | 38\n2026Q1 | 1320 | 81% | 29\n2026Q2 | 1490 | 86% | 24",
+      "has_tables": true,
+      "table_titles": [
+        "SupportOps"
+      ],
+      "metadata": {
+        "sheet_index": 3,
+        "section_type": "summary",
+        "total_rows": 3,
+        "total_columns": 4
+      }
+    },
+    {
+      "section_id": "sh_003_col_001",
+      "heading": "SupportOps 列分块 1",
       "sheet_name": "SupportOps",
       "columns": [
         "Quarter",
@@ -62,7 +223,40 @@
         "SupportOps"
       ],
       "metadata": {
-        "sheet_index": 3
+        "sheet_index": 3,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 4,
+        "column_names": [
+          "Quarter",
+          "Ticket_Count",
+          "Auto_Close_Rate",
+          "Avg_Resolve_Min"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_003_rw_001",
+      "heading": "SupportOps 行窗口 1",
+      "sheet_name": "SupportOps",
+      "columns": [
+        "Quarter",
+        "Ticket_Count",
+        "Auto_Close_Rate",
+        "Avg_Resolve_Min"
+      ],
+      "preview": "Quarter | Ticket_Count | Auto_Close_Rate | Avg_Resolve_Min\n2025Q4 | 1150 | 74% | 38\n2026Q1 | 1320 | 81% | 29\n2026Q2 | 1490 | 86% | 24",
+      "has_tables": true,
+      "table_titles": [
+        "SupportOps"
+      ],
+      "metadata": {
+        "sheet_index": 3,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 4,
+        "window_size": 100,
+        "step": 80
       }
     }
   ]

@@ -24,6 +24,13 @@ class QueryPlan(BaseModel):
     original_question: str
     query_type: QueryType
     keywords: list[str]
+    complexity: str = "medium"
+    sub_intents: list[str] = Field(default_factory=list)
+    estimated_evidence_pieces: int = 3
+    time_sensitive: bool = False
+    domain_hints: list[str] = Field(default_factory=list)
+    route_fallback_reason: Optional[str] = None
+    budget_audit: dict[str, float | int | str] = Field(default_factory=dict)
     time_range: Optional[str] = None
     target_formats: list[str] = Field(default_factory=list)
     expected_dimensions: list[str] = Field(default_factory=list)

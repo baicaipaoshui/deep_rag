@@ -2,12 +2,91 @@
   "file_name": "sales_data_2021_2023.xlsx",
   "file_path": "sales_reports/sales_data_2021_2023.xlsx",
   "file_format": "excel",
-  "description": "Workbook sales_data_2021_2023.xlsx with 4 sheets",
+  "description": "Workbook sales_data_2021_2023.xlsx with 16 sheets",
   "time_range": "2006-2023",
   "sections": [
     {
-      "section_id": "sh_001",
-      "heading": "年度汇总",
+      "section_id": "sh_001_summary",
+      "heading": "年度汇总 摘要",
+      "sheet_name": "年度汇总",
+      "columns": [
+        "年份",
+        "Q1(万元)",
+        "Q2(万元)",
+        "Q3(万元)",
+        "Q4(万元)",
+        "全年合计(万元)",
+        "同比增长"
+      ],
+      "preview": "工作表：年度汇总\n总列数：7\n总行数：3\n列名：年份 | Q1(万元) | Q2(万元) | Q3(万元) | Q4(万元) | 全年合计(万元) | 同比增长\n样本行：\n2021 | 850 | 920 | 980 | 1050 | 3800 | \n2022 | 1020 | 1100 | 1200 | 1360 | 4680 | 23.2%\n2023 | 1200 | 1350 | 1380 | 1350 | 5280 | 12.8%",
+      "has_tables": true,
+      "table_titles": [
+        "年度汇总"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "summary",
+        "total_rows": 3,
+        "total_columns": 7
+      }
+    },
+    {
+      "section_id": "sh_001_col_001",
+      "heading": "年度汇总 列分块 1",
+      "sheet_name": "年度汇总",
+      "columns": [
+        "年份",
+        "Q1(万元)",
+        "Q2(万元)",
+        "Q3(万元)",
+        "Q4(万元)",
+        "全年合计(万元)"
+      ],
+      "preview": "年份 | Q1(万元) | Q2(万元) | Q3(万元) | Q4(万元) | 全年合计(万元)\n2021 | 850 | 920 | 980 | 1050 | 3800\n2022 | 1020 | 1100 | 1200 | 1360 | 4680\n2023 | 1200 | 1350 | 1380 | 1350 | 5280",
+      "has_tables": true,
+      "table_titles": [
+        "年度汇总"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 6,
+        "column_names": [
+          "年份",
+          "Q1(万元)",
+          "Q2(万元)",
+          "Q3(万元)",
+          "Q4(万元)",
+          "全年合计(万元)"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_001_col_002",
+      "heading": "年度汇总 列分块 2",
+      "sheet_name": "年度汇总",
+      "columns": [
+        "同比增长"
+      ],
+      "preview": "同比增长\n\n23.2%\n12.8%",
+      "has_tables": true,
+      "table_titles": [
+        "年度汇总"
+      ],
+      "metadata": {
+        "sheet_index": 1,
+        "section_type": "column_chunk",
+        "column_start": 7,
+        "column_end": 7,
+        "column_names": [
+          "同比增长"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_001_rw_001",
+      "heading": "年度汇总 行窗口 1",
       "sheet_name": "年度汇总",
       "columns": [
         "年份",
@@ -24,12 +103,96 @@
         "年度汇总"
       ],
       "metadata": {
-        "sheet_index": 1
+        "sheet_index": 1,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 4,
+        "window_size": 100,
+        "step": 80
       }
     },
     {
-      "section_id": "sh_002",
-      "heading": "区域汇总",
+      "section_id": "sh_002_summary",
+      "heading": "区域汇总 摘要",
+      "sheet_name": "区域汇总",
+      "columns": [
+        "区域",
+        "2021(万元)",
+        "2022(万元)",
+        "2023(万元)",
+        "三年合计(万元)",
+        "2023占比",
+        "2023同比增长"
+      ],
+      "preview": "工作表：区域汇总\n总列数：7\n总行数：5\n列名：区域 | 2021(万元) | 2022(万元) | 2023(万元) | 三年合计(万元) | 2023占比 | 2023同比增长\n样本行：\n华东 | 1330 | 1700 | 2006 | 5036 | 38.0% | 18.0%\n华南 | 1140 | 1370 | 1478 | 3988 | 28.0% | 7.9%\n华北 | 950 | 1150 | 1267 | 3367 | 24.0% | 10.2%\n西南 | 380 | 460 | 529 | 1369 | 10.0% | 15.0%\n合计 | 3800 | 4680 | 52",
+      "has_tables": true,
+      "table_titles": [
+        "区域汇总"
+      ],
+      "metadata": {
+        "sheet_index": 2,
+        "section_type": "summary",
+        "total_rows": 5,
+        "total_columns": 7
+      }
+    },
+    {
+      "section_id": "sh_002_col_001",
+      "heading": "区域汇总 列分块 1",
+      "sheet_name": "区域汇总",
+      "columns": [
+        "区域",
+        "2021(万元)",
+        "2022(万元)",
+        "2023(万元)",
+        "三年合计(万元)",
+        "2023占比"
+      ],
+      "preview": "区域 | 2021(万元) | 2022(万元) | 2023(万元) | 三年合计(万元) | 2023占比\n华东 | 1330 | 1700 | 2006 | 5036 | 38.0%\n华南 | 1140 | 1370 | 1478 | 3988 | 28.0%\n华北 | 950 | 1150 | 1267 | 3367 | 24.0%\n西南 | 380 | 460 | 529 | 1369 | 10.0%\n合计 | 3800 | 4680 | 5280 | 13760 | 100%",
+      "has_tables": true,
+      "table_titles": [
+        "区域汇总"
+      ],
+      "metadata": {
+        "sheet_index": 2,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 6,
+        "column_names": [
+          "区域",
+          "2021(万元)",
+          "2022(万元)",
+          "2023(万元)",
+          "三年合计(万元)",
+          "2023占比"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_002_col_002",
+      "heading": "区域汇总 列分块 2",
+      "sheet_name": "区域汇总",
+      "columns": [
+        "2023同比增长"
+      ],
+      "preview": "2023同比增长\n18.0%\n7.9%\n10.2%\n15.0%",
+      "has_tables": true,
+      "table_titles": [
+        "区域汇总"
+      ],
+      "metadata": {
+        "sheet_index": 2,
+        "section_type": "column_chunk",
+        "column_start": 7,
+        "column_end": 7,
+        "column_names": [
+          "2023同比增长"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_002_rw_001",
+      "heading": "区域汇总 行窗口 1",
       "sheet_name": "区域汇总",
       "columns": [
         "区域",
@@ -46,12 +209,41 @@
         "区域汇总"
       ],
       "metadata": {
-        "sheet_index": 2
+        "sheet_index": 2,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 6,
+        "window_size": 100,
+        "step": 80
       }
     },
     {
-      "section_id": "sh_003",
-      "heading": "月度明细",
+      "section_id": "sh_003_summary",
+      "heading": "月度明细 摘要",
+      "sheet_name": "月度明细",
+      "columns": [
+        "日期",
+        "区域",
+        "产品线",
+        "销售额(万元)",
+        "客户数",
+        "新增客户"
+      ],
+      "preview": "工作表：月度明细\n总列数：6\n总行数：240\n列名：日期 | 区域 | 产品线 | 销售额(万元) | 客户数 | 新增客户\n样本行：\n2021-01 | 华东 | 传统产品 | 41.1 | 5 | 5\n2021-01 | 华南 | 传统产品 | 28.7 | 12 | 1\n2021-01 | 华北 | 传统产品 | 26.2 | 22 | 0\n2021-01 | 西南 | 传统产品 | 10.2 | 6 | 0\n2021-02 | 华东 | 传统产品 | 40.4 | 12 | 4\n2021-02 | 华南 | 传统产品 | 33.7 | 22 | 1\n2021-02 | 华北 | 传统产",
+      "has_tables": true,
+      "table_titles": [
+        "月度明细"
+      ],
+      "metadata": {
+        "sheet_index": 3,
+        "section_type": "summary",
+        "total_rows": 240,
+        "total_columns": 6
+      }
+    },
+    {
+      "section_id": "sh_003_col_001",
+      "heading": "月度明细 列分块 1",
       "sheet_name": "月度明细",
       "columns": [
         "日期",
@@ -67,12 +259,125 @@
         "月度明细"
       ],
       "metadata": {
-        "sheet_index": 3
+        "sheet_index": 3,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 6,
+        "column_names": [
+          "日期",
+          "区域",
+          "产品线",
+          "销售额(万元)",
+          "客户数",
+          "新增客户"
+        ]
       }
     },
     {
-      "section_id": "sh_004",
-      "heading": "产品线分析",
+      "section_id": "sh_003_rw_001",
+      "heading": "月度明细 行窗口 1",
+      "sheet_name": "月度明细",
+      "columns": [
+        "日期",
+        "区域",
+        "产品线",
+        "销售额(万元)",
+        "客户数",
+        "新增客户"
+      ],
+      "preview": "日期 | 区域 | 产品线 | 销售额(万元) | 客户数 | 新增客户\n2021-01 | 华东 | 传统产品 | 41.1 | 5 | 5\n2021-01 | 华南 | 传统产品 | 28.7 | 12 | 1\n2021-01 | 华北 | 传统产品 | 26.2 | 22 | 0\n2021-01 | 西南 | 传统产品 | 10.2 | 6 | 0\n2021-02 | 华东 | 传统产品 | 40.4 | 12 | 4\n2021-02 | 华南 | 传统产品 | 33.7 | 22 | 1\n2021-02 | 华北 | 传统产品 | 28.7 | 22 | 3\n2021-02 | 西南 ",
+      "has_tables": true,
+      "table_titles": [
+        "月度明细"
+      ],
+      "metadata": {
+        "sheet_index": 3,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 101,
+        "window_size": 100,
+        "step": 80
+      }
+    },
+    {
+      "section_id": "sh_003_rw_002",
+      "heading": "月度明细 行窗口 2",
+      "sheet_name": "月度明细",
+      "columns": [
+        "日期",
+        "区域",
+        "产品线",
+        "销售额(万元)",
+        "客户数",
+        "新增客户"
+      ],
+      "preview": "日期 | 区域 | 产品线 | 销售额(万元) | 客户数 | 新增客户\n2022-05 | 华东 | 传统产品 | 45.5 | 22 | 0\n2022-05 | 华东 | 智能家居 | 7.4 | 22 | 0\n2022-05 | 华南 | 传统产品 | 37.7 | 12 | 1\n2022-05 | 华南 | 智能家居 | 6 | 20 | 1\n2022-05 | 华北 | 传统产品 | 30.8 | 6 | 1\n2022-05 | 华北 | 智能家居 | 5 | 17 | 2\n2022-05 | 西南 | 传统产品 | 12.5 | 19 | 2\n2022-05 | 西南 | 智能家居",
+      "has_tables": true,
+      "table_titles": [
+        "月度明细"
+      ],
+      "metadata": {
+        "sheet_index": 3,
+        "section_type": "row_window",
+        "row_start": 82,
+        "row_end": 181,
+        "window_size": 100,
+        "step": 80
+      }
+    },
+    {
+      "section_id": "sh_003_rw_003",
+      "heading": "月度明细 行窗口 3",
+      "sheet_name": "月度明细",
+      "columns": [
+        "日期",
+        "区域",
+        "产品线",
+        "销售额(万元)",
+        "客户数",
+        "新增客户"
+      ],
+      "preview": "日期 | 区域 | 产品线 | 销售额(万元) | 客户数 | 新增客户\n2023-03 | 华东 | 传统产品 | 37.1 | 11 | 4\n2023-03 | 华东 | 智能家居 | 12.4 | 10 | 5\n2023-03 | 华南 | 传统产品 | 25.8 | 21 | 5\n2023-03 | 华南 | 智能家居 | 9.6 | 15 | 0\n2023-03 | 华北 | 传统产品 | 25 | 12 | 5\n2023-03 | 华北 | 智能家居 | 7.5 | 11 | 1\n2023-03 | 西南 | 传统产品 | 8.5 | 12 | 3\n2023-03 | 西南 | 智",
+      "has_tables": true,
+      "table_titles": [
+        "月度明细"
+      ],
+      "metadata": {
+        "sheet_index": 3,
+        "section_type": "row_window",
+        "row_start": 162,
+        "row_end": 241,
+        "window_size": 100,
+        "step": 80
+      }
+    },
+    {
+      "section_id": "sh_004_summary",
+      "heading": "产品线分析 摘要",
+      "sheet_name": "产品线分析",
+      "columns": [
+        "产品线",
+        "2021(万元)",
+        "2022(万元)",
+        "2023(万元)",
+        "2023毛利率",
+        "2023增长率"
+      ],
+      "preview": "工作表：产品线分析\n总列数：6\n总行数：3\n列名：产品线 | 2021(万元) | 2022(万元) | 2023(万元) | 2023毛利率 | 2023增长率\n样本行：\n传统产品 | 3800 | 4350 | 4660 | 28% | 7.1%\n智能家居 | 0 | 330 | 620 | 45% | 87.9%\n合计 | 3800 | 4680 | 5280 | 31% | 12.8%",
+      "has_tables": true,
+      "table_titles": [
+        "产品线分析"
+      ],
+      "metadata": {
+        "sheet_index": 4,
+        "section_type": "summary",
+        "total_rows": 3,
+        "total_columns": 6
+      }
+    },
+    {
+      "section_id": "sh_004_col_001",
+      "heading": "产品线分析 列分块 1",
       "sheet_name": "产品线分析",
       "columns": [
         "产品线",
@@ -88,7 +393,44 @@
         "产品线分析"
       ],
       "metadata": {
-        "sheet_index": 4
+        "sheet_index": 4,
+        "section_type": "column_chunk",
+        "column_start": 1,
+        "column_end": 6,
+        "column_names": [
+          "产品线",
+          "2021(万元)",
+          "2022(万元)",
+          "2023(万元)",
+          "2023毛利率",
+          "2023增长率"
+        ]
+      }
+    },
+    {
+      "section_id": "sh_004_rw_001",
+      "heading": "产品线分析 行窗口 1",
+      "sheet_name": "产品线分析",
+      "columns": [
+        "产品线",
+        "2021(万元)",
+        "2022(万元)",
+        "2023(万元)",
+        "2023毛利率",
+        "2023增长率"
+      ],
+      "preview": "产品线 | 2021(万元) | 2022(万元) | 2023(万元) | 2023毛利率 | 2023增长率\n传统产品 | 3800 | 4350 | 4660 | 28% | 7.1%\n智能家居 | 0 | 330 | 620 | 45% | 87.9%\n合计 | 3800 | 4680 | 5280 | 31% | 12.8%",
+      "has_tables": true,
+      "table_titles": [
+        "产品线分析"
+      ],
+      "metadata": {
+        "sheet_index": 4,
+        "section_type": "row_window",
+        "row_start": 2,
+        "row_end": 4,
+        "window_size": 100,
+        "step": 80
       }
     }
   ]

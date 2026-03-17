@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 from dataclasses import dataclass, field
@@ -23,6 +24,7 @@ except Exception:  # pragma: no cover - optional dependency
 
 
 class State(str, Enum):
+    PRE_ROUTING = "pre_routing"
     FILTERING = "filtering"
     LOCATING = "locating"
     EXTRACTING = "extracting"
@@ -34,7 +36,7 @@ class State(str, Enum):
 @dataclass
 class RetrievalContext:
     query_plan: QueryPlan
-    state: State = State.FILTERING
+    state: State = State.PRE_ROUTING
     candidate_files: list[CandidateFile] = field(default_factory=list)
     excluded_files: list[str] = field(default_factory=list)
     target_locations: list[TargetLocation] = field(default_factory=list)
@@ -43,6 +45,10 @@ class RetrievalContext:
     missing_info: list[str] = field(default_factory=list)
     token_tracker: TokenTracker = field(default_factory=TokenTracker)
     decision_log: list[dict[str, Any]] = field(default_factory=list)
+    locate_failed: bool = False
+    locate_retry_count: int = 0
+    hyde_retry_count: int = 0
+    judge_fallback: bool = False
 
     def log_decision(self, stage: str, action: str, detail: str) -> None:
         self.decision_log.append(
@@ -58,12 +64,17 @@ class RetrievalContext:
 class StateMachine:
     def __init__(self) -> None:
         cfg = load_project_config()
+        self.cfg = cfg
         self.mcp = MCPClient()
         self.llm = LLMClient()
         self.analyzer = QueryAnalyzer(self.llm)
         self.generator = AnswerGenerator(self.llm)
-        self.max_supplements = cfg.max_supplements
+        self.max_supplements = min(2, max(0, cfg.max_supplements))
         self.max_total_tokens = cfg.max_total_tokens
+        self.hyde_enabled = cfg.hyde_enabled
+        self.hyde_max_retries = cfg.hyde_max_retries
+        self.hyde_blacklist = [item.lower() for item in cfg.hyde_blacklist]
+        self.fallback_budget_by_query_type = cfg.fallback_budget_by_query_type
         self.prompts_dir = Path(__file__).resolve().parent / "prompts"
         self.env = (
             Environment(loader=FileSystemLoader(str(self.prompts_dir)), autoescape=False)
@@ -80,7 +91,9 @@ class StateMachine:
             ctx.log_decision("init", "query_analyzed", f"type={query_plan.query_type.value}")
 
             while ctx.state not in (State.GENERATING, State.FAILED):
-                if ctx.state == State.FILTERING:
+                if ctx.state == State.PRE_ROUTING:
+                    await self._do_pre_routing(ctx)
+                elif ctx.state == State.FILTERING:
                     await self._do_filtering(ctx)
                 elif ctx.state == State.LOCATING:
                     await self._do_locating(ctx)
@@ -101,6 +114,16 @@ class StateMachine:
             return self._build_result(ctx, answer)
         finally:
             await self.mcp.disconnect()
+
+    async def _do_pre_routing(self, ctx: RetrievalContext) -> None:
+        route_detail = (
+            f"type={ctx.query_plan.query_type.value},complexity={ctx.query_plan.complexity},"
+            f"evidence={ctx.query_plan.estimated_evidence_pieces},budget={ctx.query_plan.initial_file_count}"
+        )
+        ctx.log_decision("pre_routing", "route_ready", route_detail)
+        if ctx.query_plan.route_fallback_reason:
+            ctx.log_decision("pre_routing", "route_fallback", ctx.query_plan.route_fallback_reason)
+        ctx.state = State.FILTERING
 
     async def _do_filtering(self, ctx: RetrievalContext) -> None:
         args: dict[str, Any] = {
@@ -203,36 +226,62 @@ class StateMachine:
             return
         locations, usage = await self._llm_locate_sections(ctx.query_plan, result.get("files", []))
         ctx.token_tracker.add("locate", usage)
-        ctx.target_locations = locations
-        if not locations:
-            # fallback path: direct evidence search
-            search_result = await self.mcp.call_tool(
-                "search_evidence",
-                {"query": ctx.query_plan.original_question, "max_results": 6, "search_type": "hybrid"},
-            )
-            fallback_locations = []
-            for row in search_result.get("results", []):
-                if row.get("file_name") and row.get("section_id"):
-                    fallback_locations.append(
-                        TargetLocation(
-                            file_name=row["file_name"],
-                            section_id=row["section_id"],
-                            heading=row.get("heading", ""),
-                            estimated_relevance=float(row.get("relevance_score", 0.5)),
-                        )
-                    )
-            ctx.target_locations = fallback_locations
+        if locations:
+            ctx.target_locations = locations
+            ctx.log_decision("locating", "located", f"{len(ctx.target_locations)} locations")
+            ctx.state = State.EXTRACTING
+            return
 
-        ctx.log_decision("locating", "located", f"{len(ctx.target_locations)} locations")
-        ctx.state = State.EXTRACTING if ctx.target_locations else State.FAILED
+        fallback_budget = int(
+            self.fallback_budget_by_query_type.get(
+                ctx.query_plan.query_type.value,
+                self.cfg.budget_k_min,
+            )
+        )
+        fallback_locations = await self._search_fallback_locations(
+            query=ctx.query_plan.original_question,
+            max_results=fallback_budget,
+        )
+        if fallback_locations:
+            ctx.locate_retry_count += 1
+            ctx.target_locations = fallback_locations
+            ctx.log_decision("locating", "fallback_expanded", f"budget={fallback_budget}")
+            ctx.state = State.EXTRACTING
+            return
+
+        if self.hyde_enabled and ctx.query_plan.complexity != "simple":
+            for attempt in range(1, self.hyde_max_retries + 1):
+                hyde_query = await self._generate_hyde_query(ctx.query_plan.original_question, attempt)
+                if not hyde_query:
+                    continue
+                hyde_locations = await self._search_fallback_locations(hyde_query, fallback_budget)
+                ctx.hyde_retry_count = attempt
+                if hyde_locations:
+                    ctx.locate_retry_count += 1
+                    ctx.target_locations = hyde_locations
+                    ctx.log_decision("locating", "hyde_retry_hit", f"attempt={attempt}")
+                    ctx.state = State.EXTRACTING
+                    return
+                ctx.log_decision("locating", "hyde_retry_miss", f"attempt={attempt}")
+
+        ctx.locate_failed = True
+        ctx.log_decision("locating", "locate_failed", f"fallback_budget={fallback_budget}")
+        ctx.state = State.GENERATING
 
     async def _do_extracting(self, ctx: RetrievalContext) -> None:
         all_evidence: list[Evidence] = []
         format_map = {c.file_name: c.file_format for c in ctx.candidate_files}
-        for loc in ctx.target_locations[:20]:
+        location_cap = self._compute_location_budget(ctx.query_plan, ctx.target_locations)
+        ctx.log_decision("extracting", "adaptive_budget", f"locations={location_cap}")
+        for loc in ctx.target_locations[:location_cap]:
+            max_chars = 800
+            if loc.estimated_relevance >= 0.85:
+                max_chars = 4000
+            elif loc.estimated_relevance >= 0.6:
+                max_chars = 2200
             read_result = await self.mcp.call_tool(
                 "read_file_section",
-                {"file_name": loc.file_name, "section_id": loc.section_id, "max_chars": 2200},
+                {"file_name": loc.file_name, "section_id": loc.section_id, "max_chars": max_chars},
             )
             if read_result.get("error"):
                 continue
@@ -255,6 +304,32 @@ class StateMachine:
         ctx.state = State.VERIFYING
 
     async def _do_verifying(self, ctx: RetrievalContext) -> None:
+        judge_result, usage = await self._llm_judge_sufficiency(ctx)
+        ctx.token_tracker.add("verify", usage)
+        if judge_result is None:
+            ctx.judge_fallback = True
+            if self.cfg.judge_fallback_sufficient:
+                ctx.log_decision("verify", "judge_fallback", "fallback_sufficient=true")
+                ctx.state = State.GENERATING
+                return
+            legacy_result = await self._legacy_verify(ctx)
+            self._apply_verify_result(
+                ctx,
+                is_sufficient=bool(legacy_result.get("is_sufficient")),
+                missing=[str(x) for x in legacy_result.get("missing", [])],
+                suggested_keywords=[str(x) for x in legacy_result.get("suggested_keywords", []) if str(x).strip()],
+            )
+            return
+
+        self._apply_verify_result(
+            ctx,
+            is_sufficient=bool(judge_result.get("sufficient")),
+            missing=[str(x) for x in judge_result.get("missing_aspects", []) if str(x).strip()],
+            suggested_keywords=[str(x) for x in judge_result.get("missing_aspects", []) if str(x).strip()],
+            confidence=self._safe_float(judge_result.get("confidence"), 0.0),
+        )
+
+    async def _legacy_verify(self, ctx: RetrievalContext) -> dict[str, Any]:
         result = await self.mcp.call_tool(
             "verify_evidence_coverage",
             {
@@ -268,24 +343,136 @@ class StateMachine:
         if result.get("error"):
             ctx.log_decision("verify", "error", str(result))
             ctx.state = State.GENERATING
-            return
-        if result.get("is_sufficient"):
-            ctx.log_decision("verify", "sufficient", "coverage passed")
+            return {}
+        return result
+
+    def _apply_verify_result(
+        self,
+        ctx: RetrievalContext,
+        is_sufficient: bool,
+        missing: list[str],
+        suggested_keywords: list[str],
+        confidence: float = 0.0,
+    ) -> None:
+        if is_sufficient:
+            ctx.log_decision("verify", "sufficient", f"confidence={confidence:.2f}")
             ctx.state = State.GENERATING
             return
 
-        ctx.missing_info = [str(x) for x in result.get("missing", [])]
-        if ctx.supplement_count >= self.max_supplements:
+        ctx.missing_info = missing
+        if ctx.query_plan.complexity == "simple":
+            ctx.log_decision("verify", "simple_fast_exit", ",".join(ctx.missing_info))
+            ctx.state = State.GENERATING
+            return
+        current_round = ctx.supplement_count + 1
+        if current_round >= 3 or ctx.supplement_count >= self.max_supplements:
             ctx.log_decision("verify", "force_generate", ",".join(ctx.missing_info))
             ctx.state = State.GENERATING
             return
 
         ctx.supplement_count += 1
-        suggested_keywords = [str(x) for x in result.get("suggested_keywords", []) if str(x).strip()]
         if suggested_keywords:
-            ctx.query_plan.keywords = suggested_keywords
+            merged_keywords = list(dict.fromkeys([*ctx.query_plan.keywords, *suggested_keywords]))
+            ctx.query_plan.keywords = merged_keywords
         ctx.log_decision("verify", "supplement", f"round={ctx.supplement_count}")
         ctx.state = State.FILTERING
+
+    async def _llm_judge_sufficiency(self, ctx: RetrievalContext) -> tuple[dict[str, Any] | None, TokenUsage]:
+        prompt = self._render_prompt(
+            "judge_sufficiency.j2",
+            question=ctx.query_plan.original_question,
+            query_type=ctx.query_plan.query_type.value,
+            expected_dimensions=ctx.query_plan.expected_dimensions,
+            time_range=ctx.query_plan.time_range,
+            current_round=ctx.supplement_count + 1,
+            evidences=[ev.model_dump() for ev in ctx.evidences],
+        )
+        messages = [{"role": "user", "content": prompt}]
+        try:
+            response, usage = await asyncio.wait_for(
+                self.llm.call(messages, model=self.cfg.judge_model or "haiku", response_format="json", max_tokens=900),
+                timeout=max(1, self.cfg.judge_timeout_seconds),
+            )
+            payload = json.loads(response)
+        except Exception:
+            return None, TokenUsage()
+        if not isinstance(payload, dict):
+            return None, usage
+        missing_aspects = payload.get("missing_aspects", [])
+        if not isinstance(missing_aspects, list):
+            missing_aspects = []
+        return {
+            "sufficient": bool(payload.get("sufficient")),
+            "missing_aspects": [str(x).strip() for x in missing_aspects if str(x).strip()],
+            "confidence": self._safe_float(payload.get("confidence"), 0.0),
+        }, usage
+
+    async def _search_fallback_locations(self, query: str, max_results: int) -> list[TargetLocation]:
+        search_result = await self.mcp.call_tool(
+            "search_evidence",
+            {"query": query, "max_results": max_results, "search_type": "hybrid"},
+        )
+        locations: list[TargetLocation] = []
+        for row in search_result.get("results", []):
+            file_name = str(row.get("file_name", "")).strip()
+            section_id = str(row.get("section_id", "")).strip()
+            if not file_name or not section_id:
+                continue
+            locations.append(
+                TargetLocation(
+                    file_name=file_name,
+                    section_id=section_id,
+                    heading=str(row.get("heading", "")),
+                    estimated_relevance=self._safe_float(row.get("relevance_score"), 0.5),
+                )
+            )
+        return locations
+
+    async def _generate_hyde_query(self, question: str, attempt: int) -> str:
+        prompt = (
+            "请基于问题写一段可能包含答案的检索假设文本，长度不超过120字。"
+            f"问题：{question}；第{attempt}次重试。"
+        )
+        messages = [{"role": "user", "content": prompt}]
+        try:
+            text, _ = await asyncio.wait_for(
+                self.llm.call(messages, model="haiku", response_format="text", max_tokens=180),
+                timeout=max(1, self.cfg.judge_timeout_seconds),
+            )
+        except Exception:
+            return ""
+        cleaned = re.sub(r"\s+", " ", text).strip()
+        lowered = cleaned.lower()
+        if not cleaned:
+            return ""
+        if any(bad in lowered for bad in self.hyde_blacklist):
+            return ""
+        return cleaned[:240]
+
+    @staticmethod
+    def _safe_float(value: Any, default: float) -> float:
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return default
+
+    def _compute_location_budget(self, query_plan: QueryPlan, locations: list[TargetLocation]) -> int:
+        if query_plan.complexity == "simple":
+            base = 12
+        elif query_plan.complexity == "complex":
+            base = 28
+        else:
+            base = 20
+        if query_plan.query_type.value == "cross_doc_summary":
+            base = max(base, 30)
+            cap = 40
+        else:
+            cap = 30
+        high = sum(1 for loc in locations if loc.estimated_relevance >= 0.85)
+        medium = sum(1 for loc in locations if 0.6 <= loc.estimated_relevance < 0.85)
+        adaptive = base + (high // 2) + (medium // 4)
+        adaptive = min(cap, adaptive)
+        return max(8, adaptive)
 
     async def _llm_locate_sections(
         self, query_plan: QueryPlan, files_structure: list[dict[str, Any]]
@@ -317,7 +504,8 @@ class StateMachine:
             ]
             if query_plan.query_type.value == "trend_analysis":
                 locations = self._augment_trend_locations(locations, files_structure)
-            return locations[:20], usage
+            cap = 40 if query_plan.query_type.value == "cross_doc_summary" else 20
+            return locations[:cap], usage
         except Exception:
             fallback: list[TargetLocation] = []
             for file_item in files_structure:
@@ -333,7 +521,8 @@ class StateMachine:
                                 estimated_relevance=0.4,
                             )
                         )
-            return fallback[:20], TokenUsage()
+            cap = 40 if query_plan.query_type.value == "cross_doc_summary" else 20
+            return fallback[:cap], TokenUsage()
 
     def _augment_trend_locations(
         self,
@@ -498,10 +687,17 @@ class StateMachine:
             "answer": answer,
             "retrieval_summary": {
                 "query_type": ctx.query_plan.query_type.value,
+                "complexity": ctx.query_plan.complexity,
                 "total_candidate_files": len(ctx.candidate_files),
                 "target_locations": len(ctx.target_locations),
                 "evidence_count": len(ctx.evidences),
                 "supplement_rounds": ctx.supplement_count,
+                "locate_retry_count": ctx.locate_retry_count,
+                "hyde_retry_count": ctx.hyde_retry_count,
+                "locate_failed": ctx.locate_failed,
+                "judge_fallback": ctx.judge_fallback,
+                "iteration_rounds": ctx.supplement_count + 1,
+                "budget_audit": ctx.query_plan.budget_audit,
                 "missing_info": ctx.missing_info,
                 "token_usage": ctx.token_tracker.summary(),
                 "decision_log": ctx.decision_log,
@@ -515,10 +711,17 @@ class StateMachine:
             "answer": "未能完成检索流程，请检查索引与知识库数据。",
             "retrieval_summary": {
                 "query_type": ctx.query_plan.query_type.value,
+                "complexity": ctx.query_plan.complexity,
                 "total_candidate_files": len(ctx.candidate_files),
                 "target_locations": len(ctx.target_locations),
                 "evidence_count": len(ctx.evidences),
                 "supplement_rounds": ctx.supplement_count,
+                "locate_retry_count": ctx.locate_retry_count,
+                "hyde_retry_count": ctx.hyde_retry_count,
+                "locate_failed": ctx.locate_failed,
+                "judge_fallback": ctx.judge_fallback,
+                "iteration_rounds": ctx.supplement_count + 1,
+                "budget_audit": ctx.query_plan.budget_audit,
                 "missing_info": ctx.missing_info,
                 "token_usage": ctx.token_tracker.summary(),
                 "decision_log": ctx.decision_log,

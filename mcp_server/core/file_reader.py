@@ -109,6 +109,8 @@ class FileReader:
         max_rows: int | None,
     ) -> tuple[str, list[dict[str, Any]]]:
         sheet_name = str(section.get("sheet_name") or section.get("heading") or "")
+        metadata = section.get("metadata", {}) or {}
+        section_type = str(metadata.get("section_type", "summary")).strip().lower()
         if openpyxl is None:
             return f"[Excel parsing unavailable] {path.name}:{sheet_name}", []
 
@@ -121,10 +123,11 @@ class FileReader:
 
         if not rows:
             return "", []
-        headers = ["" if h is None else str(h).strip() for h in rows[0]]
+        headers = FileReader._normalize_excel_cells(rows[0])
+        headers = [col if col else f"col_{idx + 1}" for idx, col in enumerate(headers)]
         data_rows = rows[1:]
         normalized_rows = [
-            ["" if v is None else str(v).strip() for v in row]
+            FileReader._normalize_excel_cells(row)
             for row in data_rows
             if any(v is not None and str(v).strip() for v in row)
         ]
@@ -137,6 +140,21 @@ class FileReader:
                     df = df[df[col].astype(str).isin([str(v) for v in values])]
             normalized_rows = df.astype(str).values.tolist()
 
+        if section_type == "row_window":
+            start_idx = max(0, int(metadata.get("row_start", 2)) - 2)
+            end_row = int(metadata.get("row_end", start_idx + 1))
+            end_idx = max(start_idx, end_row - 1)
+            normalized_rows = normalized_rows[start_idx : end_idx + 1]
+        elif section_type == "column_chunk":
+            start_col = max(1, int(metadata.get("column_start", 1)))
+            end_col = max(start_col, int(metadata.get("column_end", start_col)))
+            start_idx = start_col - 1
+            end_idx = end_col
+            headers = headers[start_idx:end_idx]
+            normalized_rows = [row[start_idx:end_idx] for row in normalized_rows]
+        elif section_type == "summary":
+            normalized_rows = normalized_rows[:20]
+
         if max_rows is not None:
             normalized_rows = normalized_rows[:max_rows]
 
@@ -144,7 +162,7 @@ class FileReader:
         if headers:
             lines.append(" | ".join(headers))
         for row in normalized_rows:
-            lines.append(" | ".join(row))
+            lines.append(" | ".join(row[: len(headers)]))
 
         table = {
             "title": sheet_name or "Sheet1",
@@ -152,3 +170,7 @@ class FileReader:
             "rows": normalized_rows[:30],
         }
         return "\n".join(lines).strip(), [table]
+
+    @staticmethod
+    def _normalize_excel_cells(values: list[Any] | tuple[Any, ...]) -> list[str]:
+        return ["" if cell is None else str(cell).strip() for cell in values]

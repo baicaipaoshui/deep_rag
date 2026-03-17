@@ -1,0 +1,25 @@
+你是证据充分性评估器。请根据问题与证据判断是否足够回答问题。
+
+问题：{{ question }}
+问题类型：{{ query_type }}
+时间范围：{{ time_range or "未指定" }}
+预期维度：{% if expected_dimensions %}{{ expected_dimensions | join("、") }}{% else %}未指定{% endif %}
+当前轮次：{{ current_round }}
+
+证据列表：
+{% for ev in evidences %}
+- 来源={{ ev.source_file }}@{{ ev.source_location }}；强度={{ ev.evidence_strength }}；内容={{ ev.content }}
+{% endfor %}
+
+仅输出JSON对象：
+{
+  "sufficient": true,
+  "missing_aspects": [],
+  "confidence": 0.0
+}
+
+规则：
+- sufficient 只能是 true 或 false。
+- missing_aspects 必须是字符串数组，描述缺失的关键信息点，最多 5 项。
+- confidence 为 0~1 的数值。
+- 当证据缺少关键时间、数值、对比维度或直接事实时，sufficient 应为 false。

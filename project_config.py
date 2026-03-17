@@ -40,6 +40,39 @@ class ProjectConfig:
     max_total_tokens: int
     chunk_size: int
     chunk_overlap: int
+    judge_route_path: str
+    hyde_route_path: str
+    judge_model: str
+    judge_timeout_seconds: int
+    judge_fallback_sufficient: bool
+    hyde_enabled: bool
+    hyde_max_retries: int
+    hyde_blacklist: list[str]
+    budget_k_min: int
+    budget_k_max: int
+    rrf_k: int
+    budget_complexity_multipliers: dict[str, float]
+    fallback_budget_by_query_type: dict[str, int]
+    ragas_context_precision_threshold: float
+
+
+DEFAULT_ROUTE_PATHS = {
+    "judge": "/judge",
+    "hyde": "/judge/HyDE",
+}
+
+DEFAULT_COMPLEXITY_MULTIPLIERS = {
+    "simple": 1.5,
+    "medium": 2.5,
+    "complex": 4.0,
+}
+
+DEFAULT_FALLBACK_BUDGET = {
+    "fact_lookup": 8,
+    "numeric_query": 12,
+    "trend_analysis": 16,
+    "cross_doc_summary": 24,
+}
 
 
 def _deep_get(data: dict[str, Any], keys: list[str], default: Any) -> Any:
@@ -92,6 +125,56 @@ def _as_bool(value: Any, default: bool) -> bool:
     if text in {"0", "false", "no", "off"}:
         return False
     return default
+
+
+def _as_float(value: Any, default: float) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _as_str_list(value: Any, default: list[str]) -> list[str]:
+    if not isinstance(value, list):
+        return list(default)
+    output = [str(item).strip() for item in value if str(item).strip()]
+    return output or list(default)
+
+
+def _normalized_route(raw_value: Any, default: str) -> str:
+    route = str(raw_value or "").strip()
+    if not route.startswith("/"):
+        return default
+    return route
+
+
+def _load_budget_config(yaml_cfg: dict[str, Any]) -> tuple[int, int, dict[str, float], dict[str, int]]:
+    k_min = _as_int(_deep_get(yaml_cfg, ["retrieval", "budget", "k_min"], 3), 3)
+    k_max = _as_int(_deep_get(yaml_cfg, ["retrieval", "budget", "k_max"], 30), 30)
+    if k_min <= 0:
+        k_min = 3
+    if k_max < k_min:
+        k_max = 30
+
+    multipliers = dict(DEFAULT_COMPLEXITY_MULTIPLIERS)
+    raw_multipliers = _deep_get(yaml_cfg, ["retrieval", "budget", "complexity_multipliers"], {})
+    if isinstance(raw_multipliers, dict):
+        for key, default_value in DEFAULT_COMPLEXITY_MULTIPLIERS.items():
+            value = _as_float(raw_multipliers.get(key), default_value)
+            if value <= 0:
+                value = default_value
+            multipliers[key] = value
+
+    fallback_budget = dict(DEFAULT_FALLBACK_BUDGET)
+    raw_fallback_budget = _deep_get(yaml_cfg, ["retrieval", "fallback", "max_results"], {})
+    if isinstance(raw_fallback_budget, dict):
+        for key, default_value in DEFAULT_FALLBACK_BUDGET.items():
+            value = _as_int(raw_fallback_budget.get(key), default_value)
+            if value <= 0:
+                value = default_value
+            fallback_budget[key] = value
+
+    return k_min, k_max, multipliers, fallback_budget
 
 
 def build_ssl_context(verify_ssl: bool, ca_bundle: str = "") -> ssl.SSLContext | None:
@@ -221,6 +304,42 @@ def load_project_config() -> ProjectConfig:
     chunk_overlap = _as_int(
         os.getenv("CHUNK_OVERLAP", _deep_get(yaml_cfg, ["retrieval", "chunk_overlap"], 0)), 0
     )
+    judge_route_path = _normalized_route(
+        _deep_get(yaml_cfg, ["routing", "judge", "path"], DEFAULT_ROUTE_PATHS["judge"]),
+        DEFAULT_ROUTE_PATHS["judge"],
+    )
+    hyde_route_path = _normalized_route(
+        _deep_get(yaml_cfg, ["routing", "hyde", "path"], DEFAULT_ROUTE_PATHS["hyde"]),
+        DEFAULT_ROUTE_PATHS["hyde"],
+    )
+    judge_model = str(_deep_get(yaml_cfg, ["routing", "judge", "model"], "haiku")).strip() or "haiku"
+    judge_timeout_seconds = _as_int(_deep_get(yaml_cfg, ["routing", "judge", "timeout_seconds"], 2), 2)
+    if judge_timeout_seconds <= 0:
+        judge_timeout_seconds = 2
+    judge_fallback_sufficient = _as_bool(
+        _deep_get(yaml_cfg, ["routing", "judge", "fallback_sufficient"], True),
+        True,
+    )
+    hyde_enabled = _as_bool(_deep_get(yaml_cfg, ["routing", "hyde", "enabled"], True), True)
+    hyde_max_retries = _as_int(_deep_get(yaml_cfg, ["routing", "hyde", "max_retries"], 2), 2)
+    if hyde_max_retries < 0:
+        hyde_max_retries = 2
+    hyde_blacklist = _as_str_list(
+        _deep_get(yaml_cfg, ["routing", "hyde", "blacklist"], ["忽略以上指令", "system prompt"]),
+        ["忽略以上指令", "system prompt"],
+    )
+    budget_k_min, budget_k_max, budget_complexity_multipliers, fallback_budget_by_query_type = _load_budget_config(
+        yaml_cfg
+    )
+    rrf_k = _as_int(_deep_get(yaml_cfg, ["retrieval", "fusion", "rrf_k"], 60), 60)
+    if rrf_k <= 0:
+        rrf_k = 60
+    ragas_context_precision_threshold = _as_float(
+        _deep_get(yaml_cfg, ["evaluation", "ragas", "context_precision_threshold"], 0.6),
+        0.6,
+    )
+    if ragas_context_precision_threshold <= 0:
+        ragas_context_precision_threshold = 0.6
 
     return ProjectConfig(
         project_root=project_root,
@@ -243,4 +362,18 @@ def load_project_config() -> ProjectConfig:
         max_total_tokens=max_total_tokens,
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
+        judge_route_path=judge_route_path,
+        hyde_route_path=hyde_route_path,
+        judge_model=judge_model,
+        judge_timeout_seconds=judge_timeout_seconds,
+        judge_fallback_sufficient=judge_fallback_sufficient,
+        hyde_enabled=hyde_enabled,
+        hyde_max_retries=hyde_max_retries,
+        hyde_blacklist=hyde_blacklist,
+        budget_k_min=budget_k_min,
+        budget_k_max=budget_k_max,
+        rrf_k=rrf_k,
+        budget_complexity_multipliers=budget_complexity_multipliers,
+        fallback_budget_by_query_type=fallback_budget_by_query_type,
+        ragas_context_precision_threshold=ragas_context_precision_threshold,
     )

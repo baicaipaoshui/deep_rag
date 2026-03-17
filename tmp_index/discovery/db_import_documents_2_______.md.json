@@ -1,0 +1,29 @@
+{
+  "file_name": "documents_2_销售同比分析.md",
+  "file_path": "db_import/documents_2_销售同比分析.md",
+  "file_format": "markdown",
+  "description": "# 销售同比分析 - source_table: documents - source_id: 2",
+  "time_range": "2025-2026",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "销售同比分析",
+      "line_start": 1,
+      "line_end": 6,
+      "preview": "# 销售同比分析\n\n- source_table: documents\n- source_id: 2\n- updated_at: 2026-03-17T09:10:00Z",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "Content",
+      "line_start": 7,
+      "line_end": 9,
+      "preview": "## Content\n\n2025 年 Q4 销售额 13.2M，较去年同期增长 18%，主要由华东区贡献。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

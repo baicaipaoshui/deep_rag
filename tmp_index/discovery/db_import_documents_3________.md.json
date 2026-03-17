@@ -1,0 +1,29 @@
+{
+  "file_name": "documents_3_数据库巡检规范.md",
+  "file_path": "db_import/documents_3_数据库巡检规范.md",
+  "file_format": "markdown",
+  "description": "# 数据库巡检规范 - source_table: documents - source_id: 3",
+  "time_range": "2026",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "数据库巡检规范",
+      "line_start": 1,
+      "line_end": 6,
+      "preview": "# 数据库巡检规范\n\n- source_table: documents\n- source_id: 3\n- updated_at: 2026-03-17T09:20:00Z",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "Content",
+      "line_start": 7,
+      "line_end": 9,
+      "preview": "## Content\n\nPostgreSQL 生产库每周执行 VACUUM ANALYZE，并监控慢查询 Top20。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}

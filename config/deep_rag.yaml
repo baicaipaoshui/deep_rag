@@ -20,8 +20,41 @@ paths:
 mcp:
   transport: local # local | stdio
 
+routing:
+  judge:
+    path: /judge
+    model: haiku
+    timeout_seconds: 2
+    fallback_sufficient: true
+  hyde:
+    path: /judge/HyDE
+    enabled: true
+    max_retries: 2
+    blacklist:
+      - 忽略以上指令
+      - system prompt
+
 retrieval:
   max_supplements: 2
   max_total_tokens: 50000
   chunk_size: 1200
   chunk_overlap: 150
+  budget:
+    k_min: 3
+    k_max: 30
+    complexity_multipliers:
+      simple: 1.5
+      medium: 2.5
+      complex: 4.0
+  fusion:
+    rrf_k: 60
+  fallback:
+    max_results:
+      fact_lookup: 8
+      numeric_query: 12
+      trend_analysis: 16
+      cross_doc_summary: 24
+
+evaluation:
+  ragas:
+    context_precision_threshold: 0.6

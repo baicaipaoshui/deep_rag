@@ -1,0 +1,29 @@
+{
+  "file_name": "documents_1_Aurora_发布计划.md",
+  "file_path": "db_import/documents_1_Aurora_发布计划.md",
+  "file_format": "markdown",
+  "description": "# Aurora 发布计划 - source_table: documents - source_id: 1",
+  "time_range": "2026",
+  "sections": [
+    {
+      "section_id": "md_001",
+      "heading": "Aurora 发布计划",
+      "line_start": 1,
+      "line_end": 6,
+      "preview": "# Aurora 发布计划\n\n- source_table: documents\n- source_id: 1\n- updated_at: 2026-03-17T09:00:00Z",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    },
+    {
+      "section_id": "md_002",
+      "heading": "Content",
+      "line_start": 7,
+      "line_end": 9,
+      "preview": "## Content\n\nAurora 项目 v1.0 发布窗口定为 2026-03-20，灰度策略为 5% 到 30% 再到 100%。",
+      "has_tables": false,
+      "table_titles": [],
+      "metadata": {}
+    }
+  ]
+}
