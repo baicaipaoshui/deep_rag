@@ -15,6 +15,14 @@
 
 用户问题：{{ question }}
 
+{% if chat_history %}
+最近会话上下文（仅用于理解代词、省略与延续问题）：
+{% for turn in chat_history %}
+- 用户：{{ turn.question }}
+  助手：{{ turn.answer[:180] }}
+{% endfor %}
+{% endif %}
+
 只输出JSON：
 {
   "query_type": "...",

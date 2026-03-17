@@ -1,5 +1,13 @@
 基于以下证据回答趋势问题：{{ question }}
 
+{% if chat_history %}
+会话上下文：
+{% for turn in chat_history %}
+- 用户：{{ turn.question }}
+  助手：{{ turn.answer[:180] }}
+{% endfor %}
+{% endif %}
+
 要求：
 1. 按时间线组织结论。
 2. 每条结论后标注来源【文件-位置】。

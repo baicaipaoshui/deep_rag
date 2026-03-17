@@ -37,8 +37,12 @@ class QueryAnalyzer:
             else None
         )
 
-    async def analyze(self, question: str) -> tuple[QueryPlan, TokenUsage]:
-        prompt = self._render_prompt(question)
+    async def analyze(
+        self,
+        question: str,
+        chat_history: list[dict[str, str]] | None = None,
+    ) -> tuple[QueryPlan, TokenUsage]:
+        prompt = self._render_prompt(question, chat_history=chat_history or [])
         messages = [{"role": "user", "content": prompt}]
         try:
             response, usage = await asyncio.wait_for(
@@ -58,11 +62,11 @@ class QueryAnalyzer:
         except Exception:
             return self._heuristic_plan(question, fallback_reason="route_parse_error"), TokenUsage()
 
-    def _render_prompt(self, question: str) -> str:
+    def _render_prompt(self, question: str, chat_history: list[dict[str, str]]) -> str:
         if self.env is None:
             return f"请分析用户问题并输出JSON计划。问题：{question}"
         template = self.env.get_template("analyze_query.j2")
-        return template.render(question=question)
+        return template.render(question=question, chat_history=chat_history[-6:])
 
     def _to_query_plan(self, question: str, payload: dict[str, Any]) -> QueryPlan:
         raw_type = str(payload.get("query_type", "fact_lookup"))
