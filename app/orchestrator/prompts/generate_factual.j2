@@ -1,5 +1,13 @@
 请基于以下证据回答问题：{{ question }}
 
+{% if chat_history %}
+会话上下文：
+{% for turn in chat_history %}
+- 用户：{{ turn.question }}
+  助手：{{ turn.answer[:180] }}
+{% endfor %}
+{% endif %}
+
 要求：
 - 回答直接、简洁。
 - 引用证据来源。

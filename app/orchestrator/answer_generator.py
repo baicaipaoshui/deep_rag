@@ -42,6 +42,7 @@ class AnswerGenerator:
             query_type=ctx.query_plan.query_type.value,
             evidences=[e.model_dump() for e in ctx.evidences],
             missing_info=ctx.missing_info,
+            chat_history=ctx.chat_history[-6:],
         )
 
     @staticmethod

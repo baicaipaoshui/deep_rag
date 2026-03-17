@@ -122,13 +122,21 @@ python -m preprocessor.run_preprocess \
 ```bash
 python -m app.main "最近三年的销售趋势如何？" --pretty
 python -m app.main --interactive
+python -m app.main --interactive --session-id team_demo
 ```
+
+会话记忆：
+
+- CLI 支持 `--session-id` 复用上下文，并将问答历史保存到 `logs/chat_sessions.json`。
+- 使用 `--new-session` 可从空白上下文开始。
 
 ### 5) 启动 Web
 
 ```bash
 streamlit run app/web.py
 ```
+
+Web 侧边栏提供 Session ID、加载历史和新建会话按钮，可实现跨刷新/重启的会话记忆。
 
 ## 评测与验证
 

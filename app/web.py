@@ -4,6 +4,7 @@ import asyncio
 import io
 import json as _json
 import sys
+import uuid
 from pathlib import Path
 
 import streamlit as st
@@ -13,6 +14,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from app.chat_memory import ChatMemoryStore
 from app.orchestrator.state_machine import StateMachine
 from preprocessor.index_builder import IndexBuilder
 from project_config import load_project_config
@@ -228,6 +230,24 @@ _render_header()
 
 if "history" not in st.session_state:
     st.session_state["history"] = []
+if "session_id" not in st.session_state:
+    st.session_state["session_id"] = f"web-{uuid.uuid4().hex[:8]}"
+
+memory = ChatMemoryStore()
+
+with st.sidebar:
+    st.subheader("💬 会话记忆")
+    session_id_input = st.text_input("Session ID", value=st.session_state["session_id"])
+    if session_id_input.strip() != st.session_state["session_id"]:
+        st.session_state["session_id"] = session_id_input.strip()
+        loaded = memory.load_session(st.session_state["session_id"])
+        st.session_state["history"] = [{"q": t["question"], "result": {"answer": t["answer"]}} for t in loaded]
+    if st.button("新建会话", key="new_chat_session"):
+        st.session_state["session_id"] = f"web-{uuid.uuid4().hex[:8]}"
+        st.session_state["history"] = []
+    if st.button("加载当前会话记录", key="load_chat_session"):
+        loaded = memory.load_session(st.session_state["session_id"])
+        st.session_state["history"] = [{"q": t["question"], "result": {"answer": t["answer"]}} for t in loaded]
 
 st.markdown(
     """
@@ -245,11 +265,17 @@ run = st.button("开始检索 🫧")
 if run and question.strip():
     with st.spinner("正在执行检索流程..."):
         try:
-            result = asyncio.run(StateMachine().run(question.strip()))
+            chat_history = [
+                {"question": row.get("q", ""), "answer": row.get("result", {}).get("answer", "")}
+                for row in st.session_state["history"]
+                if row.get("q") and row.get("result", {}).get("answer")
+            ]
+            result = asyncio.run(StateMachine().run(question.strip(), chat_history=chat_history))
         except Exception as e:
             st.error(f"检索失败：{e}")
             st.stop()
     st.session_state["history"].append({"q": question.strip(), "result": result})
+    memory.append_turn(st.session_state["session_id"], question.strip(), result.get("answer", ""))
 
 if st.session_state["history"]:
     latest = st.session_state["history"][-1]["result"]

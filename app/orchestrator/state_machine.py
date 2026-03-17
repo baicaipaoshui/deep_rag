@@ -36,6 +36,7 @@ class State(str, Enum):
 @dataclass
 class RetrievalContext:
     query_plan: QueryPlan
+    chat_history: list[dict[str, str]] = field(default_factory=list)
     state: State = State.PRE_ROUTING
     candidate_files: list[CandidateFile] = field(default_factory=list)
     excluded_files: list[str] = field(default_factory=list)
@@ -82,11 +83,11 @@ class StateMachine:
             else None
         )
 
-    async def run(self, question: str) -> dict[str, Any]:
+    async def run(self, question: str, chat_history: list[dict[str, str]] | None = None) -> dict[str, Any]:
         await self.mcp.connect()
         try:
-            query_plan, usage = await self.analyzer.analyze(question)
-            ctx = RetrievalContext(query_plan=query_plan)
+            query_plan, usage = await self.analyzer.analyze(question, chat_history=chat_history)
+            ctx = RetrievalContext(query_plan=query_plan, chat_history=chat_history or [])
             ctx.token_tracker.add("analyze", usage)
             ctx.log_decision("init", "query_analyzed", f"type={query_plan.query_type.value}")
 
