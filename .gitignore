@@ -37,3 +37,6 @@ Deep_RAG_最终落地方案_Skill_MCP_Python.md
 .vscode/
 *.swp
 .DS_Store
+
+.env
+config/deep_rag.local.yaml

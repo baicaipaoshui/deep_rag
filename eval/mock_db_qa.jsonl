@@ -1,0 +1,3 @@
+{"id":"db_q1","question":"Aurora 发布窗口是什么时候","expected_file":"documents_1_Aurora_发布计划.md"}
+{"id":"db_q2","question":"2025年Q4销售同比增长多少","expected_file":"documents_2_销售同比分析.md"}
+{"id":"db_q3","question":"PostgreSQL 每周巡检做什么","expected_file":"documents_3_数据库巡检规范.md"}

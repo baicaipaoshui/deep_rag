@@ -9,6 +9,7 @@
 文件：{{ file.file_name }} ({{ file.file_format }})
 {% for section in file.sections %}
 - section_id={{ section.section_id }} heading={{ section.heading }}
+  {% if section.preview %}preview={{ section.preview | replace('\n', ' ') }}{% endif %}
   {% if section.pages %}pages={{ section.pages }}{% endif %}
   {% if section.columns %}columns={{ section.columns | join(", ") }}{% endif %}
 {% endfor %}
@@ -22,5 +23,7 @@
 要求：
 - 只返回相关度 > 0.3 的条目
 - 按 estimated_relevance 降序
+- 对 `fact_lookup` 问题，优先选择 preview 中包含明确事实句、日期、数字结论的章节
+- 若章节仅包含 source_table/source_id/updated_at 等元数据，且存在正文章节可回答问题，则降低该元数据章节相关度
 - 若问题类型为 `trend_analysis`，优先选择包含“年度/年/趋势/同比/Q1-Q4/合计/总额/数据表”的章节或Sheet
 - 若存在多个年份数据，必须优先覆盖跨年章节，而不是只选单个季度章节

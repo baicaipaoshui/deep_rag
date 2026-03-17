@@ -18,6 +18,114 @@ from preprocessor.index_builder import IndexBuilder
 from project_config import load_project_config
 
 
+def _inject_theme() -> None:
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background: radial-gradient(circle at 20% 20%, #fff6a8 0%, #ffe066 30%, #8bd3ff 100%);
+        }
+        .main .block-container {
+            padding-top: 1.2rem;
+            padding-bottom: 2rem;
+        }
+        .sponge-header {
+            background: rgba(255, 255, 255, 0.82);
+            border: 3px solid #f4a300;
+            border-radius: 24px;
+            padding: 20px 24px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+            margin-bottom: 14px;
+        }
+        .sponge-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #102a43;
+            margin: 0;
+        }
+        .sponge-subtitle {
+            margin-top: 6px;
+            color: #334e68;
+            font-size: 1rem;
+        }
+        .bubble-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .bubble {
+            background: rgba(255, 255, 255, 0.92);
+            border: 2px dashed #2f80ed;
+            color: #1f2937;
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+        .sponge-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #f9a825;
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-top: 12px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+        }
+        .sponge-card h4 {
+            margin: 0 0 8px 0;
+            color: #0b3d91;
+            font-size: 1rem;
+        }
+        .history-q {
+            margin: 0;
+            color: #1f2937;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .history-a {
+            margin-top: 8px;
+            color: #334155;
+            font-size: 0.92rem;
+        }
+        div.stButton > button {
+            border-radius: 999px;
+            border: 2px solid #f4a300;
+            background: linear-gradient(180deg, #ffe36f 0%, #ffd54f 100%);
+            color: #102a43;
+            font-weight: 700;
+        }
+        div.stButton > button:hover {
+            border-color: #ff8f00;
+            color: #0b2545;
+        }
+        section[data-testid="stSidebar"] {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(208, 242, 255, 0.96) 100%);
+            border-right: 2px solid rgba(244, 163, 0, 0.45);
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def _render_header() -> None:
+    st.markdown(
+        """
+        <div class="sponge-header">
+            <p class="sponge-title">🧽 Deep RAG Bikini Bottom Edition</p>
+            <p class="sponge-subtitle">海底总部知识库检索：上传文件、重建索引、快速问答一站完成</p>
+            <div class="bubble-row">
+                <span class="bubble">🫧 混合检索</span>
+                <span class="bubble">🫧 三层索引</span>
+                <span class="bubble">🫧 状态机编排</span>
+                <span class="bubble">🫧 Token预算守护</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def _extract_preview(filename: str, data: bytes) -> str:
     """Extract first ~500 chars of content from uploaded file bytes."""
     suffix = Path(filename).suffix.lower()
@@ -72,9 +180,8 @@ st.caption("Python Orchestrator + MCP Tools + Local Ollama")
 cfg = load_project_config()
 KB_DIR = Path(cfg.kb_dir)
 
-# ── 侧边栏：上传知识库 ──────────────────────────────────────────────
 with st.sidebar:
-    st.header("知识库管理")
+    st.header("🍍 知识库管理")
 
     # 显示现有文件数
     existing = list(KB_DIR.rglob("*"))
@@ -116,12 +223,24 @@ with st.sidebar:
     st.divider()
     st.caption("支持格式：`.md` `.pdf` `.xlsx` `.xlsm` `.xls`")
 
-# ── 主区域：检索 ───────────────────────────────────────────────────
+_inject_theme()
+_render_header()
+
 if "history" not in st.session_state:
     st.session_state["history"] = []
 
-question = st.text_input("请输入问题", placeholder="例如：最近三年的销售趋势如何？")
-run = st.button("检索")
+st.markdown(
+    """
+    <div class="sponge-card">
+      <h4>🔍 海底检索台</h4>
+      <p style="margin:0;color:#334155;">输入你的问题，系统会自动执行过滤、定位、抽取、验证和生成流程。</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+question = st.text_input("请输入问题", placeholder="例如：Aurora 项目发布窗口是什么时候？")
+run = st.button("开始检索 🫧")
 
 if run and question.strip():
     with st.spinner("正在执行检索流程..."):
@@ -136,10 +255,10 @@ if st.session_state["history"]:
     latest = st.session_state["history"][-1]["result"]
     col1, col2 = st.columns([3, 2])
     with col1:
-        st.subheader("回答")
+        st.subheader("📝 回答")
         st.write(latest.get("answer", ""))
     with col2:
-        st.subheader("统计")
+        st.subheader("📊 统计")
         summary = latest.get("retrieval_summary", {})
         st.json(
             {
@@ -152,5 +271,19 @@ if st.session_state["history"]:
             }
         )
 
-    with st.expander("决策日志", expanded=False):
+    with st.expander("🧭 决策日志", expanded=False):
         st.json(latest.get("retrieval_summary", {}).get("decision_log", []))
+
+    with st.expander("📚 历史问答记录", expanded=False):
+        for idx, item in enumerate(reversed(st.session_state["history"]), start=1):
+            result = item.get("result", {})
+            st.markdown(
+                f"""
+                <div class="sponge-card">
+                    <h4>第 {idx} 次查询</h4>
+                    <p class="history-q">Q: {item.get("q", "")}</p>
+                    <p class="history-a">A: {result.get("answer", "")[:220]}</p>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
